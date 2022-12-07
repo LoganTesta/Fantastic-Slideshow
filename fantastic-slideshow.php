@@ -355,26 +355,26 @@ function fs_load_slideshows( $a ) {
             $slideLabel = fs_get_slidelabel( $post );
             $slideDescription = fs_get_slidedescription( $post );
             $link = fs_get_url( $post );
-            $pluginContainer .= '<div class="slideshow">';
+            $pluginContainer .= '<div class="slide">';
             if ( !empty( $url_thumb ) ) {
-                $pluginContainer .= '<img class="slideshow__image" src="' . $url_thumb . '" alt="' . $url_altText . '" />';
+                $pluginContainer .= '<img class="slide__image" src="' . $url_thumb . '" alt="' . $url_altText . '" />';
             }
-            $pluginContainer .= '<h4 class="slideshow__title">' . $post->post_title . '</h4>';
+            $pluginContainer .= '<h4 class="slide__title">' . $post->post_title . '</h4>';
             if ( !empty( $post->post_content ) ) {
                 $pluginContainer .= '<p class="slideshow__content">' . $post->post_content . '</p>';
             }
             if ( !empty( $slideLabel ) ) {
                 if ( !empty( $link ) ) {
-                    $pluginContainer .= '<span class="slideshow__label"><a class="slideshow__link" href="' . $link . '" target="__blank">' . $slideLabel . '</a></span>';
+                    $pluginContainer .= '<span class="slide__label"><a class="slide__link" href="' . $link . '" target="__blank">' . $slideLabel . '</a></span>';
                 } else {
-                    $pluginContainer .= '<span class="slideshow__label">' . $slideLabel . '</span>';
+                    $pluginContainer .= '<span class="slide__label">' . $slideLabel . '</span>';
                 }
             }
             if ( !empty( $slideDescription ) ) {
                 if ( !empty( $slideLabel ) ) {
-                    $pluginContainer .= '<span class="slideshow__comma">,</span><span class="slideshow__description"> ' . $slideDescription . '</span>';
+                    $pluginContainer .= '<span class="slide__comma">,</span><span class="slide__description"> ' . $slideDescription . '</span>';
                 } else {
-                    $pluginContainer .= '<span class="slideshow__description">' . $slideDescription . '</span>';
+                    $pluginContainer .= '<span class="slide__description">' . $slideDescription . '</span>';
                 }
             }
             $pluginContainer .= '</div>';
