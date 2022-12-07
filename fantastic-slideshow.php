@@ -353,8 +353,8 @@ function fs_load_slideshows( $a ) {
             $url_thumb = wp_get_attachment_thumb_url( get_post_thumbnail_id( $post->ID ) );
             $url_altText = get_post_meta( get_post_thumbnail_id( $post->ID ), '_wp_attachment_image_alt', true );
             $slideTitle = fs_get_slideshowtitle( $post );
-            $label = gt_get_slidedescription( $post );
-            $link = gt_get_url( $post );
+            $label = fs_get_slidedescription( $post );
+            $link = fs_get_url( $post );
             $pluginContainer .= '<div class="slideshow">';
             if ( !empty( $url_thumb ) ) {
                 $pluginContainer .= '<img class="slideshow__image" src="' . $url_thumb . '" alt="' . $url_altText . '" />';
