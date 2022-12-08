@@ -129,10 +129,10 @@ function fs_url_custom_metabox() {
     global $post;
     
     /*Gather the input data, sanitize it, and update the database.*/
-    $slidelabel = sanitize_text_field( get_post_meta( $post->ID, 'slidelabel', true ) );
-    update_post_meta( $post->ID, 'slidelabel', $slidelabel );
     $slidedescription = sanitize_text_field( get_post_meta( $post->ID, 'slidedescription', true ) );
     update_post_meta( $post->ID, 'slidedescription', $slidedescription );
+    $slidelabel = sanitize_text_field( get_post_meta( $post->ID, 'slidelabel', true ) );
+    update_post_meta( $post->ID, 'slidelabel', $slidelabel );
     $slideshowlurl = sanitize_text_field( get_post_meta( $post->ID, 'slideshowlurl', true ) );
     update_post_meta( $post->ID, 'slideshowlurl', $slideshowlurl );
     $slideshoworder = sanitize_text_field( get_post_meta( $post->ID, 'slideshoworder', true ) );
@@ -169,13 +169,13 @@ function fs_url_custom_metabox() {
     
     ?>
     <p>
-        <label for="slidelabel">Slide Label:<br />
-            <input id="slidelabel" name="slidelabel" size="37" value="<?php if( isset( $slidelabel ) ) { echo $slidelabel; } ?>" />
+        <label for="slidedescription">Slide Description:<br />
+            <input id="slidedescription" name="slidedescription" size="37" value="<?php if( isset( $slidedescription ) ) { echo $slidedescription; } ?>" />
         </label>
     </p>
     <p>
-        <label for="slidedescription">Slide Description:<br />
-            <input id="slidedescription" name="slidedescription" size="37" value="<?php if( isset( $slidedescription ) ) { echo $slidedescription; } ?>" />
+        <label for="slidelabel">Slide Label:<br />
+            <input id="slidelabel" name="slidelabel" size="37" value="<?php if( isset( $slidelabel ) ) { echo $slidelabel; } ?>" />
         </label>
     </p>
     <p>
@@ -195,21 +195,6 @@ function fs_url_custom_metabox() {
 
 
 //Save user provided field data.
-function fs_save_custom_slidelabel( $post_id ) {
-    global $post;
-    
-    if( isset( $_POST['slidelabel'] ) ) {
-        update_post_meta( $post->ID, 'slidelabel', $_POST['slidelabel'] );
-    }
-}
-add_action( 'save_post', 'fs_save_custom_slidelabel' );
-
-function fs_get_slidelabel( $post ) {
-    $slidelabel = get_post_meta( $post->ID, 'slidelabel', true );
-    return $slidelabel;
-}
-
-
 function fs_save_custom_slidedescription( $post_id ) {
     global $post;
     
@@ -222,6 +207,21 @@ add_action( 'save_post', 'fs_save_custom_slidedescription' );
 function fs_get_slidedescription( $post ) {
     $slidedescription = get_post_meta( $post->ID, 'slidedescription', true );
     return $slidedescription;
+}
+
+
+function fs_save_custom_slidelabel( $post_id ) {
+    global $post;
+    
+    if( isset( $_POST['slidelabel'] ) ) {
+        update_post_meta( $post->ID, 'slidelabel', $_POST['slidelabel'] );
+    }
+}
+add_action( 'save_post', 'fs_save_custom_slidelabel' );
+
+function fs_get_slidelabel( $post ) {
+    $slidelabel = get_post_meta( $post->ID, 'slidelabel', true );
+    return $slidelabel;
 }
 
 
@@ -352,8 +352,8 @@ function fs_load_slideshows( $a ) {
         if( $count < $numberToDisplay || $numberToDisplay === -1 ){
             $url_thumb = wp_get_attachment_thumb_url( get_post_thumbnail_id( $post->ID ) );
             $url_altText = get_post_meta( get_post_thumbnail_id( $post->ID ), '_wp_attachment_image_alt', true );
-            $slideLabel = fs_get_slidelabel( $post );
             $slideDescription = fs_get_slidedescription( $post );
+            $slideLabel = fs_get_slidelabel( $post );
             $link = fs_get_url( $post );
             $pluginContainer .= '<div class="slide">';
             if ( !empty( $url_thumb ) ) {
@@ -363,18 +363,14 @@ function fs_load_slideshows( $a ) {
             if ( !empty( $post->post_content ) ) {
                 $pluginContainer .= '<p class="slideshow__content">' . $post->post_content . '</p>';
             }
+            if ( !empty( $slideDescription ) ) {
+                $pluginContainer .= '<span class="slide__description">' . $slideDescription . '</span>';
+            }
             if ( !empty( $slideLabel ) ) {
                 if ( !empty( $link ) ) {
                     $pluginContainer .= '<span class="slide__label"><a class="slide__link" href="' . $link . '" target="__blank">' . $slideLabel . '</a></span>';
                 } else {
                     $pluginContainer .= '<span class="slide__label">' . $slideLabel . '</span>';
-                }
-            }
-            if ( !empty( $slideDescription ) ) {
-                if ( !empty( $slideLabel ) ) {
-                    $pluginContainer .= '<span class="slide__comma">,</span><span class="slide__description"> ' . $slideDescription . '</span>';
-                } else {
-                    $pluginContainer .= '<span class="slide__description">' . $slideDescription . '</span>';
                 }
             }
             $pluginContainer .= '</div>';
