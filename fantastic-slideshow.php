@@ -20,6 +20,15 @@ add_action( 'wp_enqueue_scripts', function(){
 });
 
 
+
+add_action( 'wp_enqueue_scripts', 'fs_load_slideshow_functions' );
+
+function fs_load_slideshow_functions(){
+  wp_enqueue_script( 'slideshow-functions', plugin_dir_url(__FILE__) . '/assets/javascript/slideshow.js' ); 
+};
+
+
+
 function fs_create_slideshow_post_type() {
     register_post_type( 'fantastic-slideshow',
             array(
@@ -378,6 +387,9 @@ function fs_load_slideshows( $a ) {
         $count++;
     }
     $pluginContainer .= '</div>';
+    $pluginContainer .= '<div id="slideButton0"></div><div id="slideButton1"></div><div id="slideButton2"></div>'; 
+    $pluginContainer .= '<div class="slideshow__icon"></div><div class="slideshow__icon"></div>';
+    $pluginContainer .= '<div id="pausePlayButton"></div>'; 
     $pluginContainer .= '</div>';
     return $pluginContainer;
 }
