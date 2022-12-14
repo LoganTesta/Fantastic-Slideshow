@@ -375,13 +375,9 @@ function fs_load_slideshows( $a ) {
             if ( !empty( $slideDescription ) ) {
                 $pluginContainer .= '<span class="slide__description">' . $slideDescription . '</span>';
             }
-            if ( !empty( $slideLabel ) ) {
-                if ( !empty( $link ) ) {
-                    $pluginContainer .= '<span class="slide__label"><a class="slide__link" href="' . $link . '" target="__blank">' . $slideLabel . '</a></span>';
-                } else {
-                    $pluginContainer .= '<span class="slide__label">' . $slideLabel . '</span>';
-                }
-            }
+
+            $pluginContainer .= '<span class="slide__label"><a class="slide__link" href="' . $link . '" target="__blank">' . $slideLabel . '</a></span>';
+            
             $pluginContainer .= '</div>';
         }
         $count++;
