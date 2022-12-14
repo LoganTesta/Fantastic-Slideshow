@@ -347,9 +347,9 @@ function fs_load_slideshows( $a ) {
 
     //Get all slides.
     $posts = get_posts( $args );
-    $pluginContainer .= '<div class="slideshows-container">';
-    $pluginContainer .= '<h3 class="slideshows-container__heading">' . get_option( 'fantastic-slideshow-leading-text' ) . '</h3>';
-    $pluginContainer .= '<div class="slideshows-container__inner-wrapper">';
+    $pluginContainer .= '<div class="slideshow">';
+    $pluginContainer .= '<h3 class="slideshow__heading">' . get_option( 'fantastic-slideshow-leading-text' ) . '</h3>';
+    $pluginContainer .= '<div class="slideshow__inner-wrapper">';
     
     $numberToDisplay = get_option( 'fantastic-slideshow-number-to-display' );
     if( $numberToDisplay === "" ) {
@@ -368,9 +368,9 @@ function fs_load_slideshows( $a ) {
             if ( !empty( $url_thumb ) ) {
                 $pluginContainer .= '<img class="slide__image" src="' . $url_thumb . '" alt="' . $url_altText . '" />';
             }
-            $pluginContainer .= '<h4 class="slide__title">' . $post->post_title . '</h4>';
+            $pluginContainer .= '<div class="slide__title">' . $post->post_title . '</div>';
             if ( !empty( $post->post_content ) ) {
-                $pluginContainer .= '<p class="slideshow__content">' . $post->post_content . '</p>';
+                $pluginContainer .= '<div class="slideshow__content">' . $post->post_content . '</div>';
             }
             if ( !empty( $slideDescription ) ) {
                 $pluginContainer .= '<span class="slide__description">' . $slideDescription . '</span>';
