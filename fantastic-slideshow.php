@@ -366,7 +366,7 @@ function fs_load_slideshows( $a ) {
             $link = fs_get_url( $post );
             $pluginContainer .= '<div class="slide">';
             if ( !empty( $url_thumb ) ) {
-                $pluginContainer .= '<img class="slide__image" src="' . $url_thumb . '" alt="' . $url_altText . '" />';
+                $pluginContainer .= '<div class="slide__image" style="background: url(' . $url_thumb . ') 50% 50%/cover no-repeat;"></div>';
             }
             $pluginContainer .= '<div class="slide__title">' . $post->post_title . '</div>';
             if ( !empty( $post->post_content ) ) {
