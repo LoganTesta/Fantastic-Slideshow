@@ -14,7 +14,7 @@ include ( plugin_dir_path(__FILE__) . "/fantastic-slideshow.php" );
 
 .slide { position: absolute; top: 0; left: 0; }
 .slide__title { font-size: 24px; font-weight: bold; text-align: center; }
-.slide__image { width: 100%; height: 400px; object-fit: cover; }
+.slide__image { width: 100%; height: 240px; object-fit: cover; }
 .slide__description { font-size: 18px; }
 .slide__label { padding-left: 20px; font-size: 18px; }
 
@@ -31,5 +31,7 @@ include ( plugin_dir_path(__FILE__) . "/fantastic-slideshow.php" );
 
 
 @media only screen and (min-width: 1200px){ 
-    
+   
+.slide__image { width: 670px; height: 400px; }
+
 }

@@ -47,10 +47,13 @@ window.addEventListener("load", function() {
 
 
     function init() {
-        prevSlide = document.getElementsByClassName("slide__image")[0];
-        currentSlide = document.getElementsByClassName("slide__image")[1];
+        prevSlide = document.getElementsByClassName("slide")[0];
+        currentSlide = document.getElementsByClassName("slide")[1];
         slideTitle = document.getElementsByClassName("slide__title")[0];
         pausePlayButton = document.getElementById("pausePlayButton");
+        for(let i = 0; i < maxSlideNumber + 1; i++){
+            document.getElementsByClassName("slide")[i].style.opacity = 0;
+        }
         currentSlide.style.opacity = 0;
         prevSlide.style.opacity = 0;
         currentSlideImageLink.href = "";
@@ -99,20 +102,26 @@ window.addEventListener("load", function() {
                     regularSwitchSlide = false;
                     currentSlide.style.opacity = 0;
                     prevSlide.style.opacity = 1;
+                    for(let i = 0; i < maxSlideNumber + 1; i++){
+                        document.getElementsByClassName("slide")[i].style.opacity = 0;
+                    }
+                    if (currentSlideNumber >= 1) {
+                        prevSlide = document.getElementsByClassName("slide")[currentSlideNumber - 1];
+                    } else {
+                        prevSlide = document.getElementsByClassName("slide")[currentSlideNumber];
+                    }
+                    currentSlide = document.getElementsByClassName("slide")[currentSlideNumber];
                 }
 
                 if (currentSlideNumber === 0) {
-                    slideTitle.innerHTML = "Slide 0";
                     slideButton0.classList.add('currentSlideButton');
                     slideButton1.classList.remove('currentSlideButton');
                     slideButton2.classList.remove('currentSlideButton');                 
                 } else if (currentSlideNumber === 1) {
-                    slideTitle.innerHTML = "Slide 1";
                     slideButton0.classList.remove('currentSlideButton');
                     slideButton1.classList.add('currentSlideButton');
                     slideButton2.classList.remove('currentSlideButton');               
                 } else if (currentSlideNumber === 2) {
-                    slideTitle.innerHTML = "Slide 2";
                     slideButton0.classList.remove('currentSlideButton');
                     slideButton1.classList.remove('currentSlideButton');
                     slideButton2.classList.add('currentSlideButton');                 
