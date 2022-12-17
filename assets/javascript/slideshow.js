@@ -14,11 +14,8 @@ window.addEventListener("load", function() {
     let pausePlayButton;
     let slideTitle;
     let slide0 = new Image(670, 400);
-    slide0.src = "";
     let slide1 = new Image(670, 400);
-    slide1.src = "";
     let slide2 = new Image(670, 400);
-    slide2.src = "";
 
     let slideButton0 = document.getElementById('slideButton0');
     let slideButton1 = document.getElementById('slideButton1');
@@ -106,22 +103,16 @@ window.addEventListener("load", function() {
 
                 if (currentSlideNumber === 0) {
                     slideTitle.innerHTML = "Slide 0";
-                    currentSlide.style.backgroundImage = "url(" + slide0.src + ")";
-                    prevSlide.style.backgroundImage = "url(" + slide2.src + ")";
                     slideButton0.classList.add('currentSlideButton');
                     slideButton1.classList.remove('currentSlideButton');
                     slideButton2.classList.remove('currentSlideButton');                 
                 } else if (currentSlideNumber === 1) {
                     slideTitle.innerHTML = "Slide 1";
-                    currentSlide.style.backgroundImage = "url(" + slide1.src + ")";
-                    prevSlide.style.backgroundImage = "url(" + slide0.src + ")";
                     slideButton0.classList.remove('currentSlideButton');
                     slideButton1.classList.add('currentSlideButton');
                     slideButton2.classList.remove('currentSlideButton');               
                 } else if (currentSlideNumber === 2) {
                     slideTitle.innerHTML = "Slide 2";
-                    currentSlide.style.backgroundImage = "url(" + slide2.src + ")";
-                    prevSlide.style.backgroundImage = "url(" + slide1.src + ")";
                     slideButton0.classList.remove('currentSlideButton');
                     slideButton1.classList.remove('currentSlideButton');
                     slideButton2.classList.add('currentSlideButton');                 
