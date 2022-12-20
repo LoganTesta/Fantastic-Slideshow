@@ -18,6 +18,10 @@ include ( plugin_dir_path(__FILE__) . "/fantastic-slideshow.php" );
 .slide__description { font-size: 18px; }
 .slide__label { padding-left: 20px; font-size: 18px; }
 
+.slideshow__icon.left { position: absolute; top: 180px; left: 5px; }
+.slideshow__icon.right { position: absolute; top: 180px; right: 5px; }
+
+.slideshow__buttons { position: relative; }
 .slideshow__slide-button { display: block; float: left; width: 30px; height: 30px; margin-top: 10px; margin-left: 20px; border-radius: 4px; background-color: #333333; }
 #slideButton0 { margin-left: 0; }
 #pausePlayButton { display: block; float: left; width: 30px; height: 30px; margin-top: 10px; margin-left: 20px; border-radius: 4px; background-color: #333333; }
@@ -26,12 +30,16 @@ include ( plugin_dir_path(__FILE__) . "/fantastic-slideshow.php" );
 
 @media only screen and (min-width: 700px){
 
+    .slideshow__icon.left { position: absolute; top: 180px; left: 15px; }
+    .slideshow__icon.right { position: absolute; top: 180px; right: 15px; }
+
 }
 
 
 
 @media only screen and (min-width: 1200px){ 
    
-.slide__image { width: 670px; height: 400px; }
+    .slideshow { width: 670px !important; }
+    .slide__image { width: 670px; height: 400px; }
 
 }
