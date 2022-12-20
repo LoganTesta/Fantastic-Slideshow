@@ -386,8 +386,8 @@ function fs_load_slideshows( $a ) {
     $pluginContainer .= '<div id="slideButton0" class="slide-button"></div>';
     $pluginContainer .= '<div id="slideButton1" class="slide-button"></div>';
     $pluginContainer .= '<div id="slideButton2" class="slide-button"></div>'; 
-    $pluginContainer .= '<div class="slideshow__icon"></div><div class="slideshow__icon"></div>';
     $pluginContainer .= '<div id="pausePlayButton"></div>'; 
+    $pluginContainer .= '<div class="slideshow__icon"></div><div class="slideshow__icon"></div>';
     $pluginContainer .= '</div>';
     return $pluginContainer;
 }

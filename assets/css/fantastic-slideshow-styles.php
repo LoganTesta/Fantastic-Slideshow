@@ -18,9 +18,9 @@ include ( plugin_dir_path(__FILE__) . "/fantastic-slideshow.php" );
 .slide__description { font-size: 18px; }
 .slide__label { padding-left: 20px; font-size: 18px; }
 
-.slide-button { display: inline-block; width: 30px; height: 30px; margin-left: 20px; border-radius: 4px; background-color: #333333; }
+.slide-button { display: block; float: left; width: 30px; height: 30px; margin-top: 10px; margin-left: 20px; border-radius: 4px; background-color: #333333; }
 #slideButton0 { margin-left: 0; }
-#pausePlayButton { display: inline-block; width: 40px; height: 30px; border-radius: 4px; background-color: #333333; }
+#pausePlayButton { display: block; float: left; width: 30px; height: 30px; margin-top: 10px; margin-left: 20px; border-radius: 4px; background-color: #333333; }
 
 
 
