@@ -130,14 +130,17 @@ window.addEventListener("load", function() {
             if (switchText){
                 switchText = false;
                 if (currentSlideNumber === 0) {
+                    currentSlideImageLink = document.getElementsByClassName("slide__link")[0];
                     currentSlideImageLink.href = "";
                     currentSlideImageLink.setAttribute("aria-label", "Slide 0");
                     currentSlideImageLink.innerHTML = "";
                 } else if (currentSlideNumber === 1) {
+                    currentSlideImageLink = document.getElementsByClassName("slide__link")[1];
                     currentSlideImageLink.href = "";
                     currentSlideImageLink.setAttribute("aria-label", "Slide 1");
                     currentSlideImageLink.innerHTML = "";
                 } else if (currentSlideNumber === 2) {
+                    currentSlideImageLink = document.getElementsByClassName("slide__link")[2];
                     currentSlideImageLink.href = "";
                     currentSlideImageLink.setAttribute("aria-label", "Slide 2");
                     currentSlideImageLink.innerHTML = "";

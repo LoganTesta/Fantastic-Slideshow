@@ -188,8 +188,8 @@ function fs_url_custom_metabox() {
         </label>
     </p>
     <p>
-        <label for="slideshowlurl">Related URL:<br />
-            <input id="slideshowlurl" size="37" name="slideshowlurl" value="<?php if( isset( $slideshowlurl ) ) { echo $slideshowlurl; } ?>" />
+        <label for="slideshowurl">Related URL:<br />
+            <input id="slideshowurl" size="37" name="slideshowurl" value="<?php if( isset( $slideshowurl ) ) { echo $slideshowurl; } ?>" />
         </label>
     </p>
         <p>
