@@ -47,8 +47,8 @@ window.addEventListener("load", function() {
 
 
     function init() {
-        prevSlide = document.getElementsByClassName("slide")[0];
-        currentSlide = document.getElementsByClassName("slide")[1];
+        prevSlide = document.getElementsByClassName("slide")[maxSlideNumber];
+        currentSlide = document.getElementsByClassName("slide")[0];
         slideTitle = document.getElementsByClassName("slide__title")[0];
         pausePlayButton = document.getElementById("pausePlayButton");
         for(let i = 0; i < maxSlideNumber + 1; i++){
@@ -100,17 +100,16 @@ window.addEventListener("load", function() {
                 updateSlideSettings = false;
                 if(regularSwitchSlide){
                     regularSwitchSlide = false;
-                    currentSlide.style.opacity = 0;
-                    prevSlide.style.opacity = 1;
-                    for(let i = 0; i < maxSlideNumber + 1; i++){
-                        document.getElementsByClassName("slide")[i].style.opacity = 0;
-                    }
-                    if (currentSlideNumber >= 1) {
-                        prevSlide = document.getElementsByClassName("slide")[currentSlideNumber - 1];
+                    
+                    if (currentSlideNumber <= 0) {
+                        prevSlide = document.getElementsByClassName("slide")[maxSlideNumber];
                     } else {
-                        prevSlide = document.getElementsByClassName("slide")[currentSlideNumber];
+                        prevSlide = document.getElementsByClassName("slide")[currentSlideNumber - 1];
                     }
                     currentSlide = document.getElementsByClassName("slide")[currentSlideNumber];
+                    
+                    prevSlide.style.opacity = 1;
+                    currentSlide.style.opacity = 0;
                 }
 
                 if (currentSlideNumber === 0) {
