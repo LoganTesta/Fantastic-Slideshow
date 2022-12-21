@@ -20,6 +20,7 @@ include ( plugin_dir_path(__FILE__) . "/fantastic-slideshow.php" );
 
 .slideshow__icon.left { position: absolute; top: 180px; left: 5px; }
 .slideshow__icon.right { position: absolute; top: 180px; right: 5px; }
+.slideshow__icon:hover { cursor: pointer; }
 
 .slideshow__buttons { position: relative; }
 .slideshow__slide-button { display: block; float: left; width: 30px; height: 30px; margin-top: 10px; margin-left: 20px; border-radius: 4px; background-color: #333333; }

@@ -70,6 +70,7 @@ window.addEventListener("load", function() {
     }
 
     function runSlideShow() {
+
         if (paused === false) {
             if (slideshowCounter === 200) {
                 switchText = true;
@@ -83,7 +84,7 @@ window.addEventListener("load", function() {
                 prevSlide.style.opacity = 0;
             }
 
-            if (slideshowCounter >= 900) {
+            if (slideshowCounter >= 900) {    
                 slideshowCounter = 0;
                 updateSlideSettings = true;
                 regularSwitchSlide = true;
@@ -98,18 +99,25 @@ window.addEventListener("load", function() {
 
             if (updateSlideSettings) {
                 updateSlideSettings = false;
-                if(regularSwitchSlide){
+
+                if (currentSlideNumber <= 0) {
+                    prevSlide = document.getElementsByClassName("slide")[maxSlideNumber];
+                } else {
+                    prevSlide = document.getElementsByClassName("slide")[currentSlideNumber - 1];
+                }
+                currentSlide = document.getElementsByClassName("slide")[currentSlideNumber];
+                
+
+                for(let i = 0; i < maxSlideNumber + 1; i++){
+                    document.getElementsByClassName("slide")[i].style.opacity = 0;
+                }
+                
+                if (regularSwitchSlide){
                     regularSwitchSlide = false;
-                    
-                    if (currentSlideNumber <= 0) {
-                        prevSlide = document.getElementsByClassName("slide")[maxSlideNumber];
-                    } else {
-                        prevSlide = document.getElementsByClassName("slide")[currentSlideNumber - 1];
-                    }
-                    currentSlide = document.getElementsByClassName("slide")[currentSlideNumber];
-                    
                     prevSlide.style.opacity = 1;
                     currentSlide.style.opacity = 0;
+                } else {
+                    currentSlide.style.opacity = 1;
                 }
 
                 if (currentSlideNumber === 0) {
