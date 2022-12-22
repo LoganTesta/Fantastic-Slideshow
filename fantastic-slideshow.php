@@ -389,16 +389,15 @@ function fs_load_slideshows( $a ) {
     $pluginContainer .= '<div class="slideshow__icon__link">&#10095;</div>';
     $pluginContainer .= '</div>';
     $pluginContainer .= '</div>';
+    
     $pluginContainer .= '<div class="slideshow__buttons">';
-    $pluginContainer .= '<div id="slideButton0" class="slideshow__slide-button">';
-    $pluginContainer .= '<div class="slideshow__button-text"></div>';
-    $pluginContainer .= '</div>';
-    $pluginContainer .= '<div id="slideButton1" class="slideshow__slide-button">';
-    $pluginContainer .= '<div class="slideshow__button-text"></div>';
-    $pluginContainer .= '</div>';
-    $pluginContainer .= '<div id="slideButton2" class="slideshow__slide-button">';
-    $pluginContainer .= '<div class="slideshow__button-text"></div>';
-    $pluginContainer .= '</div>';        
+   
+    for( $i = 0; $i < count($posts); $i++){
+        $pluginContainer .= '<div id="slideButton' . $i . '" class="slideshow__slide-button">';
+        $pluginContainer .= '<div class="slideshow__button-text"></div>';
+        $pluginContainer .= '</div>';
+    }
+    
     $pluginContainer .= '<div id="pausePlayButton"></div>'; 
     $pluginContainer .= '</div>';
     $pluginContainer .= '</div>';

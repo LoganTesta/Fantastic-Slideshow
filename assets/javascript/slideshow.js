@@ -10,7 +10,7 @@ window.addEventListener("load", function() {
     let regularSwitchSlide = false;
     let switchText = false;
     let currentSlideNumber = 0;
-    const maxSlideNumber = 2;
+    const maxSlideNumber = 3;
     let pausePlayButton;
     let slideTitle;
  
