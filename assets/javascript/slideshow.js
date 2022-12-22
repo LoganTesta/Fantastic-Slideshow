@@ -13,23 +13,18 @@ window.addEventListener("load", function() {
     const maxSlideNumber = 2;
     let pausePlayButton;
     let slideTitle;
-    let slide0 = new Image(670, 400);
-    let slide1 = new Image(670, 400);
-    let slide2 = new Image(670, 400);
+ 
 
-    let slideButton0 = document.getElementById('slideButton0');
-    let slideButton1 = document.getElementById('slideButton1');
-    let slideButton2 = document.getElementById('slideButton2');
-
-    slideButton0.addEventListener('click', function () {
-       setSlide(0);
-    }, false);
-    slideButton1.addEventListener('click', function () {
-       setSlide(1);
-    }, false);
-    slideButton2.addEventListener('click', function () {
-       setSlide(2);
-    }, false);
+    let theSlideButtons = [];
+    for(let i = 0; i < maxSlideNumber + 1; i++){
+       theSlideButtons.push(document.getElementsByClassName("slideshow__slide-button")[i]);
+    }
+    
+    for(let i = 0; i < maxSlideNumber + 1; i++){
+        theSlideButtons[i].addEventListener('click', function () {
+           setSlide(i);
+        }, false);
+    }
 
     let backIcon = document.getElementsByClassName("slideshow__icon")[0];
     let forwardIcon = document.getElementsByClassName("slideshow__icon")[1];
@@ -120,38 +115,26 @@ window.addEventListener("load", function() {
                     currentSlide.style.opacity = 1;
                 }
 
-                if (currentSlideNumber === 0) {
-                    slideButton0.classList.add('currentSlideButton');
-                    slideButton1.classList.remove('currentSlideButton');
-                    slideButton2.classList.remove('currentSlideButton');                 
-                } else if (currentSlideNumber === 1) {
-                    slideButton0.classList.remove('currentSlideButton');
-                    slideButton1.classList.add('currentSlideButton');
-                    slideButton2.classList.remove('currentSlideButton');               
-                } else if (currentSlideNumber === 2) {
-                    slideButton0.classList.remove('currentSlideButton');
-                    slideButton1.classList.remove('currentSlideButton');
-                    slideButton2.classList.add('currentSlideButton');                 
-                } 
+
+                for(let i = 0; i < maxSlideNumber + 1; i++) {
+                    if (currentSlideNumber === i) {
+                        theSlideButtons[i].classList.add('currentSlideButton');                
+                    } else {
+                        theSlideButtons[i].classList.remove('currentSlideButton');
+                    }
+                }
             }
             if (switchText){
                 switchText = false;
-                if (currentSlideNumber === 0) {
-                    currentSlideImageLink = document.getElementsByClassName("slide__link")[0];
-                    currentSlideImageLink.href = "";
-                    currentSlideImageLink.setAttribute("aria-label", "Slide 0");
-                    currentSlideImageLink.innerHTML = "";
-                } else if (currentSlideNumber === 1) {
-                    currentSlideImageLink = document.getElementsByClassName("slide__link")[1];
-                    currentSlideImageLink.href = "";
-                    currentSlideImageLink.setAttribute("aria-label", "Slide 1");
-                    currentSlideImageLink.innerHTML = "";
-                } else if (currentSlideNumber === 2) {
-                    currentSlideImageLink = document.getElementsByClassName("slide__link")[2];
-                    currentSlideImageLink.href = "";
-                    currentSlideImageLink.setAttribute("aria-label", "Slide 2");
-                    currentSlideImageLink.innerHTML = "";
-                } 
+                
+                 for(let i = 0; i < maxSlideNumber + 1; i++) {
+                    if (currentSlideNumber === i) {
+                        currentSlideImageLink = document.getElementsByClassName("slide__link")[i];
+                        currentSlideImageLink.href = "";
+                        currentSlideImageLink.setAttribute("aria-label", "Slide " + i);
+                        currentSlideImageLink.innerHTML = "";
+                    }
+                }
             }
             slideshowCounter++;
         }
