@@ -18,6 +18,7 @@ include ( plugin_dir_path(__FILE__) . "/fantastic-slideshow.php" );
 .slide__description { font-size: 18px; }
 .slide__label { padding-left: 20px; font-size: 18px; }
 
+.slideshow__icon__link { padding: 10px; border: 2px solid rgba(0, 0, 0, 0.8); border-radius: 4px; background-color: rgba(255, 255, 255, 0.8); }
 .slideshow__icon.left { position: absolute; top: 180px; left: 5px; }
 .slideshow__icon.right { position: absolute; top: 180px; right: 5px; }
 .slideshow__icon:hover { cursor: pointer; }
