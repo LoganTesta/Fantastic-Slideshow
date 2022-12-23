@@ -24,9 +24,11 @@ include ( plugin_dir_path(__FILE__) . "/fantastic-slideshow.php" );
 .slideshow__icon:hover { cursor: pointer; }
 
 .slideshow__buttons { position: relative; }
+.slideshow__buttons:hover { cursor: pointer; }
 .slideshow__slide-button { display: block; float: left; width: 30px; height: 30px; margin-top: 10px; margin-left: 20px; border-radius: 4px; background-color: #333333; }
 #slideButton0 { margin-left: 0; }
-#pausePlayButton { display: block; float: left; width: 30px; height: 30px; margin-top: 10px; margin-left: 20px; border-radius: 4px; background-color: #333333; }
+#pausePlayButton { display: block; float: left; width: 30px; height: 30px; margin-top: 10px; margin-left: 20px; border-radius: 4px; background: url(../images/pause-button.png) 50% 50%/cover no-repeat; }
+#pausePlayButton.paused { background: url(../images/play-button.png) 50% 50%/cover no-repeat; }
 
 
 
