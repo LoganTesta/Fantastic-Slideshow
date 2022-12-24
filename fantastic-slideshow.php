@@ -128,7 +128,7 @@ function fs_generate_settings_page() {
 
 
 function fs_add_custom_metabox_info() {
-    add_meta_box( 'custom-metabox', __( 'Slide Information' ), 'fs_url_custom_metabox', 'fantastic-slideshow', 'side', 'low' );
+    add_meta_box( 'custom-metabox', __( 'Slide Information' ), 'fs_url_custom_metabox', 'fantastic-slideshow', 'normal', 'low' );
 }
 add_action( 'admin_init', 'fs_add_custom_metabox_info' );
 
