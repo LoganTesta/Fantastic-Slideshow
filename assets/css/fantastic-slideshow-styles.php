@@ -15,7 +15,6 @@ include ( plugin_dir_path(__FILE__) . "/fantastic-slideshow.php" );
 .slide { position: absolute; top: 0; left: 0; }
 .slide__title { position: relative; top: -50px; width: 90%; margin-left: auto; margin-right: auto; font-size: 24px; font-weight: bold; text-align: center; background-color: rgba(255, 255, 255, 0.8); }
 .slide__image { width: 100%; height: 240px; object-fit: cover; }
-.slide__description { font-size: 18px; }
 .slide__label { padding-left: 20px; font-size: 18px; }
 
 .slideshow__icon__link { padding: 10px; border: 2px solid rgba(0, 0, 0, 0.8); border-radius: 4px; background-color: rgba(255, 255, 255, 0.8); }
