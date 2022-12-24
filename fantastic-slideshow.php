@@ -140,8 +140,8 @@ function fs_url_custom_metabox() {
     /*Gather the input data, sanitize it, and update the database.*/
     $slidelabel = sanitize_text_field( get_post_meta( $post->ID, 'slidelabel', true ) );
     update_post_meta( $post->ID, 'slidelabel', $slidelabel );
-    $slideshowlurl = sanitize_text_field( get_post_meta( $post->ID, 'slideshowlurl', true ) );
-    update_post_meta( $post->ID, 'slideshowlurl', $slideshowlurl );
+    $slideshowurl = sanitize_text_field( get_post_meta( $post->ID, 'slideshowurl', true ) );
+    update_post_meta( $post->ID, 'slideshowurl', $slideshowurl );
     $slideshoworder = sanitize_text_field( get_post_meta( $post->ID, 'slideshoworder', true ) );
     if( isset( $slideshoworder ) === false || $slideshoworder === "" ) {
         $slideshoworder = "n/a";
@@ -160,9 +160,9 @@ function fs_url_custom_metabox() {
     }
    
     $errorslink = "";
-    if ( !preg_match( "/http(s?):\/\//", $slideshowlurl ) && $slideshowlurl !== "" ) {
+    if ( !preg_match( "/http(s?):\/\//", $slideshowurl ) && $slideshowurl !== "" ) {
         $errorslink = "This URL is not valid";
-        $slideshowlurl = "http://";
+        $slideshowurl = "http://";
     }
     
     if( isset( $errorslink ) ){
