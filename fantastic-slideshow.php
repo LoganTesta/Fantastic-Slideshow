@@ -95,7 +95,7 @@ function fs_generate_settings_page() {
                 <label class="admin-input-container__label" for="fantastic-slideshow-border-radius">Image Border Radius</label>
                 <input id="fantasticSlideshowImageWidthHeight" class="admin-input-container__input fantastic-slideshow-border-radius" name="fantastic-slideshow-border-radius" type="text" value="<?php echo get_option( 'fantastic-slideshow-border-radius' ); ?>" />
                 <span class="admin-input-container__trailing-text">px</span>
-                <span class="admin-input-container__default-settings-text">Default: 15px</span>
+                <span class="admin-input-container__default-settings-text">Default: 0px</span>
             </div>
             <div class="admin-input-container">
                 <span class="admin-input-container__label">Number of Slides Per Row (Max)</span>         
