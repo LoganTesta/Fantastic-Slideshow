@@ -57,7 +57,7 @@ add_action( 'admin_menu', 'fs_admin_menu' );
 function fs_register_settings() {
     add_option( 'fantastic-slideshow-leading-text', 'Slides' );
     add_option( 'fantastic-slideshow-image-width-height', "120" );
-    add_option( 'fantastic-slideshow-border-radius', "15" );
+    add_option( 'fantastic-slideshow-border-radius', "0" );
     add_option( 'fantastic-slideshow-slides-per-row', "2" );
     add_option( 'fantastic-slideshow-number-to-display', "" );
 
