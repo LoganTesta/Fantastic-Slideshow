@@ -58,14 +58,12 @@ function fs_register_settings() {
     add_option( 'fantastic-slideshow-leading-text', 'Slides' );
     add_option( 'fantastic-slideshow-image-width-height', "120" );
     add_option( 'fantastic-slideshow-border-radius', "15" );
-    add_option( 'fantastic-slideshow-float-image-direction', "left" );
     add_option( 'fantastic-slideshow-slides-per-row', "2" );
     add_option( 'fantastic-slideshow-number-to-display', "" );
 
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-leading-text', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-image-width-height', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-border-radius', 'fs_validatetextfield' );
-    register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-float-image-direction', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-slides-per-row', 'fs_validatetextfield' );  
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-number-to-display', 'fs_validatetextfield' );  
 }
@@ -98,13 +96,6 @@ function fs_generate_settings_page() {
                 <input id="fantasticSlideshowImageWidthHeight" class="admin-input-container__input fantastic-slideshow-border-radius" name="fantastic-slideshow-border-radius" type="text" value="<?php echo get_option( 'fantastic-slideshow-border-radius' ); ?>" />
                 <span class="admin-input-container__trailing-text">px</span>
                 <span class="admin-input-container__default-settings-text">Default: 15px</span>
-            </div>
-            <div class="admin-input-container">
-                <span class="admin-input-container__label">Float Image Direction</span>         
-                <input id="fantasticSlideshowFloatImageDirection0" class="fantastic-slideshow-float-image-direction" name="fantastic-slideshow-float-image-direction" type="radio" value="left" <?php if( get_option( 'fantastic-slideshow-float-image-direction' ) === "left" ) { echo 'checked="checked"'; } ?> />
-                <label class="admin-input-container__label--right" for="fantasticSlideshowFloatImageDirection0">Left</label>
-                <input id="fantasticSlideshowFloatImageDirection1" class="fantastic-slideshow-float-image-direction" name="fantastic-slideshow-float-image-direction" type="radio" value="right" <?php if( get_option( 'fantastic-slideshow-float-image-direction' ) === "right" ) { echo 'checked="checked"'; } ?> />
-                <label class="admin-input-container__label--right" for="fantasticSlideshowFloatImageDirection1">Right</label>
             </div>
             <div class="admin-input-container">
                 <span class="admin-input-container__label">Number of Slides Per Row (Max)</span>         
