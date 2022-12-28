@@ -59,13 +59,11 @@ function fs_register_settings() {
     add_option( 'fantastic-slideshow-image-width-height', "120" );
     add_option( 'fantastic-slideshow-border-radius', "0" );
     add_option( 'fantastic-slideshow-slides-per-row', "2" );
-    add_option( 'fantastic-slideshow-number-to-display', "" );
 
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-leading-text', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-image-width-height', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-border-radius', 'fs_validatetextfield' );
-    register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-slides-per-row', 'fs_validatetextfield' );  
-    register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-number-to-display', 'fs_validatetextfield' );  
+    register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-slides-per-row', 'fs_validatetextfield' );    
 }
 add_action( 'admin_init', 'fs_register_settings' );
 
@@ -87,13 +85,13 @@ function fs_generate_settings_page() {
             </div>
             <div class="admin-input-container">
                 <label class="admin-input-container__label" for="fantastic-slideshow-image-width-height">Image Width, Height (Max, 60-150px)</label>
-                <input id="fantasticSlideshowNumberToDisplay" class="admin-input-container__input smaller fantastic-slideshow-image-width-height" name="fantastic-slideshow-image-width-height" type="number" value="<?php echo get_option( 'fantastic-slideshow-image-width-height' ); ?>" min="60" max="150" />
+                <input id="fantasticSlideshowImageWidthHeight" class="admin-input-container__input smaller fantastic-slideshow-image-width-height" name="fantastic-slideshow-image-width-height" type="number" value="<?php echo get_option( 'fantastic-slideshow-image-width-height' ); ?>" min="60" max="150" />
                 <span class="admin-input-container__trailing-text">px</span>
                 <span class="admin-input-container__default-settings-text">Default: 120px</span>
             </div>
             <div class="admin-input-container">
                 <label class="admin-input-container__label" for="fantastic-slideshow-border-radius">Image Border Radius</label>
-                <input id="fantasticSlideshowImageWidthHeight" class="admin-input-container__input fantastic-slideshow-border-radius" name="fantastic-slideshow-border-radius" type="text" value="<?php echo get_option( 'fantastic-slideshow-border-radius' ); ?>" />
+                <input id="fantasticSlideshowBorderRadius" class="admin-input-container__input fantastic-slideshow-border-radius" name="fantastic-slideshow-border-radius" type="text" value="<?php echo get_option( 'fantastic-slideshow-border-radius' ); ?>" />
                 <span class="admin-input-container__trailing-text">px</span>
                 <span class="admin-input-container__default-settings-text">Default: 0px</span>
             </div>
@@ -107,10 +105,6 @@ function fs_generate_settings_page() {
                 <label class="admin-input-container__label--right" for="fantasticSlideshowSlidesPerRow2">3</label>
                                 <input id="fantasticSlideshowSlidesPerRow3" class="fantastic-slideshow-slides-per-row" name="fantastic-slideshow-slides-per-row" type="radio" value="4" <?php if( get_option( 'fantastic-slideshow-slides-per-row' ) === "4" ) { echo 'checked="checked"'; } ?> />
                 <label class="admin-input-container__label--right" for="fantasticSlideshowSlidesPerRow3">4</label>
-            </div>
-            <div class="admin-input-container">
-                <label class="admin-input-container__label" for="fantastic-slideshow-number-to-display">Slides to Display (Empty: display all)</label>
-                <input id="fantasticSlideshowNumberToDisplay" class="admin-input-container__input smaller fantastic-slideshow-number-to-display" name="fantastic-slideshow-number-to-display" type="number" value="<?php echo get_option( 'fantastic-slideshow-number-to-display' ); ?>" />
             </div>
             <?php submit_button(); ?>
         </form>
@@ -316,28 +310,21 @@ function fs_load_slideshows( $a ) {
     $pluginContainer .= '<h3 class="slideshow__heading">' . get_option( 'fantastic-slideshow-leading-text' ) . '</h3>';
     $pluginContainer .= '<div class="slideshow__inner-wrapper">';
     
-    $numberToDisplay = get_option( 'fantastic-slideshow-number-to-display' );
-    if( $numberToDisplay === "" ) {
-        $numberToDisplay = -1;
-    }
-    $numberToDisplay = (int) $numberToDisplay;
     $count = 0;
     foreach ( $posts as $post ) {
-        if( $count < $numberToDisplay || $numberToDisplay === -1 ){
-            $url_thumb = wp_get_attachment_thumb_url( get_post_thumbnail_id( $post->ID ) );
-            $url_altText = get_post_meta( get_post_thumbnail_id( $post->ID ), '_wp_attachment_image_alt', true );
-            $slideLabel = fs_get_slidelabel( $post );
-            $link = fs_get_url( $post );
-            $pluginContainer .= '<div class="slide">';
-            if ( !empty( $url_thumb ) ) {
-                $pluginContainer .= '<div class="slide__image" style="background: url(' . $url_thumb . ') 50% 50%/cover no-repeat;"></div>';
-            }
-            $pluginContainer .= '<div class="slide__title">' . $post->post_title . '</div>';
-
-            $pluginContainer .= '<span class="slide__label"><a class="slide__link" href="' . $link . '" target="__blank">' . $slideLabel . '</a></span>';
-            
-            $pluginContainer .= '</div>';
+        $url_thumb = wp_get_attachment_thumb_url( get_post_thumbnail_id( $post->ID ) );
+        $url_altText = get_post_meta( get_post_thumbnail_id( $post->ID ), '_wp_attachment_image_alt', true );
+        $slideLabel = fs_get_slidelabel( $post );
+        $link = fs_get_url( $post );
+        $pluginContainer .= '<div class="slide">';
+        if ( !empty( $url_thumb ) ) {
+            $pluginContainer .= '<div class="slide__image" style="background: url(' . $url_thumb . ') 50% 50%/cover no-repeat;"></div>';
         }
+        $pluginContainer .= '<div class="slide__title">' . $post->post_title . '</div>';
+
+        $pluginContainer .= '<span class="slide__label"><a class="slide__link" href="' . $link . '" target="__blank">' . $slideLabel . '</a></span>';
+
+        $pluginContainer .= '</div>';
         $count++;
     }
     $pluginContainer .= '<div class="slideshow__icon left">';
