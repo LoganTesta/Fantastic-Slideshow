@@ -58,12 +58,10 @@ function fs_register_settings() {
     add_option( 'fantastic-slideshow-leading-text', 'Slides' );
     add_option( 'fantastic-slideshow-image-width-height', "120" );
     add_option( 'fantastic-slideshow-border-radius', "0" );
-    add_option( 'fantastic-slideshow-slides-per-row', "2" );
 
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-leading-text', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-image-width-height', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-border-radius', 'fs_validatetextfield' );
-    register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-slides-per-row', 'fs_validatetextfield' );    
 }
 add_action( 'admin_init', 'fs_register_settings' );
 
@@ -94,17 +92,6 @@ function fs_generate_settings_page() {
                 <input id="fantasticSlideshowBorderRadius" class="admin-input-container__input fantastic-slideshow-border-radius" name="fantastic-slideshow-border-radius" type="text" value="<?php echo get_option( 'fantastic-slideshow-border-radius' ); ?>" />
                 <span class="admin-input-container__trailing-text">px</span>
                 <span class="admin-input-container__default-settings-text">Default: 0px</span>
-            </div>
-            <div class="admin-input-container">
-                <span class="admin-input-container__label">Number of Slides Per Row (Max)</span>         
-                <input id="fantasticSlideshowSlidesPerRow0" class="fantastic-slideshow-slides-per-row" name="fantastic-slideshow-slides-per-row" type="radio" value="1" <?php if( get_option( 'fantastic-slideshow-slides-per-row' ) === "1" ) { echo 'checked="checked"'; } ?> />
-                <label class="admin-input-container__label--right" for="fantasticSlideshowSlidesPerRow0">1</label>
-                <input id="fantasticSlideshowSlidesPerRow1" class="fantastic-slideshow-slides-per-row" name="fantastic-slideshow-slides-per-row" type="radio" value="2" <?php if( get_option( 'fantastic-slideshow-slides-per-row' ) === "2" ) { echo 'checked="checked"'; } ?> />
-                <label class="admin-input-container__label--right" for="fantasticSlideshowSlidesPerRow1">2</label>
-                <input id="fantasticSlideshowSlidesPerRow2" class="fantastic-slideshow-slides-per-row" name="fantastic-slideshow-slides-per-row" type="radio" value="3" <?php if( get_option( 'fantastic-slideshow-slides-per-row' ) === "3" ) { echo 'checked="checked"'; } ?> />
-                <label class="admin-input-container__label--right" for="fantasticSlideshowSlidesPerRow2">3</label>
-                                <input id="fantasticSlideshowSlidesPerRow3" class="fantastic-slideshow-slides-per-row" name="fantastic-slideshow-slides-per-row" type="radio" value="4" <?php if( get_option( 'fantastic-slideshow-slides-per-row' ) === "4" ) { echo 'checked="checked"'; } ?> />
-                <label class="admin-input-container__label--right" for="fantasticSlideshowSlidesPerRow3">4</label>
             </div>
             <?php submit_button(); ?>
         </form>
