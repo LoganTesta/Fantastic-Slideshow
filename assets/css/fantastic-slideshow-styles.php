@@ -8,13 +8,22 @@ include ( plugin_dir_path(__FILE__) . "/fantastic-slideshow.php" );
 
 $imageBorderRadius = get_option( 'fantastic-slideshow-border-radius' );
 
+$slideImageWidth = (int)( get_option( 'fantastic-slideshow-image-width' ) );
+if ( $slideImageWidth <= 0 ) {
+    $slideImageWidth = 670;
+} elseif ( 0 < $slideImageWidth && $slideImageWidth < 400 ) {
+    $slideImageWidth = 400;
+} elseif ( $slideImageWidth > 800 ) {
+    $slideImageWidth = 800;
+}
+
 ?>
 
 
-.slideshow { font-size: 16px; font-weight: normal; }
-.slideshow__inner-wrapper { position: relative; width: 670px; height: 400px; }
+.slideshow { width: 100%; font-size: 16px; font-weight: normal; }
+.slideshow__inner-wrapper { position: relative; max-width: <?php echo $slideImageWidth; ?>px; height: 400px; }
 
-.slide { position: absolute; top: 0; left: 0; }
+.slide { position: absolute; top: 0; left: 0; width: 100%; max-width: <?php echo $slideImageWidth; ?>px; }
 .slide__title { position: relative; top: -50px; width: 90%; margin-left: auto; margin-right: auto; font-size: 24px; font-weight: bold; text-align: center; background-color: rgba(255, 255, 255, 0.8); }
 .slide__image { width: 100%; height: 240px; object-fit: cover; border-radius: <?php echo $imageBorderRadius; ?>px; }
 .slide__label { padding-left: 20px; font-size: 18px; }
@@ -44,7 +53,10 @@ $imageBorderRadius = get_option( 'fantastic-slideshow-border-radius' );
 
 @media only screen and (min-width: 1200px){ 
    
-    .slideshow { width: 670px !important; }
-    .slide__image { width: 670px; height: 400px; }
+    .slideshow { width: <?php echo $slideImageWidth; ?>px; }
+    .slideshow__inner-wrapper { width: <?php echo $slideImageWidth; ?>px; }
+    
+    .slide { width: <?php echo $slideImageWidth; ?>px; }
+    .slide__image { height: 400px; }
 
 }
