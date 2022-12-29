@@ -57,10 +57,12 @@ add_action( 'admin_menu', 'fs_admin_menu' );
 function fs_register_settings() {
     add_option( 'fantastic-slideshow-leading-text', 'Slides' );
     add_option( 'fantastic-slideshow-image-width', "670" );
+    add_option( 'fantastic-slideshow-image-height', "400" );
     add_option( 'fantastic-slideshow-border-radius', "0" );
 
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-leading-text', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-image-width', 'fs_validatetextfield' );
+    register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-image-height', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-border-radius', 'fs_validatetextfield' );
 }
 add_action( 'admin_init', 'fs_register_settings' );
@@ -82,10 +84,16 @@ function fs_generate_settings_page() {
                 <input id="fantasticSlideshowLeadingText" class="admin-input-container__input fantastic-slideshow-leading-text" name="fantastic-slideshow-leading-text" type="text" value="<?php echo get_option( 'fantastic-slideshow-leading-text' ); ?>" />
             </div>
             <div class="admin-input-container">
-                <label class="admin-input-container__label" for="fantastic-slideshow-image-width">Image Width (Max, 400-800px)</label>
+                <label class="admin-input-container__label" for="fantastic-slideshow-image-width">Image Width (400-800px)</label>
                 <input id="fantasticSlideshowImageWidth" class="admin-input-container__input smaller fantastic-slideshow-image-width" name="fantastic-slideshow-image-width" type="number" value="<?php echo get_option( 'fantastic-slideshow-image-width' ); ?>" min="400" max="800" />
                 <span class="admin-input-container__trailing-text">px</span>
                 <span class="admin-input-container__default-settings-text">Default: 670px</span>
+            </div>
+            <div class="admin-input-container">
+                <label class="admin-input-container__label" for="fantastic-slideshow-image-height">Image Height (200-600px)</label>
+                <input id="fantasticSlideshowImageHeight" class="admin-input-container__input smaller fantastic-slideshow-image-height" name="fantastic-slideshow-image-height" type="number" value="<?php echo get_option( 'fantastic-slideshow-image-height' ); ?>" min="200" max="600" />
+                <span class="admin-input-container__trailing-text">px</span>
+                <span class="admin-input-container__default-settings-text">Default: 400px</span>
             </div>
             <div class="admin-input-container">
                 <label class="admin-input-container__label" for="fantastic-slideshow-border-radius">Image Border Radius</label>
