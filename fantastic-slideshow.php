@@ -59,11 +59,13 @@ function fs_register_settings() {
     add_option( 'fantastic-slideshow-image-width', "670" );
     add_option( 'fantastic-slideshow-image-height', "400" );
     add_option( 'fantastic-slideshow-border-radius', "0" );
+    add_option( 'fantastic-slideshow-slide-speed', "5" );
 
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-leading-text', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-image-width', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-image-height', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-border-radius', 'fs_validatetextfield' );
+    register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-slide-speed', 'fs_validatetextfield' );
 }
 add_action( 'admin_init', 'fs_register_settings' );
 
@@ -100,6 +102,12 @@ function fs_generate_settings_page() {
                 <input id="fantasticSlideshowBorderRadius" class="admin-input-container__input fantastic-slideshow-border-radius" name="fantastic-slideshow-border-radius" type="text" value="<?php echo get_option( 'fantastic-slideshow-border-radius' ); ?>" />
                 <span class="admin-input-container__trailing-text">px</span>
                 <span class="admin-input-container__default-settings-text">Default: 0px</span>
+            </div>
+            <div class="admin-input-container">
+                <label class="admin-input-container__label" for="fantastic-slideshow-slide-speed">Slide Speed (s)</label>
+                <input id="fantasticSlideshowSlideSpeed" class="admin-input-container__input fantastic-slideshow-slide-speed" name="fantastic-slideshow-slide-speed" type="number" value="<?php echo get_option( 'fantastic-slideshow-slide-speed' ); ?>" />
+                <span class="admin-input-container__trailing-text">s</span>
+                <span class="admin-input-container__default-settings-text">Default: 5s</span>
             </div>
             <?php submit_button(); ?>
         </form>
@@ -341,7 +349,7 @@ function fs_load_slideshows( $a ) {
     $pluginContainer .= '<div id="pausePlayButton"></div>'; 
     $pluginContainer .= '</div>';
     $pluginContainer .= '<div class="slideshow__settings">';
-    $pluginContainer .= '<div class="slideshow__speed">';
+    $pluginContainer .= '<div class="slideshow__speed">' . get_option( 'fantastic-slideshow-slide-speed' );
     $pluginContainer .= '</div>';
     $pluginContainer .= '</div>';
     $pluginContainer .= '</div>';
