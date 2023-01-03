@@ -14,6 +14,7 @@ window.addEventListener("load", function() {
     let pausePlayButton;
     let slideTitle;
  
+    let slideTime = 100 * document.getElementsByClassName("slideshow__speed")[0].innerHTML;
 
     let theSlideButtons = [];
     for(let i = 0; i < maxSlideNumber + 1; i++){
@@ -74,12 +75,12 @@ window.addEventListener("load", function() {
                 currentSlide.style.opacity = parseFloat(currentSlide.style.opacity) + 0.0025;
                 prevSlide.style.opacity = parseFloat(prevSlide.style.opacity) - 0.0025;
             }
-            if (400 <= slideshowCounter && slideshowCounter < 900) {
+            if (400 <= slideshowCounter && slideshowCounter < slideTime) {
                 currentSlide.style.opacity = 1;
                 prevSlide.style.opacity = 0;
             }
 
-            if (slideshowCounter >= 900) {    
+            if (slideshowCounter >= 400 + slideTime) {    
                 slideshowCounter = 0;
                 updateSlideSettings = true;
                 regularSwitchSlide = true;

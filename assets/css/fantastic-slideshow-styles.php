@@ -49,6 +49,8 @@ if ( $slideImageHeight <= 0 ) {
 #pausePlayButton { display: block; float: left; width: 30px; height: 30px; margin-top: 10px; margin-left: 20px; border-radius: 4px; background: url(../images/pause-button.png) 50% 50%/cover no-repeat; }
 #pausePlayButton.paused { background: url(../images/play-button.png) 50% 50%/cover no-repeat; }
 
+.slideshow__settings { display: none; }
+
 
 
 @media only screen and (min-width: 700px){

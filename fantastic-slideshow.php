@@ -340,6 +340,10 @@ function fs_load_slideshows( $a ) {
     
     $pluginContainer .= '<div id="pausePlayButton"></div>'; 
     $pluginContainer .= '</div>';
+    $pluginContainer .= '<div class="slideshow__settings">';
+    $pluginContainer .= '<div class="slideshow__speed">';
+    $pluginContainer .= '</div>';
+    $pluginContainer .= '</div>';
     $pluginContainer .= '</div>';
     return $pluginContainer;
 }
