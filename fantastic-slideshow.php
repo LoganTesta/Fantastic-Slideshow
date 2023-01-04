@@ -104,8 +104,8 @@ function fs_generate_settings_page() {
                 <span class="admin-input-container__default-settings-text">Default: 0px</span>
             </div>
             <div class="admin-input-container">
-                <label class="admin-input-container__label" for="fantastic-slideshow-slide-speed">Slide Speed (s)</label>
-                <input id="fantasticSlideshowSlideSpeed" class="admin-input-container__input fantastic-slideshow-slide-speed" name="fantastic-slideshow-slide-speed" type="number" value="<?php echo get_option( 'fantastic-slideshow-slide-speed' ); ?>" />
+                <label class="admin-input-container__label" for="fantastic-slideshow-slide-speed">Slide Speed</label>
+                <input id="fantasticSlideshowSlideSpeed" class="admin-input-container__input fantastic-slideshow-slide-speed" name="fantastic-slideshow-slide-speed" type="text" value="<?php echo get_option( 'fantastic-slideshow-slide-speed' ); ?>" />
                 <span class="admin-input-container__trailing-text">s</span>
                 <span class="admin-input-container__default-settings-text">Default: 5s</span>
             </div>
