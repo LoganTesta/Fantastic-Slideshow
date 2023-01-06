@@ -15,6 +15,7 @@ window.addEventListener("load", function() {
     let slideTitle;
  
     let slideTime = 100 * document.getElementsByClassName("slideshow__speed")[0].innerHTML;
+    let slideTransitionTime = 100 * document.getElementsByClassName("slideshow__transition-speed")[0].innerHTML;
 
     let theSlideButtons = [];
     for(let i = 0; i < maxSlideNumber + 1; i++){
@@ -68,19 +69,20 @@ window.addEventListener("load", function() {
     function runSlideShow() {
 
         if (paused === false) {
-            if (slideshowCounter === 200) {
+            if (slideshowCounter === 0.5 * slideTransitionTime ) {
                 switchText = true;
             }
-            if (slideshowCounter < 400) {
-                currentSlide.style.opacity = parseFloat(currentSlide.style.opacity) + 0.0025;
-                prevSlide.style.opacity = parseFloat(prevSlide.style.opacity) - 0.0025;
+           
+            if (slideshowCounter < slideTransitionTime) {
+                currentSlide.style.opacity = parseFloat(currentSlide.style.opacity) + 1/slideTransitionTime;
+                prevSlide.style.opacity = parseFloat(prevSlide.style.opacity) - 1/slideTransitionTime;
             }
-            if (400 <= slideshowCounter && slideshowCounter < slideTime) {
+            if (slideTransitionTime <= slideshowCounter && slideshowCounter < slideTime) {
                 currentSlide.style.opacity = 1;
                 prevSlide.style.opacity = 0;
             }
 
-            if (slideshowCounter >= 400 + slideTime) {    
+            if (slideshowCounter >= slideTransitionTime + slideTime) {    
                 slideshowCounter = 0;
                 updateSlideSettings = true;
                 regularSwitchSlide = true;
@@ -154,7 +156,7 @@ window.addEventListener("load", function() {
     pausePlay.addEventListener("click", togglePausePlay, false);
 
     function setSlide(slideNumber) {
-        slideshowCounter = 400;
+        slideshowCounter = slideTransitionTime;
         currentSlideNumber = slideNumber;
         paused = false;
         pausePlayButton.classList.remove("paused");
