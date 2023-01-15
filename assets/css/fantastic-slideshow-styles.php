@@ -45,7 +45,8 @@ if ( $slideImageHeight <= 0 ) {
 
 .slideshow__buttons { position: relative; }
 .slideshow__buttons:hover { cursor: pointer; }
-.slideshow__slide-button { display: block; float: left; width: <?php echo $slideButtonWidth; ?>px; height: <?php echo $slideButtonWidth; ?>px; margin-top: 10px; margin-left: 20px; border-radius: 4px; background-color: #333333; }
+.slideshow__slide-button { display: block; float: left; opacity: 0.3; width: <?php echo $slideButtonWidth; ?>px; height: <?php echo $slideButtonWidth; ?>px; margin-top: 10px; margin-left: 20px; border-radius: 4px; background-color: #333333; }
+.slideshow__slide-button.currentSlideButton { opacity: 1; }
 #slideButton0 { margin-left: 0; }
 #pausePlayButton { display: block; float: left; width: <?php echo $slideButtonWidth; ?>px; height: <?php echo $slideButtonWidth; ?>px; margin-top: 10px; margin-left: 20px; border-radius: 4px; background: url(../images/pause-button.png) 50% 50%/cover no-repeat; }
 #pausePlayButton.paused { background: url(../images/play-button.png) 50% 50%/cover no-repeat; }
