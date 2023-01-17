@@ -340,8 +340,8 @@ function fs_load_slideshows( $a ) {
             $pluginContainer .= '<div class="slide__image" style="background: url(' . $url_thumb . ') 50% 50%/cover no-repeat;"></div>';
         }
         $pluginContainer .= '<div class="slide__title">' . $post->post_title . '</div>';
-
-        $pluginContainer .= '<span class="slide__label"><a class="slide__link" href="' . $link . '" target="__blank">' . $slideLabel . '</a></span>';
+        $pluginContainer .= '<div class="slide__label">' . $slideLabel . '</div>';
+        $pluginContainer .= '<a class="slide__link" href="' . $link . '" target="__blank"></a>';
 
         $pluginContainer .= '</div>';
         $count++;
