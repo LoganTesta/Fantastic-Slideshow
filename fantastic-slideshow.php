@@ -142,6 +142,8 @@ function fs_url_custom_metabox() {
     global $post;
     
     /*Gather the input data, sanitize it, and update the database.*/
+    $slidedescription = sanitize_text_field( get_post_meta( $post->ID, 'slidedescription', true ) );
+    update_post_meta( $post->ID, 'slidedescription', $slidedescription );
     $slidelabel = sanitize_text_field( get_post_meta( $post->ID, 'slidelabel', true ) );
     update_post_meta( $post->ID, 'slidelabel', $slidelabel );
     $slideshowurl = sanitize_text_field( get_post_meta( $post->ID, 'slideshowurl', true ) );
@@ -180,6 +182,11 @@ function fs_url_custom_metabox() {
     
     ?>
     <p>
+        <label for="slidedescription">Slide Description:<br />
+            <textarea id="slidedescription" name="slidedescription" rows="5" cols="34" value="<?php if( isset( $slidedescription ) ) { echo $slidedescription; } ?>"></textarea>
+        </label>
+    </p>
+    <p>
         <label for="slidelabel">Slide Label:<br />
             <input id="slidelabel" name="slidelabel" size="37" value="<?php if( isset( $slidelabel ) ) { echo $slidelabel; } ?>" />
         </label>
@@ -201,6 +208,21 @@ function fs_url_custom_metabox() {
 
 
 //Save user provided field data.
+function fs_save_custom_slidedescription( $post_id ) {
+    global $post;
+    
+    if( isset( $_POST['slidedescription'] ) ) {
+        update_post_meta( $post->ID, 'slidedescription', $_POST['slidedescription'] );
+    }
+}
+add_action( 'save_post', 'fs_save_custom_slidedescription' );
+
+function fs_get_slidedescription( $post ) {
+    $slidedescription = get_post_meta( $post->ID, 'slidedescription', true );
+    return $slidedescription;
+}
+
+
 function fs_save_custom_slidelabel( $post_id ) {
     global $post;
     
@@ -268,6 +290,7 @@ if ( isset( $_GET['post_type'] ) && $_GET['post_type'] === "fantastic-slideshow"
             'cb' => $columns['cb'],
             'title' => __( 'Title' ),
             'image' => __( 'Image' ), 
+            'slidedescription' => __( 'Slide Description', 'fs' ),
             'slidelabel' => __( 'Slide Label', 'fs' ),
             'order' => __( 'Order' ),
             'date' => __( 'Date' ),
@@ -281,6 +304,9 @@ if ( isset( $_GET['post_type'] ) && $_GET['post_type'] === "fantastic-slideshow"
     function fs_add_data_to_admin_columns( $column, $post_id ) {
         if( 'image' === $column ) {
             echo get_the_post_thumbnail( $post_id, array( 100, 100 ) );
+        }
+        if ( 'slidedescription' === $column ) {
+            echo get_post_meta( $post_id, 'slidedescription', true );
         }
         if ( 'slidelabel' === $column ) {
             echo get_post_meta( $post_id, 'slidelabel', true );
@@ -333,6 +359,7 @@ function fs_load_slideshows( $a ) {
     foreach ( $posts as $post ) {
         $url_thumb = wp_get_attachment_thumb_url( get_post_thumbnail_id( $post->ID ) );
         $url_altText = get_post_meta( get_post_thumbnail_id( $post->ID ), '_wp_attachment_image_alt', true );
+        $slideDescription = fs_get_slidedescription( $post );
         $slideLabel = fs_get_slidelabel( $post );
         $link = fs_get_url( $post );
         $pluginContainer .= '<div class="slide">';
@@ -340,6 +367,7 @@ function fs_load_slideshows( $a ) {
             $pluginContainer .= '<div class="slide__image" style="background: url(' . $url_thumb . ') 50% 50%/cover no-repeat;"></div>';
         }
         $pluginContainer .= '<div class="slide__title">' . $post->post_title . '</div>';
+        $pluginContainer .= '<div class="slide__description">' . $slideDescription . '</div>';
         $pluginContainer .= '<div class="slide__label">' . $slideLabel . '</div>';
         $pluginContainer .= '<a class="slide__link" href="' . $link . '" target="__blank"></a>';
 
