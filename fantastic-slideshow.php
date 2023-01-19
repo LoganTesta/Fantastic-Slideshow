@@ -362,7 +362,13 @@ function fs_load_slideshows( $a ) {
         $slideDescription = fs_get_slidedescription( $post );
         $slideLabel = fs_get_slidelabel( $post );
         $link = fs_get_url( $post );
-        $pluginContainer .= '<div class="slide">';
+        
+        if ( empty ( $slideDescription ) ) {
+            $pluginContainer .= '<div class="slide">';
+        } else {
+            $pluginContainer .= '<div class="slide has-description">';
+        }
+        
         if ( !empty( $url_thumb ) ) {
             $pluginContainer .= '<div class="slide__image" style="background: url(' . $url_thumb . ') 50% 50%/cover no-repeat;"></div>';
         }
