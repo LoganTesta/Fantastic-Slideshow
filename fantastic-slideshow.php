@@ -120,7 +120,7 @@ function fs_generate_settings_page() {
                 <span class="admin-input-container__default-settings-text">Default: 4s</span>
             </div>
             <div class="admin-input-container">
-                <label class="admin-input-container__label" for="fantastic-slideshow-slide-button-width">Slide Transition Speed</label>
+                <label class="admin-input-container__label" for="fantastic-slideshow-slide-button-width">Slide Button Width</label>
                 <input id="fantasticSlideshowSlideButtonWidth" class="admin-input-container__input fantastic-slideshow-slide-button-width" name="fantastic-slideshow-slide-button-width" type="text" value="<?php echo get_option( 'fantastic-slideshow-slide-button-width' ); ?>" />
                 <span class="admin-input-container__trailing-text">px</span>
                 <span class="admin-input-container__default-settings-text">Default: 30px</span>
