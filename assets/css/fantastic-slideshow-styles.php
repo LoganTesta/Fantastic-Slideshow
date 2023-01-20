@@ -42,7 +42,8 @@ if ( $slideImageHeight <= 0 ) {
 .slide__label { display: inline-block; position: absolute; top: 20px; right: 15px; padding: 2px 15px; font-size: 18px; color: #000000; background-color: rgba(255, 255, 255, 0.8); }
 .slide__link { display: inline-block; }
 
-.slideshow__icon__link { padding: 10px; border-radius: 4px; background-color: rgba(255, 255, 255, 0.8); }
+.slideshow__icon { width: 34px; height: 34px; }
+.slideshow__icon__link { border-radius: 4px; font-size: 25px; line-height: 34px; text-align: center; background-color: rgba(255, 255, 255, 0.8); }
 .slideshow__icon.left { position: absolute; top: <?php echo 0.5 * ( 0.6 * $slideImageHeight - 51); ?>px; left: 5px; }
 .slideshow__icon.right { position: absolute; top: <?php echo 0.5 * ( 0.6 * $slideImageHeight - 51); ?>px; right: 5px; }
 .slideshow__icon:hover { cursor: pointer; }
