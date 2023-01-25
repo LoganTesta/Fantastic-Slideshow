@@ -183,7 +183,7 @@ function fs_url_custom_metabox() {
     ?>
     <p>
         <label for="slidedescription">Slide Description:<br />
-            <textarea id="slidedescription" name="slidedescription" rows="5" cols="34" value="<?php if( isset( $slidedescription ) ) { echo $slidedescription; } ?>"></textarea>
+            <textarea id="slidedescription" name="slidedescription" rows="5" cols="34"><?php if( isset( $slidedescription ) ) { echo $slidedescription; } ?></textarea>
         </label>
     </p>
     <p>
