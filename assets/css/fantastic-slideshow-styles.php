@@ -34,10 +34,11 @@ if ( $slideImageHeight <= 0 ) {
 .slideshow__inner-wrapper { position: relative; max-width: <?php echo $slideImageWidth; ?>px; height: <?php echo $slideImageHeight; ?>px; }
 
 .slide { position: absolute; top: 0; left: 0; width: 100%; max-width: <?php echo $slideImageWidth; ?>px; height: <?php echo $slideImageHeight; ?>px; }
-.slide__title { position: absolute; bottom: 15px; left: 7%; right: 7%; width: 86%; margin-left: auto; margin-right: auto; font-size: 24px; font-weight: bold; text-align: center; background-color: rgba(255, 255, 255, 0.8); }
-.slide.has-description .slide__title { bottom: 60px; }
+.slide__content { position: absolute; bottom: 0; left: 0%; right: 0%; background-color: rgba(255, 255, 255, 0.8); }
+.slide__title { width: 86%; margin-left: auto; margin-right: auto; font-size: 24px; font-weight: bold; text-align: center; }
+.slide.has-description .slide__title { }
 .slide__description { display: none; }
-.slide.has-description .slide__description { display: block; position: absolute; bottom: 15px; left: 2%; right: 2%; width: 96%; padding-top: 3px; padding-bottom: 3px; margin-left: auto; margin-right: auto; font-size: 20px; font-weight: bold; text-align: center; background-color: rgba(255, 255, 255, 0.8); }
+.slide.has-description .slide__description { display: block; width: 96%; padding-top: 3px; padding-bottom: 3px; margin-left: auto; margin-right: auto; font-size: 20px; font-weight: bold; text-align: center; }
 .slide__image { width: 100%; height: <?php echo 0.6 * $slideImageHeight; ?>px; object-fit: cover; border-radius: <?php echo $imageBorderRadius; ?>px; }
 .slide__label { display: inline-block; position: absolute; top: 20px; right: 15px; padding: 2px 15px; font-size: 18px; color: #000000; background-color: rgba(255, 255, 255, 0.8); }
 .slide__link { display: inline-block; }

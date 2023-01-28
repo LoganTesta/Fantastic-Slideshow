@@ -372,8 +372,10 @@ function fs_load_slideshows( $a ) {
         if ( !empty( $url_thumb ) ) {
             $pluginContainer .= '<div class="slide__image" style="background: url(' . $url_thumb . ') 50% 50%/cover no-repeat;"></div>';
         }
+        $pluginContainer .= '<div class="slide__content">';
         $pluginContainer .= '<div class="slide__title">' . $post->post_title . '</div>';
         $pluginContainer .= '<div class="slide__description">' . $slideDescription . '</div>';
+        $pluginContainer .= '</div>';
         $pluginContainer .= '<div class="slide__label">' . $slideLabel . '</div>';
         $pluginContainer .= '<a class="slide__link" href="' . $link . '" target="__blank"></a>';
 
