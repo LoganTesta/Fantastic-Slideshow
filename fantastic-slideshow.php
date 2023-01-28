@@ -363,7 +363,7 @@ function fs_load_slideshows( $a ) {
         $slideLabel = fs_get_slidelabel( $post );
         $link = fs_get_url( $post );
         
-        if ( empty ( $slideDescription ) ) {
+        if ( empty( $slideDescription ) ) {
             $pluginContainer .= '<div class="slide">';
         } else {
             $pluginContainer .= '<div class="slide has-description">';
@@ -373,8 +373,12 @@ function fs_load_slideshows( $a ) {
             $pluginContainer .= '<div class="slide__image" style="background: url(' . $url_thumb . ') 50% 50%/cover no-repeat;"></div>';
         }
         $pluginContainer .= '<div class="slide__content">';
-        $pluginContainer .= '<div class="slide__title">' . $post->post_title . '</div>';
-        $pluginContainer .= '<div class="slide__description">' . $slideDescription . '</div>';
+        if ( !empty( $post->post_title ) ) {
+            $pluginContainer .= '<div class="slide__title">' . $post->post_title . '</div>';
+        }
+        if ( !empty( $slideDescription ) ) {
+            $pluginContainer .= '<div class="slide__description">' . $slideDescription . '</div>';
+        }
         $pluginContainer .= '</div>';
         $pluginContainer .= '<div class="slide__label">' . $slideLabel . '</div>';
         $pluginContainer .= '<a class="slide__link" href="' . $link . '" target="__blank"></a>';
