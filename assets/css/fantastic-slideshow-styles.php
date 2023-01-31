@@ -31,14 +31,14 @@ if ( $slideImageHeight <= 0 ) {
 
 
 .slideshow { width: 100%; font-size: 16px; font-weight: normal; }
-.slideshow__inner-wrapper { position: relative; max-width: <?php echo $slideImageWidth; ?>px; height: <?php echo $slideImageHeight; ?>px; }
+.slideshow__inner-wrapper { position: relative; max-width: <?php echo $slideImageWidth; ?>px; height: <?php echo 0.6 * $slideImageHeight; ?>px; }
 
-.slide { position: absolute; top: 0; left: 0; width: 100%; max-width: <?php echo $slideImageWidth; ?>px; height: <?php echo $slideImageHeight; ?>px; }
+.slide { position: absolute; top: 0; left: 0; width: 100%; max-width: <?php echo $slideImageWidth; ?>px; height: <?php echo 0.6 * $slideImageHeight; ?>px; }
 .slide__content { position: absolute; bottom: 0; left: 0%; right: 0%; background-color: rgba(255, 255, 255, 0.8); }
-.slide__title { width: 86%; padding-top: 4px; padding-bottom: 4px; margin-left: auto; margin-right: auto; font-size: 24px; font-weight: bold; text-align: center; }
+.slide__title { width: 86%; padding-top: 5px; padding-bottom: 0; margin-left: auto; margin-right: auto; font-size: 24px; font-weight: bold; text-align: center; }
 .slide.has-description .slide__title { }
 .slide__description { display: none; }
-.slide.has-description .slide__description { display: block; width: 96%; padding-top: 3px; padding-bottom: 3px; margin-left: auto; margin-right: auto; font-size: 20px; font-weight: bold; text-align: center; }
+.slide.has-description .slide__description { display: block; width: 96%; padding-top: 0; padding-bottom: 5px; margin-left: auto; margin-right: auto; font-size: 20px; font-weight: bold; text-align: center; }
 .slide__image { width: 100%; height: <?php echo 0.6 * $slideImageHeight; ?>px; object-fit: cover; border-radius: <?php echo $imageBorderRadius; ?>px; }
 .slide__label { display: inline-block; position: absolute; top: 20px; right: 15px; padding: 2px 15px; font-size: 18px; color: #000000; background-color: rgba(255, 255, 255, 0.8); }
 .slide__link { display: inline-block; }
@@ -73,9 +73,9 @@ if ( $slideImageHeight <= 0 ) {
 @media only screen and (min-width: 1200px){ 
    
     .slideshow { width: <?php echo $slideImageWidth; ?>px; }
-    .slideshow__inner-wrapper { width: <?php echo $slideImageWidth; ?>px; }
+    .slideshow__inner-wrapper { width: <?php echo $slideImageWidth; ?>px; height: <?php echo $slideImageHeight; ?>px; }
     
-    .slide { width: <?php echo $slideImageWidth; ?>px; }
+    .slide { width: <?php echo $slideImageWidth; ?>px; height: <?php echo $slideImageHeight; ?>px; }
     .slide__image { height: <?php echo $slideImageHeight; ?>px; }
     
     .slideshow__icon.left { position: absolute; top: <?php echo 0.5 * ($slideImageHeight - 51); ?>px; left: 15px; }
