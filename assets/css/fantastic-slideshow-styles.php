@@ -46,8 +46,8 @@ if ( $slideImageHeight <= 0 ) {
 .slideshow__icon { width: 34px; height: 34px; }
 .slideshow__icon__link { border-radius: 4px; font-size: 25px; line-height: 34px; text-align: center; background-color: rgba(255, 255, 255, 0.8); transition: 0.2s ease-in; }
 .slideshow__icon__link:hover { background-color: rgba(255, 255, 255, 0.95); transition: 0.2s ease-in; }
-.slideshow__icon.left { position: absolute; top: <?php echo 0.5 * ( 0.6 * $slideImageHeight - 51); ?>px; left: 5px; }
-.slideshow__icon.right { position: absolute; top: <?php echo 0.5 * ( 0.6 * $slideImageHeight - 51); ?>px; right: 5px; }
+.slideshow__icon.left { position: absolute; top: <?php echo 0.5 * ( 0.6 * $slideImageHeight - 34); ?>px; left: 5px; }
+.slideshow__icon.right { position: absolute; top: <?php echo 0.5 * ( 0.6 * $slideImageHeight - 34); ?>px; right: 5px; }
 .slideshow__icon:hover { cursor: pointer; }
 
 .slideshow__buttons { position: relative; }
@@ -78,7 +78,7 @@ if ( $slideImageHeight <= 0 ) {
     .slide { width: <?php echo $slideImageWidth; ?>px; height: <?php echo $slideImageHeight; ?>px; }
     .slide__image { height: <?php echo $slideImageHeight; ?>px; }
     
-    .slideshow__icon.left { position: absolute; top: <?php echo 0.5 * ($slideImageHeight - 51); ?>px; left: 15px; }
-    .slideshow__icon.right { position: absolute; top: <?php echo 0.5 * ($slideImageHeight - 51); ?>px; right: 15px; }
+    .slideshow__icon.left { position: absolute; top: <?php echo 0.5 * ($slideImageHeight - 34); ?>px; left: 15px; }
+    .slideshow__icon.right { position: absolute; top: <?php echo 0.5 * ($slideImageHeight - 34); ?>px; right: 15px; }
 
 }
