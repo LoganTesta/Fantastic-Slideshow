@@ -148,6 +148,8 @@ function fs_url_custom_metabox() {
     update_post_meta( $post->ID, 'slidelabel', $slidelabel );
     $slideshowurl = sanitize_text_field( get_post_meta( $post->ID, 'slideshowurl', true ) );
     update_post_meta( $post->ID, 'slideshowurl', $slideshowurl );
+    $slidetitleislink = sanitize_text_field( get_post_meta( $post->ID, 'slidetitleislink', true ) );
+    update_post_meta( $post->ID, 'slidetitleislink', $slidetitleislink );
     $slideshoworder = sanitize_text_field( get_post_meta( $post->ID, 'slideshoworder', true ) );
     if( isset( $slideshoworder ) === false || $slideshoworder === "" ) {
         $slideshoworder = "n/a";
@@ -195,6 +197,12 @@ function fs_url_custom_metabox() {
         <label for="slideshowurl">Related URL:<br />
             <input id="slideshowurl" size="37" name="slideshowurl" value="<?php if( isset( $slideshowurl ) ) { echo $slideshowurl; } ?>" />
         </label>
+    </p>
+    <p>Is Slideshow Title a Link?
+        <input type="radio" id="slidetitleislink0" name="slidetitleislink" value="0" <?php if( $slidetitleislink === "0" ) { echo "checked='checked'"; } ?> />
+        <label for="slidetitleislink">No</label>
+        <input type="radio" id="slidetitleislink1" name="slidetitleislink" value="1" <?php if( $slidetitleislink === "1" ) { echo "checked='checked'"; } ?> />
+        <label for="slidetitleislink">Yes</label>
     </p>
         <p>
         <label for="slideshoworder">Slideshow Order:<br />
@@ -250,6 +258,21 @@ add_action( 'save_post', 'fs_save_custom_url' );
 function fs_get_url( $post ) {
     $slideshowurl = get_post_meta( $post->ID, 'slideshowurl', true );
     return $slideshowurl;
+}
+
+
+function fs_save_custom_slidetitleislink( $post_id ) {
+    global $post;
+    
+    if( isset( $_POST['slidetitleislink'] ) ) {
+        update_post_meta( $post->ID, 'slidetitleislink', $_POST['slidetitleislink'] );
+    }
+}
+add_action( 'save_post', 'fs_save_custom_slidetitleislink' );
+
+function fs_get_slidetitleislink( $post ) {
+    $slidetitleislink = get_post_meta( $post->ID, 'slidetitleislink', true );
+    return $slidetitleislink;
 }
 
 
@@ -362,6 +385,7 @@ function fs_load_slideshows( $a ) {
         $slideDescription = fs_get_slidedescription( $post );
         $slideLabel = fs_get_slidelabel( $post );
         $link = fs_get_url( $post );
+        $slideTitleIsLink =  fs_get_slidetitleislink( $post );
         
         if ( empty( $slideDescription ) ) {
             $pluginContainer .= '<div class="slide">';
@@ -374,7 +398,13 @@ function fs_load_slideshows( $a ) {
         }
         $pluginContainer .= '<div class="slide__content">';
         if ( !empty( $post->post_title ) ) {
+            if ( $slideTitleIsLink === "1" ) {
+                $pluginContainer .= '<a class="slide__title-link" href="' . $link . '">';
+            }
             $pluginContainer .= '<div class="slide__title">' . $post->post_title . '</div>';
+            if ( $slideTitleIsLink === "1" ) {
+                $pluginContainer .= '</a>';
+            }
         }
         if ( !empty( $slideDescription ) ) {
             $pluginContainer .= '<div class="slide__description">' . $slideDescription . '</div>';
