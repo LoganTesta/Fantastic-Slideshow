@@ -6,6 +6,7 @@ header ( "Content-type: text/css; charset: UTF-8" );
 require ( '../../../../../wp-load.php' );
 include ( plugin_dir_path(__FILE__) . "/fantastic-slideshow.php" );
 
+$leadingTextPosition = get_option( 'fantastic-slideshow-leading-text-position' );
 $imageBorderRadius = get_option( 'fantastic-slideshow-border-radius' );
 $slideButtonWidth = get_option( 'fantastic-slideshow-slide-button-width' );
 
@@ -31,6 +32,7 @@ if ( $slideImageHeight <= 0 ) {
 
 
 .slideshow { width: 100%; font-size: 16px; font-weight: normal; }
+.slideshow__heading { text-align: <?php echo $leadingTextPosition; ?>; }
 .slideshow__inner-wrapper { position: relative; max-width: <?php echo $slideImageWidth; ?>px; height: <?php echo 0.6 * $slideImageHeight; ?>px; }
 
 .slide { position: absolute; top: 0; left: 0; width: 100%; max-width: <?php echo $slideImageWidth; ?>px; height: <?php echo 0.6 * $slideImageHeight; ?>px; }

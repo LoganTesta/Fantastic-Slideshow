@@ -56,6 +56,7 @@ add_action( 'admin_menu', 'fs_admin_menu' );
 /*Set up the settings page inputs*/
 function fs_register_settings() {
     add_option( 'fantastic-slideshow-leading-text', 'Slides' );
+    add_option( 'fantastic-slideshow-leading-text-position', 'center' );
     add_option( 'fantastic-slideshow-image-width', "670" );
     add_option( 'fantastic-slideshow-image-height', "400" );
     add_option( 'fantastic-slideshow-border-radius', "0" );
@@ -64,6 +65,7 @@ function fs_register_settings() {
     add_option( 'fantastic-slideshow-slide-button-width', "30" );
 
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-leading-text', 'fs_validatetextfield' );
+    register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-leading-text-position', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-image-width', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-image-height', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-border-radius', 'fs_validatetextfield' );
@@ -88,6 +90,16 @@ function fs_generate_settings_page() {
             <div class="admin-input-container">
                 <label class="admin-input-container__label" for="fantastic-slideshow-leading-text">Slides Leading Text</label>
                 <input id="fantasticSlideshowLeadingText" class="admin-input-container__input fantastic-slideshow-leading-text" name="fantastic-slideshow-leading-text" type="text" value="<?php echo get_option( 'fantastic-slideshow-leading-text' ); ?>" />
+            </div>
+            <div class="admin-input-container">
+                <span class="admin-input-container__label">Slides Leading Text Position</span>
+                <label class="admin-input-container__label--right" for="fantasticSlideshowLeadingTextPosition0">Left</label>
+                <input id="fantasticSlideshowLeadingTextPosition0" class="admin-input-container__input fantastic-slideshow-leading-text-position" name="fantastic-slideshow-leading-text-position" type="radio" value="left" <?php if( get_option( 'fantastic-slideshow-leading-text-position' ) === "left" ) { echo "checked='checked'"; }; ?> />
+                <label class="admin-input-container__label--right" for="fantasticSlideshowLeadingTextPosition1">Center</label>
+                <input id="fantasticSlideshowLeadingTextPosition1" class="admin-input-container__input fantastic-slideshow-leading-text-position" name="fantastic-slideshow-leading-text-position" type="radio" value="center" <?php if( get_option( 'fantastic-slideshow-leading-text-position' ) === "center" ) { echo "checked='checked'"; }; ?> />
+                <label class="admin-input-container__label--right" for="fantasticSlideshowLeadingTextPosition2">Right</label>
+                <input id="fantasticSlideshowLeadingTextPosition2" class="admin-input-container__input fantastic-slideshow-leading-text-position" name="fantastic-slideshow-leading-text-position" type="radio" value="right" <?php if( get_option( 'fantastic-slideshow-leading-text-position' ) === "right" ) { echo "checked='checked'"; }; ?> />
+                <span class="admin-input-container__default-settings-text">Default: center</span>
             </div>
             <div class="admin-input-container">
                 <label class="admin-input-container__label" for="fantastic-slideshow-image-width">Image Width (400-800px)</label>
