@@ -400,9 +400,9 @@ function fs_load_slideshows( $a ) {
         $slideTitleIsLink =  fs_get_slidetitleislink( $post );
         
         if ( empty( $slideDescription ) ) {
-            $pluginContainer .= '<div class="slide">';
+            $pluginContainer .= '<div class="slide slide' . $count . '">';
         } else {
-            $pluginContainer .= '<div class="slide has-description">';
+            $pluginContainer .= '<div class="slide slide' . $count . ' has-description">';
         }
         
         if ( !empty( $url_thumb ) ) {
@@ -410,10 +410,12 @@ function fs_load_slideshows( $a ) {
         }
         $pluginContainer .= '<div class="slide__content">';
         if ( !empty( $post->post_title ) ) {
+            $pluginContainer .= '<div class="slide__title">';
             if ( $slideTitleIsLink === "1" ) {
                 $pluginContainer .= '<a class="slide__title-link" href="' . $link . '">';
             }
-            $pluginContainer .= '<div class="slide__title">' . $post->post_title . '</div>';
+            $pluginContainer .=  $post->post_title;
+            $pluginContainer .= '</div>';
             if ( $slideTitleIsLink === "1" ) {
                 $pluginContainer .= '</a>';
             }
