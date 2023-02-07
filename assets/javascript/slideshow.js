@@ -31,7 +31,7 @@ window.addEventListener("load", function() {
     let backIcon = document.getElementsByClassName("slideshow__icon")[0];
     let forwardIcon = document.getElementsByClassName("slideshow__icon")[1];
 
-    let currentSlideImageLink = document.getElementsByClassName("slide__link")[0];
+    let currentSlideImageLink = document.getElementsByClassName("slide__title-link")[0];
 
     backIcon.addEventListener('click', function () {
        setSlide(currentSlideNumber - 1);
@@ -132,7 +132,7 @@ window.addEventListener("load", function() {
                 
                  for(let i = 0; i < maxSlideNumber + 1; i++) {
                     if (currentSlideNumber === i) {
-                        currentSlideImageLink = document.getElementsByClassName("slide__link")[i];
+                        currentSlideImageLink = document.getElementsByClassName("slide__title-link")[i];
                         currentSlideImageLink.href = "";
                         currentSlideImageLink.setAttribute("aria-label", "Slide " + i);
                         currentSlideImageLink.innerHTML = "";

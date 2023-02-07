@@ -423,7 +423,6 @@ function fs_load_slideshows( $a ) {
         }
         $pluginContainer .= '</div>';
         $pluginContainer .= '<div class="slide__label">' . $slideLabel . '</div>';
-        $pluginContainer .= '<a class="slide__link" href="' . $link . '" target="__blank"></a>';
 
         $pluginContainer .= '</div>';
         $count++;
