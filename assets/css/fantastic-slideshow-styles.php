@@ -36,7 +36,8 @@ if ( $slideImageHeight <= 0 ) {
 .slideshow__inner-wrapper { position: relative; max-width: <?php echo $slideImageWidth; ?>px; height: <?php echo 0.6 * $slideImageHeight; ?>px; }
 
 .slide { position: absolute; top: 0; left: 0; width: 100%; max-width: <?php echo $slideImageWidth; ?>px; height: <?php echo 0.6 * $slideImageHeight; ?>px; }
-.slide__content { position: absolute; bottom: 0; left: 0%; right: 0%; background-color: rgba(255, 255, 255, 0.8); }
+.slide__content { display: none; }
+.slide__content.show { display: block; position: absolute; bottom: 0; left: 0%; right: 0%; background-color: rgba(255, 255, 255, 0.8); }
 .slide__title-link { }
 .slide__title { width: 86%; padding-top: 5px; padding-bottom: 0; margin-left: auto; margin-right: auto; font-size: 24px; font-weight: bold; text-align: center; }
 .slide.has-description .slide__title { }

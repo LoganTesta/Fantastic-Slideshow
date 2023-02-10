@@ -116,9 +116,11 @@ window.addEventListener("load", function() {
 
                 for(let i = 0; i < maxSlideNumber + 1; i++) {
                     if (currentSlideNumber === i) {
-                        theSlideButtons[i].classList.add('currentSlideButton');                
+                        theSlideButtons[i].classList.add('currentSlideButton');  
+                        document.getElementsByClassName("slide")[i].getElementsByClassName("slide__content")[0].classList.add('show');
                     } else {
                         theSlideButtons[i].classList.remove('currentSlideButton');
+                        document.getElementsByClassName("slide")[i].getElementsByClassName("slide__content")[0].classList.remove('show');
                     }
                 }
             }
