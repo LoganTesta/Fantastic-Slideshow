@@ -164,52 +164,54 @@ window.addEventListener("load", function() {
     
     
     // Allow touch events to interact with slideshow.
-    let initialTouchX = 0;
+    for(let i = 0; i < maxSlideNumber + 1; i++){   
+        let initialTouchX = 0;
 
-    let slideshowImage = document.getElementsByClassName("slide")[0];
-    slideshowImage.addEventListener("touchstart", getTouchCoords, false);
-    slideshowImage.addEventListener("touchend", getFinalTouchCoords, false);
+        let slideshowImage = document.getElementsByClassName("slide")[i];
+        slideshowImage.addEventListener("touchstart", getTouchCoords, false);
+        slideshowImage.addEventListener("touchend", getFinalTouchCoords, false);
 
-    function getTouchCoords(event){
-        let touchX = event.touches[0].clientX;
-        let touchY = event.touches[0].clientY;
+        function getTouchCoords(event){
+            let touchX = event.touches[0].clientX;
+            let touchY = event.touches[0].clientY;
 
-        initialTouchX = touchX;  
-    }
-
-    function getFinalTouchCoords(event){
-        let finalTouchX = event.changedTouches[0].clientX;
-        let finalTouchY = event.changedTouches[0].clientY;
-
-        if (finalTouchX - initialTouchX > 80){
-            setSlide(currentSlideNumber - 1);
-        } else if (initialTouchX - finalTouchX > 80){
-            setSlide(currentSlideNumber + 1);
+            initialTouchX = touchX;  
         }
-    }
-    
-    
-    // Allow mouse dragging events to interact with slideshow.
-    slideshowImage.addEventListener("mousedown", getMouseDownCoords, false);
-    slideshowImage.addEventListener("mouseup", getMouseUpsCoords, false);
-    let mouseDown = false;
-    
-    let initialMouseDownX = 0;
-    
-    function getMouseDownCoords(event){  
-        let mouseX = event.offsetX;
-        initialMouseDownX = mouseX;
-        slideshowImage.style.cursor = "grabbing";
-    }
-    
-    function getMouseUpsCoords(event){  
-        let mouseFinalX = event.offsetX;
-        slideshowImage.style.cursor = "default";
-        if (mouseFinalX - initialMouseDownX > 100){
-            setSlide(currentSlideNumber - 1);
-        } else if (initialMouseDownX - mouseFinalX > 100){
-            setSlide(currentSlideNumber + 1);
-        }            
+
+        function getFinalTouchCoords(event){
+            let finalTouchX = event.changedTouches[0].clientX;
+            let finalTouchY = event.changedTouches[0].clientY;
+
+            if (finalTouchX - initialTouchX > 80){
+                setSlide(currentSlideNumber - 1);
+            } else if (initialTouchX - finalTouchX > 80){
+                setSlide(currentSlideNumber + 1);
+            }
+        }
+
+
+        // Allow mouse dragging events to interact with slideshow.
+        slideshowImage.addEventListener("mousedown", getMouseDownCoords, false);
+        slideshowImage.addEventListener("mouseup", getMouseUpsCoords, false);
+        let mouseDown = false;
+
+        let initialMouseDownX = 0;
+
+        function getMouseDownCoords(event){  
+            let mouseX = event.offsetX;
+            initialMouseDownX = mouseX;
+            slideshowImage.style.cursor = "grabbing";
+        }
+
+        function getMouseUpsCoords(event){  
+            let mouseFinalX = event.offsetX;
+            slideshowImage.style.cursor = "default";
+            if (mouseFinalX - initialMouseDownX > 100){
+                setSlide(currentSlideNumber - 1);
+            } else if (initialMouseDownX - mouseFinalX > 100){
+                setSlide(currentSlideNumber + 1);
+            }            
+        }
     }
     
     
