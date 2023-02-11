@@ -31,7 +31,8 @@ if ( $slideImageHeight <= 0 ) {
 ?>
 
 
-.slideshow { width: 100%; font-size: 16px; font-weight: normal; }
+html { }
+.slideshow { width: 100%; max-width: none; font-size: 16px; font-weight: normal; }
 .slideshow__heading { text-align: <?php echo $leadingTextPosition; ?>; }
 .slideshow__inner-wrapper { position: relative; max-width: <?php echo $slideImageWidth; ?>px; height: <?php echo 0.6 * $slideImageHeight; ?>px; }
 
