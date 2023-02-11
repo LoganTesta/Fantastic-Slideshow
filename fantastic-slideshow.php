@@ -409,20 +409,20 @@ function fs_load_slideshows( $a ) {
             $pluginContainer .= '<div class="slide__image" style="background: url(' . $url_thumb . ') 50% 50%/cover no-repeat;"></div>';
         }
         $pluginContainer .= '<div class="slide__content">';
-        if ( !empty( $post->post_title ) ) {
-            $pluginContainer .= '<div class="slide__title">';
-            if ( $slideTitleIsLink === "1" ) {
-                $pluginContainer .= '<a class="slide__title-link" href="' . $link . '">';
+            if ( !empty( $post->post_title ) ) {
+                $pluginContainer .= '<div class="slide__title">';
+                if ( $slideTitleIsLink === "1" ) {
+                    $pluginContainer .= '<a class="slide__title-link" href="' . $link . '">';
+                }
+                $pluginContainer .=  $post->post_title;
+                $pluginContainer .= '</div>';
+                if ( $slideTitleIsLink === "1" ) {
+                    $pluginContainer .= '</a>';
+                }
             }
-            $pluginContainer .=  $post->post_title;
-            $pluginContainer .= '</div>';
-            if ( $slideTitleIsLink === "1" ) {
-                $pluginContainer .= '</a>';
+            if ( !empty( $slideDescription ) ) {
+                $pluginContainer .= '<div class="slide__description">' . $slideDescription . '</div>';
             }
-        }
-        if ( !empty( $slideDescription ) ) {
-            $pluginContainer .= '<div class="slide__description">' . $slideDescription . '</div>';
-        }
         $pluginContainer .= '</div>';
         $pluginContainer .= '<div class="slide__label">' . $slideLabel . '</div>';
 
