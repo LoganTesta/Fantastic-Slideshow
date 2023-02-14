@@ -24,8 +24,8 @@ if ( $slideImageHeight <= 0 ) {
     $slideImageHeight = 400;
 } elseif ( 0 < $slideImageHeight && $slideImageHeight < 200 ) {
     $slideImageHeight = 200;
-} elseif ( $slideImageHeight > 600 ) {
-    $slideImageHeight = 600;
+} elseif ( $slideImageHeight > 1200 ) {
+    $slideImageHeight = 1200;
 }
 
 ?>

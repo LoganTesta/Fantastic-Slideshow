@@ -108,8 +108,8 @@ function fs_generate_settings_page() {
                 <span class="admin-input-container__default-settings-text">Default: 670px</span>
             </div>
             <div class="admin-input-container">
-                <label class="admin-input-container__label" for="fantastic-slideshow-image-height">Image Height (200-600px)</label>
-                <input id="fantasticSlideshowImageHeight" class="admin-input-container__input smaller fantastic-slideshow-image-height" name="fantastic-slideshow-image-height" type="number" value="<?php echo get_option( 'fantastic-slideshow-image-height' ); ?>" min="200" max="600" />
+                <label class="admin-input-container__label" for="fantastic-slideshow-image-height">Image Height (200-1200px)</label>
+                <input id="fantasticSlideshowImageHeight" class="admin-input-container__input smaller fantastic-slideshow-image-height" name="fantastic-slideshow-image-height" type="number" value="<?php echo get_option( 'fantastic-slideshow-image-height' ); ?>" min="200" max="1200" />
                 <span class="admin-input-container__trailing-text">px</span>
                 <span class="admin-input-container__default-settings-text">Default: 400px</span>
             </div>
