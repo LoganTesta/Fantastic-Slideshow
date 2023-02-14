@@ -102,8 +102,8 @@ function fs_generate_settings_page() {
                 <span class="admin-input-container__default-settings-text">Default: center</span>
             </div>
             <div class="admin-input-container">
-                <label class="admin-input-container__label" for="fantastic-slideshow-image-width">Image Width (400-800px)</label>
-                <input id="fantasticSlideshowImageWidth" class="admin-input-container__input smaller fantastic-slideshow-image-width" name="fantastic-slideshow-image-width" type="number" value="<?php echo get_option( 'fantastic-slideshow-image-width' ); ?>" min="400" max="800" />
+                <label class="admin-input-container__label" for="fantastic-slideshow-image-width">Image Width (400-1800px)</label>
+                <input id="fantasticSlideshowImageWidth" class="admin-input-container__input smaller fantastic-slideshow-image-width" name="fantastic-slideshow-image-width" type="number" value="<?php echo get_option( 'fantastic-slideshow-image-width' ); ?>" min="400" max="1800" />
                 <span class="admin-input-container__trailing-text">px</span>
                 <span class="admin-input-container__default-settings-text">Default: 670px</span>
             </div>

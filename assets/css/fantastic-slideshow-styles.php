@@ -15,8 +15,8 @@ if ( $slideImageWidth <= 0 ) {
     $slideImageWidth = 670;
 } elseif ( 0 < $slideImageWidth && $slideImageWidth < 400 ) {
     $slideImageWidth = 400;
-} elseif ( $slideImageWidth > 800 ) {
-    $slideImageWidth = 800;
+} elseif ( $slideImageWidth > 1800 ) {
+    $slideImageWidth = 1800;
 }
 
 $slideImageHeight = (int)( get_option( 'fantastic-slideshow-image-height' ) );
