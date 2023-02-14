@@ -32,7 +32,7 @@ if ( $slideImageHeight <= 0 ) {
 
 
 html { }
-.slideshow { width: 100%; max-width: none; font-size: 16px; font-weight: normal; }
+.slideshow { width: 100%; max-width: <?php echo $slideImageWidth; ?>px; font-size: 16px; font-weight: normal; }
 .slideshow__heading { text-align: <?php echo $leadingTextPosition; ?>; }
 .slideshow__inner-wrapper { position: relative; max-width: <?php echo $slideImageWidth; ?>px; height: <?php echo 0.6 * $slideImageHeight; ?>px; }
 
@@ -75,7 +75,7 @@ html { }
 
 @media only screen and (min-width: 1200px){ 
    
-    .slideshow { width: <?php echo $slideImageWidth; ?>px; }
+    .slideshow { }
     .slideshow__inner-wrapper { width: <?php echo $slideImageWidth; ?>px; height: <?php echo $slideImageHeight; ?>px; }
     
     .slide { width: <?php echo $slideImageWidth; ?>px; height: <?php echo $slideImageHeight; ?>px; }
