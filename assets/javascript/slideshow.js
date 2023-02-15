@@ -16,6 +16,7 @@ window.addEventListener("load", function() {
  
     let slideTime = 100 * document.getElementsByClassName("slideshow__speed")[0].innerHTML;
     let slideTransitionTime = 100 * document.getElementsByClassName("slideshow__transition-speed")[0].innerHTML;
+    let minimumTouchDragDistance = document.getElementsByClassName("slideshow__minimum-touch-drag-distance")[0].innerHTML;
 
     let theSlideButtons = [];
     for(let i = 0; i < maxSlideNumber + 1; i++){
@@ -182,9 +183,9 @@ window.addEventListener("load", function() {
             let finalTouchX = event.changedTouches[0].clientX;
             let finalTouchY = event.changedTouches[0].clientY;
 
-            if (finalTouchX - initialTouchX > 80){
+            if (finalTouchX - initialTouchX >= minimumTouchDragDistance){
                 setSlide(currentSlideNumber - 1);
-            } else if (initialTouchX - finalTouchX > 80){
+            } else if (initialTouchX - finalTouchX >= minimumTouchDragDistance){
                 setSlide(currentSlideNumber + 1);
             }
         }

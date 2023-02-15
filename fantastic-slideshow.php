@@ -63,6 +63,7 @@ function fs_register_settings() {
     add_option( 'fantastic-slideshow-slide-speed', "5" );
     add_option( 'fantastic-slideshow-slide-transition-speed', "4" );
     add_option( 'fantastic-slideshow-slide-button-width', "30" );
+    add_option( 'fantastic-slideshow-minimum-touch-drag-distance', "80" );
 
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-leading-text', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-leading-text-position', 'fs_validatetextfield' );
@@ -72,6 +73,7 @@ function fs_register_settings() {
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-slide-speed', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-slide-transition-speed', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-slide-button-width', 'fs_validatetextfield' );
+    register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-minimum-touch-drag-distance', 'fs_validatetextfield' );
 }
 add_action( 'admin_init', 'fs_register_settings' );
 
@@ -136,6 +138,12 @@ function fs_generate_settings_page() {
                 <input id="fantasticSlideshowSlideButtonWidth" class="admin-input-container__input fantastic-slideshow-slide-button-width" name="fantastic-slideshow-slide-button-width" type="text" value="<?php echo get_option( 'fantastic-slideshow-slide-button-width' ); ?>" />
                 <span class="admin-input-container__trailing-text">px</span>
                 <span class="admin-input-container__default-settings-text">Default: 30px</span>
+            </div>
+            <div class="admin-input-container">
+                <label class="admin-input-container__label" for="fantastic-slideshow-minimum-touch-drag-distance">Minimum Touch Drag Distance</label>
+                <input id="fantasticSlideshowMinimumTouchDragDistance" class="admin-input-container__input fantastic-slideshow-minimum-touch-drag-distance" name="fantastic-slideshow-minimum-touch-drag-distance" type="text" value="<?php echo get_option( 'fantastic-slideshow-minimum-touch-drag-distance' ); ?>" />
+                <span class="admin-input-container__trailing-text">px</span>
+                <span class="admin-input-container__default-settings-text">Default: 80px</span>
             </div>
             <?php submit_button(); ?>
         </form>
@@ -450,6 +458,7 @@ function fs_load_slideshows( $a ) {
     $pluginContainer .= '<div class="slideshow__settings">';
     $pluginContainer .= '<div class="slideshow__speed">' . get_option( 'fantastic-slideshow-slide-speed' ) . '</div>';
     $pluginContainer .= '<div class="slideshow__transition-speed">' . get_option( 'fantastic-slideshow-slide-transition-speed' ) . '</div>';
+    $pluginContainer .= '<div class="slideshow__minimum-touch-drag-distance">' . get_option( 'fantastic-slideshow-minimum-touch-drag-distance' ) . '</div>';
     $pluginContainer .= '</div>';
     $pluginContainer .= '</div>';
     return $pluginContainer;
