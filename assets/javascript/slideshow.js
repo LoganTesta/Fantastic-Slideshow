@@ -17,6 +17,7 @@ window.addEventListener("load", function() {
     let slideTime = 100 * document.getElementsByClassName("slideshow__speed")[0].innerHTML;
     let slideTransitionTime = 100 * document.getElementsByClassName("slideshow__transition-speed")[0].innerHTML;
     let minimumTouchDragDistance = document.getElementsByClassName("slideshow__minimum-touch-drag-distance")[0].innerHTML;
+    let minimumMouseDragDistance = document.getElementsByClassName("slideshow__minimum-mouse-drag-distance")[0].innerHTML;
 
     let theSlideButtons = [];
     for(let i = 0; i < maxSlideNumber + 1; i++){
@@ -207,9 +208,9 @@ window.addEventListener("load", function() {
         function getMouseUpsCoords(event){  
             let mouseFinalX = event.offsetX;
             slideshowImage.style.cursor = "default";
-            if (mouseFinalX - initialMouseDownX > 100){
+            if (mouseFinalX - initialMouseDownX >= minimumMouseDragDistance){
                 setSlide(currentSlideNumber - 1);
-            } else if (initialMouseDownX - mouseFinalX > 100){
+            } else if (initialMouseDownX - mouseFinalX >= minimumMouseDragDistance){
                 setSlide(currentSlideNumber + 1);
             }            
         }
