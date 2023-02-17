@@ -18,6 +18,7 @@ window.addEventListener("load", function() {
     let slideTransitionTime = 100 * document.getElementsByClassName("slideshow__transition-speed")[0].innerHTML;
     let minimumTouchDragDistance = document.getElementsByClassName("slideshow__minimum-touch-drag-distance")[0].innerHTML;
     let minimumMouseDragDistance = document.getElementsByClassName("slideshow__minimum-mouse-drag-distance")[0].innerHTML;
+    let enableTouchDragging = document.getElementsByClassName("slideshow__enable-touch-dragging")[0].innerHTML;
 
     let theSlideButtons = [];
     for(let i = 0; i < maxSlideNumber + 1; i++){
@@ -165,29 +166,32 @@ window.addEventListener("load", function() {
     
     
     
-    // Allow touch events to interact with slideshow.
     for(let i = 0; i < maxSlideNumber + 1; i++){   
-        let initialTouchX = 0;
-
         let slideshowImage = document.getElementsByClassName("slide")[i];
-        slideshowImage.addEventListener("touchstart", getTouchCoords, false);
-        slideshowImage.addEventListener("touchend", getFinalTouchCoords, false);
+        
+        // Allow touch events to interact with slideshow.
+        if ( enableTouchDragging === "yes" ){
+            let initialTouchX = 0;
 
-        function getTouchCoords(event){
-            let touchX = event.touches[0].clientX;
-            let touchY = event.touches[0].clientY;
+            slideshowImage.addEventListener("touchstart", getTouchCoords, false);
+            slideshowImage.addEventListener("touchend", getFinalTouchCoords, false);
 
-            initialTouchX = touchX;  
-        }
+            function getTouchCoords(event){
+                let touchX = event.touches[0].clientX;
+                let touchY = event.touches[0].clientY;
 
-        function getFinalTouchCoords(event){
-            let finalTouchX = event.changedTouches[0].clientX;
-            let finalTouchY = event.changedTouches[0].clientY;
+                initialTouchX = touchX;  
+            }
 
-            if (finalTouchX - initialTouchX >= minimumTouchDragDistance){
-                setSlide(currentSlideNumber - 1);
-            } else if (initialTouchX - finalTouchX >= minimumTouchDragDistance){
-                setSlide(currentSlideNumber + 1);
+            function getFinalTouchCoords(event){
+                let finalTouchX = event.changedTouches[0].clientX;
+                let finalTouchY = event.changedTouches[0].clientY;
+
+                if (finalTouchX - initialTouchX >= minimumTouchDragDistance){
+                    setSlide(currentSlideNumber - 1);
+                } else if (initialTouchX - finalTouchX >= minimumTouchDragDistance){
+                    setSlide(currentSlideNumber + 1);
+                }
             }
         }
 
