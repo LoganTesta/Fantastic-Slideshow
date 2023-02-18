@@ -66,6 +66,7 @@ function fs_register_settings() {
     add_option( 'fantastic-slideshow-minimum-touch-drag-distance', "80" );
     add_option( 'fantastic-slideshow-minimum-mouse-drag-distance', "100" );
     add_option( 'fantastic-slideshow-enable-touch-dragging', 'yes' );
+    add_option( 'fantastic-slideshow-enable-mouse-dragging', 'yes' );
     
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-leading-text', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-leading-text-position', 'fs_validatetextfield' );
@@ -78,6 +79,7 @@ function fs_register_settings() {
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-minimum-touch-drag-distance', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-minimum-mouse-drag-distance', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-enable-touch-dragging', 'fs_validatetextfield' );
+    register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-enable-mouse-dragging', 'fs_validatetextfield' );
 }
 add_action( 'admin_init', 'fs_register_settings' );
 
@@ -161,7 +163,15 @@ function fs_generate_settings_page() {
                 <input id="fantasticSlideshowEnableTouchDragging0" class="admin-input-container__input fantastic-slideshow-enable-touch-dragging" name="fantastic-slideshow-enable-touch-dragging" type="radio" value="no" <?php if( get_option( 'fantastic-slideshow-enable-touch-dragging' ) === "no" ) { echo "checked='checked'"; }; ?> />
                 <label class="admin-input-container__label--right" for="fantasticSlideshowEnableTouchDragging1">Yes</label>
                 <input id="fantasticSlideshowEnableTouchDragging1" class="admin-input-container__input fantastic-slideshow-enable-touch-dragging" name="fantastic-slideshow-enable-touch-dragging" type="radio" value="yes" <?php if( get_option( 'fantastic-slideshow-enable-touch-dragging' ) === "yes" ) { echo "checked='checked'"; }; ?> />
-                <span class="admin-input-container__default-settings-text">Default: Yes. Touch enabled</span>
+                <span class="admin-input-container__default-settings-text">Default: Yes. Touch dragging enabled</span>
+            </div>
+            <div class="admin-input-container">
+                <span class="admin-input-container__label">Enable Mouse Dragging</span>
+                <label class="admin-input-container__label--right" for="fantasticSlideshowEnableMouseDragging0">No</label>
+                <input id="fantasticSlideshowEnableMouseDragging0" class="admin-input-container__input fantastic-slideshow-enable-mouse-dragging" name="fantastic-slideshow-enable-mouse-dragging" type="radio" value="no" <?php if( get_option( 'fantastic-slideshow-enable-mouse-dragging' ) === "no" ) { echo "checked='checked'"; }; ?> />
+                <label class="admin-input-container__label--right" for="fantasticSlideshowEnableMouseDragging1">Yes</label>
+                <input id="fantasticSlideshowEnableMouseDragging1" class="admin-input-container__input fantastic-slideshow-enable-mouse-dragging" name="fantastic-slideshow-enable-mouse-dragging" type="radio" value="yes" <?php if( get_option( 'fantastic-slideshow-enable-mouse-dragging' ) === "yes" ) { echo "checked='checked'"; }; ?> />
+                <span class="admin-input-container__default-settings-text">Default: Yes. Mouse dragging enabled</span>
             </div>
             <?php submit_button(); ?>
         </form>
@@ -479,6 +489,7 @@ function fs_load_slideshows( $a ) {
     $pluginContainer .= '<div class="slideshow__minimum-touch-drag-distance">' . get_option( 'fantastic-slideshow-minimum-touch-drag-distance' ) . '</div>';
     $pluginContainer .= '<div class="slideshow__minimum-mouse-drag-distance">' . get_option( 'fantastic-slideshow-minimum-mouse-drag-distance' ) . '</div>';
     $pluginContainer .= '<div class="slideshow__enable-touch-dragging">' . get_option( 'fantastic-slideshow-enable-touch-dragging' ) . '</div>';
+    $pluginContainer .= '<div class="slideshow__enable-mouse-dragging">' . get_option( 'fantastic-slideshow-enable-mouse-dragging' ) . '</div>';
     $pluginContainer .= '</div>';
     $pluginContainer .= '</div>';
     return $pluginContainer;

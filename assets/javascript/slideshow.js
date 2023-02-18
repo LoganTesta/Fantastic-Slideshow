@@ -19,6 +19,7 @@ window.addEventListener("load", function() {
     let minimumTouchDragDistance = document.getElementsByClassName("slideshow__minimum-touch-drag-distance")[0].innerHTML;
     let minimumMouseDragDistance = document.getElementsByClassName("slideshow__minimum-mouse-drag-distance")[0].innerHTML;
     let enableTouchDragging = document.getElementsByClassName("slideshow__enable-touch-dragging")[0].innerHTML;
+    let enableMouseDragging = document.getElementsByClassName("slideshow__enable-mouse-dragging")[0].innerHTML;
 
     let theSlideButtons = [];
     for(let i = 0; i < maxSlideNumber + 1; i++){
@@ -197,28 +198,30 @@ window.addEventListener("load", function() {
 
 
         // Allow mouse dragging events to interact with slideshow.
-        slideshowImage.addEventListener("mousedown", getMouseDownCoords, false);
-        slideshowImage.addEventListener("mouseup", getMouseUpsCoords, false);
-        let mouseDown = false;
+        if ( enableMouseDragging === "yes" ) {
+            let initialMouseDownX = 0;
+                        
+            slideshowImage.addEventListener("mousedown", getMouseDownCoords, false);
+            slideshowImage.addEventListener("mouseup", getMouseUpsCoords, false);
+            let mouseDown = false;
 
-        let initialMouseDownX = 0;
+            function getMouseDownCoords(event){  
+                let mouseX = event.offsetX;
+                initialMouseDownX = mouseX;
+                slideshowImage.style.cursor = "grabbing";
+            }
 
-        function getMouseDownCoords(event){  
-            let mouseX = event.offsetX;
-            initialMouseDownX = mouseX;
-            slideshowImage.style.cursor = "grabbing";
+            function getMouseUpsCoords(event){  
+                let mouseFinalX = event.offsetX;
+                slideshowImage.style.cursor = "default";
+                if (mouseFinalX - initialMouseDownX >= minimumMouseDragDistance){
+                    setSlide(currentSlideNumber - 1);
+                } else if (initialMouseDownX - mouseFinalX >= minimumMouseDragDistance){
+                    setSlide(currentSlideNumber + 1);
+                }            
+            }
         }
-
-        function getMouseUpsCoords(event){  
-            let mouseFinalX = event.offsetX;
-            slideshowImage.style.cursor = "default";
-            if (mouseFinalX - initialMouseDownX >= minimumMouseDragDistance){
-                setSlide(currentSlideNumber - 1);
-            } else if (initialMouseDownX - mouseFinalX >= minimumMouseDragDistance){
-                setSlide(currentSlideNumber + 1);
-            }            
-        }
+        
     }
-    
     
 }, "false");
