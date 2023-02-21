@@ -68,6 +68,7 @@ function fs_register_settings() {
     add_option( 'fantastic-slideshow-enable-touch-dragging', 'yes' );
     add_option( 'fantastic-slideshow-enable-mouse-dragging', 'yes' );
     add_option( 'fantastic-slideshow-show-arrows', 'yes' );
+    add_option( 'fantastic-slideshow-show-slide-buttons', 'yes' );
    
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-leading-text', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-leading-text-position', 'fs_validatetextfield' );
@@ -82,6 +83,7 @@ function fs_register_settings() {
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-enable-touch-dragging', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-enable-mouse-dragging', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-show-arrows', 'fs_validatetextfield' );
+    register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-show-slide-buttons', 'fs_validatetextfield' );
 }
 add_action( 'admin_init', 'fs_register_settings' );
 
@@ -175,13 +177,21 @@ function fs_generate_settings_page() {
                 <input id="fantasticSlideshowEnableMouseDragging1" class="admin-input-container__input fantastic-slideshow-enable-mouse-dragging" name="fantastic-slideshow-enable-mouse-dragging" type="radio" value="yes" <?php if( get_option( 'fantastic-slideshow-enable-mouse-dragging' ) === "yes" ) { echo "checked='checked'"; }; ?> />
                 <span class="admin-input-container__default-settings-text">Default: Yes. Mouse dragging enabled</span>
             </div>
-                    <div class="admin-input-container">
+            <div class="admin-input-container">
                 <span class="admin-input-container__label">Show Arrows</span>
                 <label class="admin-input-container__label--right" for="fantasticSlideshowShowArrows0">No</label>
                 <input id="fantasticSlideshowShowArrows0" class="admin-input-container__input fantastic-slideshow-show-arrows" name="fantastic-slideshow-show-arrows" type="radio" value="hide" <?php if( get_option( 'fantastic-slideshow-show-arrows' ) === "hide" ) { echo "checked='checked'"; }; ?> />
                 <label class="admin-input-container__label--right" for="fantasticSlideshowShowArrows1">Yes</label>
                 <input id="fantasticSlideshowShowArrows1" class="admin-input-container__input fantastic-slideshow-show-arrows" name="fantastic-slideshow-show-arrows" type="radio" value="show" <?php if( get_option( 'fantastic-slideshow-show-arrows' ) === "show" ) { echo "checked='checked'"; }; ?> />
                 <span class="admin-input-container__default-settings-text">Default: Yes, show arrows</span>
+            </div>
+            <div class="admin-input-container">
+                <span class="admin-input-container__label">Show Slide Buttons</span>
+                <label class="admin-input-container__label--right" for="fantasticSlideshowShowSlideButtons0">No</label>
+                <input id="fantasticSlideshowSlideButtons0" class="admin-input-container__input fantastic-slideshow-show-slide-buttons" name="fantastic-slideshow-show-slide-buttons" type="radio" value="hide" <?php if( get_option( 'fantastic-slideshow-show-slide-buttons' ) === "hide" ) { echo "checked='checked'"; }; ?> />
+                <label class="admin-input-container__label--right" for="fantasticSlideshowSlideButtons1">Yes</label>
+                <input id="fantasticSlideshowSlideButtons1" class="admin-input-container__input fantastic-slideshow-show-slide-buttons" name="fantastic-slideshow-show-slide-buttons" type="radio" value="show" <?php if( get_option( 'fantastic-slideshow-show-slide-buttons' ) === "show" ) { echo "checked='checked'"; }; ?> />
+                <span class="admin-input-container__default-settings-text">Default: Yes, show slide buttons</span>
             </div>
             <?php submit_button(); ?>
         </form>
@@ -483,7 +493,7 @@ function fs_load_slideshows( $a ) {
     $pluginContainer .= '</div>';
     $pluginContainer .= '</div>';
     
-    $pluginContainer .= '<div class="slideshow__buttons">';
+    $pluginContainer .= '<div class="slideshow__buttons ' . get_option( "fantastic-slideshow-show-slide-buttons" ) . '">';
    
     for( $i = 0; $i < count($posts); $i++){
         $pluginContainer .= '<div id="slideButton' . $i . '" class="slideshow__slide-button">';

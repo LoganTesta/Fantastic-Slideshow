@@ -55,6 +55,7 @@ html { }
 .slideshow__icon:hover { cursor: pointer; }
 
 .slideshow__buttons { position: relative; }
+.slideshow__buttons.hide { display: none; }
 .slideshow__buttons:hover { cursor: pointer; }
 .slideshow__slide-button { display: block; float: left; opacity: 0.3; width: <?php echo $slideButtonWidth; ?>px; height: <?php echo $slideButtonWidth; ?>px; margin-top: 10px; margin-left: 20px; border-radius: 4px; background-color: #333333; transition: 0.2s ease-in; }
 .slideshow__slide-button:hover { opacity: 0.8; transition: 0.2s ease-in; }
