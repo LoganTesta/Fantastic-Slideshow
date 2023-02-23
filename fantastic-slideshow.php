@@ -253,17 +253,17 @@ function fs_url_custom_metabox() {
     ?>
     <p>
         <label for="slidedescription">Slide Description:<br />
-            <textarea id="slidedescription" name="slidedescription" rows="5" cols="34"><?php if( isset( $slidedescription ) ) { echo $slidedescription; } ?></textarea>
+            <textarea id="slidedescription" name="slidedescription" rows="5" cols="25"><?php if( isset( $slidedescription ) ) { echo $slidedescription; } ?></textarea>
         </label>
     </p>
     <p>
         <label for="slidelabel">Slide Label:<br />
-            <input id="slidelabel" name="slidelabel" size="37" value="<?php if( isset( $slidelabel ) ) { echo $slidelabel; } ?>" />
+            <input id="slidelabel" name="slidelabel" size="25" value="<?php if( isset( $slidelabel ) ) { echo $slidelabel; } ?>" />
         </label>
     </p>
     <p>
         <label for="slideshowurl">Related URL:<br />
-            <input id="slideshowurl" size="37" name="slideshowurl" value="<?php if( isset( $slideshowurl ) ) { echo $slideshowurl; } ?>" />
+            <input id="slideshowurl" size="25" name="slideshowurl" value="<?php if( isset( $slideshowurl ) ) { echo $slideshowurl; } ?>" />
         </label>
     </p>
     <p>Is Slideshow Title a Link?
@@ -274,7 +274,7 @@ function fs_url_custom_metabox() {
     </p>
         <p>
         <label for="slideshoworder">Slideshow Order:<br />
-            <input id="slideshoworder" size="37" type="number" min="1" name="slideshoworder" value="<?php if( isset( $slideshoworder ) ) { echo $slideshoworder; } ?>" />
+            <input id="slideshoworder" size="25" type="number" min="1" name="slideshoworder" value="<?php if( isset( $slideshoworder ) ) { echo $slideshoworder; } ?>" />
         </label>
     </p>
  <?php 
