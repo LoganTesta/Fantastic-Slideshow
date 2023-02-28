@@ -29,5 +29,5 @@
     /*Settings page*/
     .admin-input-container__label { display: inline-block; width: 250px; padding-right: 20px; padding-bottom: 0; }
     .admin-input-container__input { width: 200px; }
-    
+    .admin-input-container__input.fantastic-slideshow-leading-text { width: 300px; }
 }
