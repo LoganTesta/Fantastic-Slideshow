@@ -62,6 +62,7 @@ function fs_register_settings() {
     add_option( 'fantastic-slideshow-border-radius', "0" );
     add_option( 'fantastic-slideshow-slide-speed', "5" );
     add_option( 'fantastic-slideshow-slide-transition-speed', "4" );
+    add_option( 'fantastic-slideshow-slide-content-background-opacity', "0.8" );
     add_option( 'fantastic-slideshow-slide-button-width', "30" );
     add_option( 'fantastic-slideshow-minimum-touch-drag-distance', "80" );
     add_option( 'fantastic-slideshow-minimum-mouse-drag-distance', "100" );
@@ -77,6 +78,7 @@ function fs_register_settings() {
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-border-radius', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-slide-speed', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-slide-transition-speed', 'fs_validatetextfield' );
+    register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-slide-content-background-opacity', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-slide-button-width', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-minimum-touch-drag-distance', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-minimum-mouse-drag-distance', 'fs_validatetextfield' );
@@ -142,6 +144,12 @@ function fs_generate_settings_page() {
                 <input id="fantasticSlideshowSlideSpeed" class="admin-input-container__input fantastic-slideshow-slide-transition-speed" name="fantastic-slideshow-slide-transition-speed" type="text" value="<?php echo get_option( 'fantastic-slideshow-slide-transition-speed' ); ?>" />
                 <span class="admin-input-container__trailing-text">s</span>
                 <span class="admin-input-container__default-settings-text">Default: 4s</span>
+            </div>
+            <div class="admin-input-container">
+                <label class="admin-input-container__label" for="fantastic-slideshow-slide-content-background-opacity">Slide Content Background Opacity</label>
+                <input id="fantasticSlideshowSlideContentBackgroundOpacity" class="admin-input-container__input fantastic-slideshow-slide-content-background-opacity" name="fantastic-slideshow-slide-content-background-opacity" type="text" value="<?php echo get_option( 'fantastic-slideshow-slide-content-background-opacity' ); ?>" />
+                <span class="admin-input-container__trailing-text">(0 - 1)</span>
+                <span class="admin-input-container__default-settings-text">Default: 0.8</span>
             </div>
             <div class="admin-input-container">
                 <label class="admin-input-container__label" for="fantastic-slideshow-slide-button-width">Slide Button Width</label>
