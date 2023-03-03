@@ -3,6 +3,7 @@
 /*Settings page*/
 .fantastic-slideshow__plugin-title { padding-top: 5px; padding-bottom: 15px; font-size: 23px; font-weight: 400; }
 .fantastic-slideshow__instructions { display: inline-block; padding: 2px 15px; margin-top: 15px; border: 1px solid #ccd0d4; background-color: #ffffff; }
+.fantastic-slideshow__instructions__title { font-size: 24px; border-radius: 4px; font-weight: bold; }
 .fantastic-slideshow__instructions__intro { padding-bottom: 25px; }
 
 

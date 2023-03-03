@@ -375,6 +375,7 @@ if ( isset( $_GET['post_type'] ) && $_GET['post_type'] === "fantastic-slideshow"
     function fs_setup_instructions() {
         if ( get_admin_page_title() === 'Fantastic Slideshow' ) {
             echo '<div class="fantastic-slideshow__instructions">
+                <p class="fantastic-slideshow__instructions__title">Fantastic Slideshow</p>
                 <p class="fantastic-slideshow__instructions__intro">Add slideshows to your site, with layout and styling customizations.</p>
                 <p><strong>Shortcode:</strong> [fantastic_slideshow].</p>
                 <p><strong>PHP code:</strong> <code>&lt?php echo do_shortcode( "[fantastic_slideshow]" ); ?></code> 
