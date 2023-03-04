@@ -64,6 +64,7 @@ window.addEventListener("load", function() {
                 paused = true;
                 pausePlayButton.classList.add("paused");
                 currentSlide.style.opacity = 1;
+                setSlideButtons();
             }
             
             setInterval(function () {
@@ -128,16 +129,7 @@ window.addEventListener("load", function() {
                         currentSlide.style.opacity = 1;
                     }
 
-
-                    for(let i = 0; i < maxSlideNumber + 1; i++) {
-                        if (currentSlideNumber === i) {
-                            theSlideButtons[i].classList.add('currentSlideButton');  
-                            document.getElementsByClassName("slide")[i].getElementsByClassName("slide__content")[0].classList.add('show');
-                        } else {
-                            theSlideButtons[i].classList.remove('currentSlideButton');
-                            document.getElementsByClassName("slide")[i].getElementsByClassName("slide__content")[0].classList.remove('show');
-                        }
-                    }
+                    setSlideButtons();
                 }
                 if (switchText){
                     switchText = false;
@@ -175,7 +167,19 @@ window.addEventListener("load", function() {
             updateSlideSettings = true;
             switchText = true;
         }
-
+        
+        
+        function setSlideButtons() {
+            for(let i = 0; i < maxSlideNumber + 1; i++) {
+                if (currentSlideNumber === i) {
+                    theSlideButtons[i].classList.add('currentSlideButton');  
+                    document.getElementsByClassName("slide")[i].getElementsByClassName("slide__content")[0].classList.add('show');
+                } else {
+                    theSlideButtons[i].classList.remove('currentSlideButton');
+                    document.getElementsByClassName("slide")[i].getElementsByClassName("slide__content")[0].classList.remove('show');
+                }
+            }
+        }
 
 
         for(let i = 0; i < maxSlideNumber + 1; i++){   
