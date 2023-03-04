@@ -62,6 +62,7 @@ function fs_register_settings() {
     add_option( 'fantastic-slideshow-border-radius', "0" );
     add_option( 'fantastic-slideshow-slide-speed', "5" );
     add_option( 'fantastic-slideshow-slide-transition-speed', "4" );
+    add_option( 'fantastic-slideshow-is-autoplay', 'yes' );
     add_option( 'fantastic-slideshow-slide-content-background-opacity', "0.8" );
     add_option( 'fantastic-slideshow-slide-button-width', "30" );
     add_option( 'fantastic-slideshow-minimum-touch-drag-distance', "80" );
@@ -78,6 +79,7 @@ function fs_register_settings() {
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-border-radius', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-slide-speed', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-slide-transition-speed', 'fs_validatetextfield' );
+    register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-is-autoplay', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-slide-content-background-opacity', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-slide-button-width', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-minimum-touch-drag-distance', 'fs_validatetextfield' );
@@ -144,6 +146,14 @@ function fs_generate_settings_page() {
                 <input id="fantasticSlideshowSlideSpeed" class="admin-input-container__input fantastic-slideshow-slide-transition-speed" name="fantastic-slideshow-slide-transition-speed" type="text" value="<?php echo get_option( 'fantastic-slideshow-slide-transition-speed' ); ?>" />
                 <span class="admin-input-container__trailing-text">s</span>
                 <span class="admin-input-container__default-settings-text">Default: 4s</span>
+            </div>
+            <div class="admin-input-container">
+                <span class="admin-input-container__label">Autoplay</span>
+                <label class="admin-input-container__label--right" for="fantasticSlideshowIsAutoplay0">No</label>
+                <input id="fantasticSlideshowIsAutoplay0" class="admin-input-container__input fantastic-slideshow-is-autoplay" name="fantastic-slideshow-is-autoplay" type="radio" value="no" <?php if( get_option( 'fantastic-slideshow-is-autoplay' ) === "no" ) { echo "checked='checked'"; }; ?> />
+                <label class="admin-input-container__label--right" for="fantasticSlideshowIsAutoplay1">Yes</label>
+                <input id="fantasticSlideshowIsAutoplay1" class="admin-input-container__input fantastic-slideshow-is-autoplay" name="fantastic-slideshow-is-autoplay" type="radio" value="yes" <?php if( get_option( 'fantastic-slideshow-is-autoplay' ) === "yes" ) { echo "checked='checked'"; }; ?> />
+                <span class="admin-input-container__default-settings-text">Default: Yes, autoplay</span>
             </div>
             <div class="admin-input-container">
                 <label class="admin-input-container__label" for="fantastic-slideshow-slide-content-background-opacity">Slide Content Background Opacity</label>
@@ -515,6 +525,7 @@ function fs_load_slideshows( $a ) {
     $pluginContainer .= '<div class="slideshow__settings">';
     $pluginContainer .= '<div class="slideshow__speed">' . get_option( 'fantastic-slideshow-slide-speed' ) . '</div>';
     $pluginContainer .= '<div class="slideshow__transition-speed">' . get_option( 'fantastic-slideshow-slide-transition-speed' ) . '</div>';
+    $pluginContainer .= '<div class="slideshow__autoplay">' . get_option( 'fantastic-slideshow-is-autoplay' ) . '</div>';
     $pluginContainer .= '<div class="slideshow__minimum-touch-drag-distance">' . get_option( 'fantastic-slideshow-minimum-touch-drag-distance' ) . '</div>';
     $pluginContainer .= '<div class="slideshow__minimum-mouse-drag-distance">' . get_option( 'fantastic-slideshow-minimum-mouse-drag-distance' ) . '</div>';
     $pluginContainer .= '<div class="slideshow__enable-touch-dragging">' . get_option( 'fantastic-slideshow-enable-touch-dragging' ) . '</div>';

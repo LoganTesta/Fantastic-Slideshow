@@ -19,6 +19,7 @@ window.addEventListener("load", function() {
 
         let slideTime = 100 * document.getElementsByClassName("slideshow__speed")[0].innerHTML;
         let slideTransitionTime = 100 * document.getElementsByClassName("slideshow__transition-speed")[0].innerHTML;
+        let autoPlay = document.getElementsByClassName("slideshow__autoplay")[0].innerHTML;
         let minimumTouchDragDistance = document.getElementsByClassName("slideshow__minimum-touch-drag-distance")[0].innerHTML;
         let minimumMouseDragDistance = document.getElementsByClassName("slideshow__minimum-mouse-drag-distance")[0].innerHTML;
         let enableTouchDragging = document.getElementsByClassName("slideshow__enable-touch-dragging")[0].innerHTML;
@@ -58,6 +59,13 @@ window.addEventListener("load", function() {
             }
             currentSlide.style.opacity = 0;
             prevSlide.style.opacity = 0;
+            
+            if ( autoPlay === "no" ) {
+                paused = true;
+                pausePlayButton.classList.add("paused");
+                currentSlide.style.opacity = 1;
+            }
+            
             setInterval(function () {
                 runFunctions();
             }, 10);
