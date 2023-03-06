@@ -20,6 +20,7 @@ window.addEventListener("load", function() {
         let slideTime = 100 * document.getElementsByClassName("slideshow__speed")[0].innerHTML;
         let slideTransitionTime = 100 * document.getElementsByClassName("slideshow__transition-speed")[0].innerHTML;
         let autoPlay = document.getElementsByClassName("slideshow__autoplay")[0].innerHTML;
+        let pauseOnHover = document.getElementsByClassName("slideshow__pause-on-hover")[0].innerHTML;
         let minimumTouchDragDistance = document.getElementsByClassName("slideshow__minimum-touch-drag-distance")[0].innerHTML;
         let minimumMouseDragDistance = document.getElementsByClassName("slideshow__minimum-mouse-drag-distance")[0].innerHTML;
         let enableTouchDragging = document.getElementsByClassName("slideshow__enable-touch-dragging")[0].innerHTML;
@@ -156,8 +157,12 @@ window.addEventListener("load", function() {
             }
         }
 
-        let pausePlay = document.getElementById("pausePlayButton");
-        pausePlay.addEventListener("click", togglePausePlay, false);
+        let pausePlay = document.getElementById("pausePlayButton").addEventListener("click", togglePausePlay, false);
+        
+        if ( pauseOnHover === "yes" ) {
+            document.getElementsByClassName("slideshow__inner-wrapper")[0].addEventListener("mouseover", togglePausePlay, false);
+            document.getElementsByClassName("slideshow__inner-wrapper")[0].addEventListener("mouseout", togglePausePlay, false);
+        }
 
         function setSlide(slideNumber) {
             slideshowCounter = slideTransitionTime;
