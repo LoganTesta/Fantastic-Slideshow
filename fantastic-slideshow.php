@@ -112,11 +112,11 @@ function fs_generate_settings_page() {
             <div class="admin-input-container">
                 <span class="admin-input-container__label">Slides Leading Text Position</span>
                 <label class="admin-input-container__label--right" for="fantasticSlideshowLeadingTextPosition0">Left</label>
-                <input id="fantasticSlideshowLeadingTextPosition0" class="admin-input-container__input fantastic-slideshow-leading-text-position" name="fantastic-slideshow-leading-text-position" type="radio" value="left" <?php if( get_option( 'fantastic-slideshow-leading-text-position' ) === "left" ) { echo "checked='checked'"; }; ?> />
+                <input id="fantasticSlideshowLeadingTextPosition0" class="admin-input-container__input fantastic-slideshow-leading-text-position" name="fantastic-slideshow-leading-text-position" type="radio" value="left" <?php if ( get_option( 'fantastic-slideshow-leading-text-position' ) === "left" ) { echo "checked='checked'"; }; ?> />
                 <label class="admin-input-container__label--right" for="fantasticSlideshowLeadingTextPosition1">Center</label>
-                <input id="fantasticSlideshowLeadingTextPosition1" class="admin-input-container__input fantastic-slideshow-leading-text-position" name="fantastic-slideshow-leading-text-position" type="radio" value="center" <?php if( get_option( 'fantastic-slideshow-leading-text-position' ) === "center" ) { echo "checked='checked'"; }; ?> />
+                <input id="fantasticSlideshowLeadingTextPosition1" class="admin-input-container__input fantastic-slideshow-leading-text-position" name="fantastic-slideshow-leading-text-position" type="radio" value="center" <?php if ( get_option( 'fantastic-slideshow-leading-text-position' ) === "center" ) { echo "checked='checked'"; }; ?> />
                 <label class="admin-input-container__label--right" for="fantasticSlideshowLeadingTextPosition2">Right</label>
-                <input id="fantasticSlideshowLeadingTextPosition2" class="admin-input-container__input fantastic-slideshow-leading-text-position" name="fantastic-slideshow-leading-text-position" type="radio" value="right" <?php if( get_option( 'fantastic-slideshow-leading-text-position' ) === "right" ) { echo "checked='checked'"; }; ?> />
+                <input id="fantasticSlideshowLeadingTextPosition2" class="admin-input-container__input fantastic-slideshow-leading-text-position" name="fantastic-slideshow-leading-text-position" type="radio" value="right" <?php if ( get_option( 'fantastic-slideshow-leading-text-position' ) === "right" ) { echo "checked='checked'"; }; ?> />
                 <span class="admin-input-container__default-settings-text">Default: center</span>
             </div>
             <div class="admin-input-container">
@@ -152,9 +152,9 @@ function fs_generate_settings_page() {
             <div class="admin-input-container">
                 <span class="admin-input-container__label">Autoplay</span>
                 <label class="admin-input-container__label--right" for="fantasticSlideshowIsAutoplay0">No</label>
-                <input id="fantasticSlideshowIsAutoplay0" class="admin-input-container__input fantastic-slideshow-is-autoplay" name="fantastic-slideshow-is-autoplay" type="radio" value="no" <?php if( get_option( 'fantastic-slideshow-is-autoplay' ) === "no" ) { echo "checked='checked'"; }; ?> />
+                <input id="fantasticSlideshowIsAutoplay0" class="admin-input-container__input fantastic-slideshow-is-autoplay" name="fantastic-slideshow-is-autoplay" type="radio" value="no" <?php if ( get_option( 'fantastic-slideshow-is-autoplay' ) === "no" ) { echo "checked='checked'"; }; ?> />
                 <label class="admin-input-container__label--right" for="fantasticSlideshowIsAutoplay1">Yes</label>
-                <input id="fantasticSlideshowIsAutoplay1" class="admin-input-container__input fantastic-slideshow-is-autoplay" name="fantastic-slideshow-is-autoplay" type="radio" value="yes" <?php if( get_option( 'fantastic-slideshow-is-autoplay' ) === "yes" ) { echo "checked='checked'"; }; ?> />
+                <input id="fantasticSlideshowIsAutoplay1" class="admin-input-container__input fantastic-slideshow-is-autoplay" name="fantastic-slideshow-is-autoplay" type="radio" value="yes" <?php if ( get_option( 'fantastic-slideshow-is-autoplay' ) === "yes" ) { echo "checked='checked'"; }; ?> />
                 <span class="admin-input-container__default-settings-text">Default: Yes, autoplay</span>
             </div>
             <div class="admin-input-container">
@@ -192,33 +192,33 @@ function fs_generate_settings_page() {
             <div class="admin-input-container">
                 <span class="admin-input-container__label">Enable Touch Dragging</span>
                 <label class="admin-input-container__label--right" for="fantasticSlideshowEnableTouchDragging0">No</label>
-                <input id="fantasticSlideshowEnableTouchDragging0" class="admin-input-container__input fantastic-slideshow-enable-touch-dragging" name="fantastic-slideshow-enable-touch-dragging" type="radio" value="no" <?php if( get_option( 'fantastic-slideshow-enable-touch-dragging' ) === "no" ) { echo "checked='checked'"; }; ?> />
+                <input id="fantasticSlideshowEnableTouchDragging0" class="admin-input-container__input fantastic-slideshow-enable-touch-dragging" name="fantastic-slideshow-enable-touch-dragging" type="radio" value="no" <?php if ( get_option( 'fantastic-slideshow-enable-touch-dragging' ) === "no" ) { echo "checked='checked'"; }; ?> />
                 <label class="admin-input-container__label--right" for="fantasticSlideshowEnableTouchDragging1">Yes</label>
-                <input id="fantasticSlideshowEnableTouchDragging1" class="admin-input-container__input fantastic-slideshow-enable-touch-dragging" name="fantastic-slideshow-enable-touch-dragging" type="radio" value="yes" <?php if( get_option( 'fantastic-slideshow-enable-touch-dragging' ) === "yes" ) { echo "checked='checked'"; }; ?> />
+                <input id="fantasticSlideshowEnableTouchDragging1" class="admin-input-container__input fantastic-slideshow-enable-touch-dragging" name="fantastic-slideshow-enable-touch-dragging" type="radio" value="yes" <?php if ( get_option( 'fantastic-slideshow-enable-touch-dragging' ) === "yes" ) { echo "checked='checked'"; }; ?> />
                 <span class="admin-input-container__default-settings-text">Default: Yes. Touch dragging enabled</span>
             </div>
             <div class="admin-input-container">
                 <span class="admin-input-container__label">Enable Mouse Dragging</span>
                 <label class="admin-input-container__label--right" for="fantasticSlideshowEnableMouseDragging0">No</label>
-                <input id="fantasticSlideshowEnableMouseDragging0" class="admin-input-container__input fantastic-slideshow-enable-mouse-dragging" name="fantastic-slideshow-enable-mouse-dragging" type="radio" value="no" <?php if( get_option( 'fantastic-slideshow-enable-mouse-dragging' ) === "no" ) { echo "checked='checked'"; }; ?> />
+                <input id="fantasticSlideshowEnableMouseDragging0" class="admin-input-container__input fantastic-slideshow-enable-mouse-dragging" name="fantastic-slideshow-enable-mouse-dragging" type="radio" value="no" <?php if ( get_option( 'fantastic-slideshow-enable-mouse-dragging' ) === "no" ) { echo "checked='checked'"; }; ?> />
                 <label class="admin-input-container__label--right" for="fantasticSlideshowEnableMouseDragging1">Yes</label>
-                <input id="fantasticSlideshowEnableMouseDragging1" class="admin-input-container__input fantastic-slideshow-enable-mouse-dragging" name="fantastic-slideshow-enable-mouse-dragging" type="radio" value="yes" <?php if( get_option( 'fantastic-slideshow-enable-mouse-dragging' ) === "yes" ) { echo "checked='checked'"; }; ?> />
+                <input id="fantasticSlideshowEnableMouseDragging1" class="admin-input-container__input fantastic-slideshow-enable-mouse-dragging" name="fantastic-slideshow-enable-mouse-dragging" type="radio" value="yes" <?php if ( get_option( 'fantastic-slideshow-enable-mouse-dragging' ) === "yes" ) { echo "checked='checked'"; }; ?> />
                 <span class="admin-input-container__default-settings-text">Default: Yes. Mouse dragging enabled</span>
             </div>
             <div class="admin-input-container">
                 <span class="admin-input-container__label">Show Arrows</span>
                 <label class="admin-input-container__label--right" for="fantasticSlideshowShowArrows0">No</label>
-                <input id="fantasticSlideshowShowArrows0" class="admin-input-container__input fantastic-slideshow-show-arrows" name="fantastic-slideshow-show-arrows" type="radio" value="hide" <?php if( get_option( 'fantastic-slideshow-show-arrows' ) === "hide" ) { echo "checked='checked'"; }; ?> />
+                <input id="fantasticSlideshowShowArrows0" class="admin-input-container__input fantastic-slideshow-show-arrows" name="fantastic-slideshow-show-arrows" type="radio" value="hide" <?php if ( get_option( 'fantastic-slideshow-show-arrows' ) === "hide" ) { echo "checked='checked'"; }; ?> />
                 <label class="admin-input-container__label--right" for="fantasticSlideshowShowArrows1">Yes</label>
-                <input id="fantasticSlideshowShowArrows1" class="admin-input-container__input fantastic-slideshow-show-arrows" name="fantastic-slideshow-show-arrows" type="radio" value="show" <?php if( get_option( 'fantastic-slideshow-show-arrows' ) === "show" ) { echo "checked='checked'"; }; ?> />
+                <input id="fantasticSlideshowShowArrows1" class="admin-input-container__input fantastic-slideshow-show-arrows" name="fantastic-slideshow-show-arrows" type="radio" value="show" <?php if ( get_option( 'fantastic-slideshow-show-arrows' ) === "show" ) { echo "checked='checked'"; }; ?> />
                 <span class="admin-input-container__default-settings-text">Default: Yes, show arrows</span>
             </div>
             <div class="admin-input-container">
                 <span class="admin-input-container__label">Show Slide Buttons</span>
                 <label class="admin-input-container__label--right" for="fantasticSlideshowShowSlideButtons0">No</label>
-                <input id="fantasticSlideshowSlideButtons0" class="admin-input-container__input fantastic-slideshow-show-slide-buttons" name="fantastic-slideshow-show-slide-buttons" type="radio" value="hide" <?php if( get_option( 'fantastic-slideshow-show-slide-buttons' ) === "hide" ) { echo "checked='checked'"; }; ?> />
+                <input id="fantasticSlideshowSlideButtons0" class="admin-input-container__input fantastic-slideshow-show-slide-buttons" name="fantastic-slideshow-show-slide-buttons" type="radio" value="hide" <?php if ( get_option( 'fantastic-slideshow-show-slide-buttons' ) === "hide" ) { echo "checked='checked'"; }; ?> />
                 <label class="admin-input-container__label--right" for="fantasticSlideshowSlideButtons1">Yes</label>
-                <input id="fantasticSlideshowSlideButtons1" class="admin-input-container__input fantastic-slideshow-show-slide-buttons" name="fantastic-slideshow-show-slide-buttons" type="radio" value="show" <?php if( get_option( 'fantastic-slideshow-show-slide-buttons' ) === "show" ) { echo "checked='checked'"; }; ?> />
+                <input id="fantasticSlideshowSlideButtons1" class="admin-input-container__input fantastic-slideshow-show-slide-buttons" name="fantastic-slideshow-show-slide-buttons" type="radio" value="show" <?php if ( get_option( 'fantastic-slideshow-show-slide-buttons' ) === "show" ) { echo "checked='checked'"; }; ?> />
                 <span class="admin-input-container__default-settings-text">Default: Yes, show slide buttons</span>
             </div>
             <?php submit_button(); ?>
@@ -247,19 +247,19 @@ function fs_url_custom_metabox() {
     $slidetitleislink = sanitize_text_field( get_post_meta( $post->ID, 'slidetitleislink', true ) );
     update_post_meta( $post->ID, 'slidetitleislink', $slidetitleislink );
     $slideshoworder = sanitize_text_field( get_post_meta( $post->ID, 'slideshoworder', true ) );
-    if( isset( $slideshoworder ) === false || $slideshoworder === "" ) {
+    if ( isset( $slideshoworder ) === false || $slideshoworder === "" ) {
         $slideshoworder = "n/a";
     }
     update_post_meta( $post->ID, 'slideshoworder', $slideshoworder );
 
 
     $errorstitle = "";
-    if( isset( $errorstitle ) ){
+    if ( isset( $errorstitle ) ){
         echo $errorstitle;
     }
     
     $errorslabel = "";
-    if( isset( $errorslabel ) ){
+    if ( isset( $errorslabel ) ){
         echo $errorslabel;
     }
    
@@ -269,40 +269,40 @@ function fs_url_custom_metabox() {
         $slideshowurl = "http://";
     }
     
-    if( isset( $errorslink ) ){
+    if ( isset( $errorslink ) ){
         echo $errorslink;
     }
     
     $errorsorder = "";
-    if( isset( $errorsorder ) ){
+    if ( isset( $errorsorder ) ){
         echo $errorsorder;
     }
     
     ?>
     <p>
         <label for="slidedescription">Slide Description:<br />
-            <textarea id="slidedescription" name="slidedescription" rows="5" cols="25"><?php if( isset( $slidedescription ) ) { echo $slidedescription; } ?></textarea>
+            <textarea id="slidedescription" name="slidedescription" rows="5" cols="25"><?php if ( isset( $slidedescription ) ) { echo $slidedescription; } ?></textarea>
         </label>
     </p>
     <p>
         <label for="slidelabel">Slide Label:<br />
-            <input id="slidelabel" name="slidelabel" size="25" value="<?php if( isset( $slidelabel ) ) { echo $slidelabel; } ?>" />
+            <input id="slidelabel" name="slidelabel" size="25" value="<?php if ( isset( $slidelabel ) ) { echo $slidelabel; } ?>" />
         </label>
     </p>
     <p>
         <label for="slideshowurl">Related URL:<br />
-            <input id="slideshowurl" size="25" name="slideshowurl" value="<?php if( isset( $slideshowurl ) ) { echo $slideshowurl; } ?>" />
+            <input id="slideshowurl" size="25" name="slideshowurl" value="<?php if ( isset( $slideshowurl ) ) { echo $slideshowurl; } ?>" />
         </label>
     </p>
     <p>Is Slideshow Title a Link?
-        <input type="radio" id="slidetitleislink0" name="slidetitleislink" value="0" <?php if( $slidetitleislink === "0" ) { echo "checked='checked'"; } ?> />
+        <input type="radio" id="slidetitleislink0" name="slidetitleislink" value="0" <?php if ( $slidetitleislink === "0" ) { echo "checked='checked'"; } ?> />
         <label for="slidetitleislink">No</label>
-        <input type="radio" id="slidetitleislink1" name="slidetitleislink" value="1" <?php if( $slidetitleislink === "1" ) { echo "checked='checked'"; } ?> />
+        <input type="radio" id="slidetitleislink1" name="slidetitleislink" value="1" <?php if ( $slidetitleislink === "1" ) { echo "checked='checked'"; } ?> />
         <label for="slidetitleislink">Yes</label>
     </p>
         <p>
         <label for="slideshoworder">Slideshow Order:<br />
-            <input id="slideshoworder" size="25" type="number" min="1" name="slideshoworder" value="<?php if( isset( $slideshoworder ) ) { echo $slideshoworder; } ?>" />
+            <input id="slideshoworder" size="25" type="number" min="1" name="slideshoworder" value="<?php if ( isset( $slideshoworder ) ) { echo $slideshoworder; } ?>" />
         </label>
     </p>
  <?php 
@@ -315,7 +315,7 @@ function fs_url_custom_metabox() {
 function fs_save_custom_slidedescription( $post_id ) {
     global $post;
     
-    if( isset( $_POST['slidedescription'] ) ) {
+    if ( isset( $_POST['slidedescription'] ) ) {
         update_post_meta( $post->ID, 'slidedescription', $_POST['slidedescription'] );
     }
 }
@@ -330,7 +330,7 @@ function fs_get_slidedescription( $post ) {
 function fs_save_custom_slidelabel( $post_id ) {
     global $post;
     
-    if( isset( $_POST['slidelabel'] ) ) {
+    if ( isset( $_POST['slidelabel'] ) ) {
         update_post_meta( $post->ID, 'slidelabel', $_POST['slidelabel'] );
     }
 }
@@ -345,7 +345,7 @@ function fs_get_slidelabel( $post ) {
 function fs_save_custom_url( $post_id ) {
     global $post;
     
-    if( isset( $_POST['slideshowurl'] ) ) {
+    if ( isset( $_POST['slideshowurl'] ) ) {
         update_post_meta( $post->ID, 'slideshowurl', $_POST['slideshowurl'] );
     }
 }
@@ -360,7 +360,7 @@ function fs_get_url( $post ) {
 function fs_save_custom_slidetitleislink( $post_id ) {
     global $post;
     
-    if( isset( $_POST['slidetitleislink'] ) ) {
+    if ( isset( $_POST['slidetitleislink'] ) ) {
         update_post_meta( $post->ID, 'slidetitleislink', $_POST['slidetitleislink'] );
     }
 }
@@ -422,7 +422,7 @@ if ( isset( $_GET['post_type'] ) && $_GET['post_type'] === "fantastic-slideshow"
     //Add images and other data to posts admin
     add_action( 'manage_posts_custom_column', 'fs_add_data_to_admin_columns', 10, 2 );
     function fs_add_data_to_admin_columns( $column, $post_id ) {
-        if( 'image' === $column ) {
+        if ( 'image' === $column ) {
             echo get_the_post_thumbnail( $post_id, array( 100, 100 ) );
         }
         if ( 'slidedescription' === $column ) {
@@ -431,7 +431,7 @@ if ( isset( $_GET['post_type'] ) && $_GET['post_type'] === "fantastic-slideshow"
         if ( 'slidelabel' === $column ) {
             echo get_post_meta( $post_id, 'slidelabel', true );
         }
-        if( 'order' === $column ) {
+        if ( 'order' === $column ) {
             echo get_post_meta( $post_id, 'slideshoworder', true );
         }
     }
