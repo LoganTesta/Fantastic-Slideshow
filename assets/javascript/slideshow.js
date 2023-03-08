@@ -9,6 +9,7 @@ window.addEventListener("load", function() {
         let prevSlide;
         let slideshowCounter = 0;
         let paused = false;
+        let pauseButtonSetToPause = false;
         let updateSlideSettings = true;
         let regularSwitchSlide = false;
         let switchText = false;
@@ -55,6 +56,7 @@ window.addEventListener("load", function() {
             currentSlide = document.getElementsByClassName("slide")[0];
             slideTitle = document.getElementsByClassName("slide__title")[0];
             pausePlayButton = document.getElementById("pausePlayButton");
+            pauseButtonSetToPause = false;
             for(let i = 0; i < maxSlideNumber + 1; i++){
                 document.getElementsByClassName("slide")[i].style.opacity = 0;
             }
@@ -150,18 +152,31 @@ window.addEventListener("load", function() {
 
         function togglePausePlay() {
             paused = !paused;
+            
             if (paused === false) {
+                pauseButtonSetToPause = false;
                 pausePlayButton.classList.remove("paused");
             } else if (paused) {
+                pauseButtonSetToPause = true; 
                 pausePlayButton.classList.add("paused");
             }
         }
 
         let pausePlay = document.getElementById("pausePlayButton").addEventListener("click", togglePausePlay, false);
         
+        function hoverPausePlay(eventName) {
+            if (eventName === "mouseover") {
+                paused = true;
+                pausePlayButton.classList.add("paused");
+            } else if ( eventName !== "mouseover" && pauseButtonSetToPause === false) {
+                paused = false;
+                pausePlayButton.classList.remove("paused");
+            }
+        }
+        
         if ( pauseOnHover === "yes" ) {
-            document.getElementsByClassName("slideshow__inner-wrapper")[0].addEventListener("mouseover", togglePausePlay, false);
-            document.getElementsByClassName("slideshow__inner-wrapper")[0].addEventListener("mouseout", togglePausePlay, false);
+            document.getElementsByClassName("slideshow__inner-wrapper")[0].addEventListener("mouseover", function(){ hoverPausePlay("mouseover"); }, false);
+            document.getElementsByClassName("slideshow__inner-wrapper")[0].addEventListener("mouseout", function(){ hoverPausePlay("mouseout"); }, false);
         }
 
         function setSlide(slideNumber) {
