@@ -244,6 +244,8 @@ function fs_url_custom_metabox() {
     update_post_meta( $post->ID, 'slidelabel', $slidelabel );
     $slideshowurl = sanitize_text_field( get_post_meta( $post->ID, 'slideshowurl', true ) );
     update_post_meta( $post->ID, 'slideshowurl', $slideshowurl );
+    $slideimageislink = sanitize_text_field( get_post_meta( $post->ID, 'slideimageislink', true ) );
+    update_post_meta( $post->ID, 'slideimageislink', $slideimageislink );
     $slidetitleislink = sanitize_text_field( get_post_meta( $post->ID, 'slidetitleislink', true ) );
     update_post_meta( $post->ID, 'slidetitleislink', $slidetitleislink );
     $slideshoworder = sanitize_text_field( get_post_meta( $post->ID, 'slideshoworder', true ) );
@@ -294,13 +296,19 @@ function fs_url_custom_metabox() {
             <input id="slideshowurl" size="25" name="slideshowurl" value="<?php if ( isset( $slideshowurl ) ) { echo $slideshowurl; } ?>" />
         </label>
     </p>
+    <p>Is Slideshow Image a Link?
+        <input type="radio" id="slideimageislink0" name="slideimageislink" value="0" <?php if ( $slideimageislink === "0" ) { echo "checked='checked'"; } ?> />
+        <label for="slideimageislink">No</label>
+        <input type="radio" id="slideimageislink1" name="slideimageislink" value="1" <?php if ( $slideimageislink === "1" ) { echo "checked='checked'"; } ?> />
+        <label for="slideimageislink">Yes</label>
+    </p>
     <p>Is Slideshow Title a Link?
         <input type="radio" id="slidetitleislink0" name="slidetitleislink" value="0" <?php if ( $slidetitleislink === "0" ) { echo "checked='checked'"; } ?> />
         <label for="slidetitleislink">No</label>
         <input type="radio" id="slidetitleislink1" name="slidetitleislink" value="1" <?php if ( $slidetitleislink === "1" ) { echo "checked='checked'"; } ?> />
         <label for="slidetitleislink">Yes</label>
     </p>
-        <p>
+    <p>
         <label for="slideshoworder">Slideshow Order:<br />
             <input id="slideshoworder" size="25" type="number" min="1" name="slideshoworder" value="<?php if ( isset( $slideshoworder ) ) { echo $slideshoworder; } ?>" />
         </label>
@@ -354,6 +362,21 @@ add_action( 'save_post', 'fs_save_custom_url' );
 function fs_get_url( $post ) {
     $slideshowurl = get_post_meta( $post->ID, 'slideshowurl', true );
     return $slideshowurl;
+}
+
+
+function fs_save_custom_slideimageislink( $post_id ) {
+    global $post;
+    
+    if ( isset( $_POST['slideimageislink'] ) ) {
+        update_post_meta( $post->ID, 'slideimageislink', $_POST['slideimageislink'] );
+    }
+}
+add_action( 'save_post', 'fs_save_custom_slideimageislink' );
+
+function fs_get_slideimageislink( $post ) {
+    $slideimageislink = get_post_meta( $post->ID, 'slideimageislink', true );
+    return $slideimageislink;
 }
 
 
@@ -482,7 +505,8 @@ function fs_load_slideshows( $a ) {
         $slideDescription = fs_get_slidedescription( $post );
         $slideLabel = fs_get_slidelabel( $post );
         $link = fs_get_url( $post );
-        $slideTitleIsLink =  fs_get_slidetitleislink( $post );
+        $slideTitleIsLink = fs_get_slidetitleislink( $post );
+        $slideImageIsLink = fs_get_slideimageislink( $post );
         
         if ( empty( $slideDescription ) ) {
             $pluginContainer .= '<div class="slide slide' . $count . '">';
@@ -491,23 +515,27 @@ function fs_load_slideshows( $a ) {
         }
         
         if ( !empty( $url_thumb ) ) {
-            $pluginContainer .= '<div class="slide__image" style="background: url(' . $url_thumb . ') 50% 50%/cover no-repeat;"></div>';
+            $pluginContainer .= '<div class="slide__image" style="background: url(' . $url_thumb . ') 50% 50%/cover no-repeat;">';
+            if ( $url_thumb !== null && $slideImageIsLink === "1" ) { 
+                $pluginContainer .= '<a class="slide__image__link" href="' . $link . '"></a>';        
+            }
+            $pluginContainer .= '</div>';
         }
         $pluginContainer .= '<div class="slide__content">';
-            if ( !empty( $post->post_title ) ) {
-                $pluginContainer .= '<div class="slide__title">';
-                if ( $slideTitleIsLink === "1" ) {
-                    $pluginContainer .= '<a class="slide__title-link" href="' . $link . '">';
-                }
-                $pluginContainer .=  $post->post_title;
-                $pluginContainer .= '</div>';
-                if ( $slideTitleIsLink === "1" ) {
-                    $pluginContainer .= '</a>';
-                }
+        if ( !empty( $post->post_title ) ) {
+            $pluginContainer .= '<div class="slide__title">';
+            if ( $slideTitleIsLink === "1" ) {
+                $pluginContainer .= '<a class="slide__title-link" href="' . $link . '">';
             }
-            if ( !empty( $slideDescription ) ) {
-                $pluginContainer .= '<div class="slide__description">' . $slideDescription . '</div>';
+            $pluginContainer .=  $post->post_title;
+            $pluginContainer .= '</div>';
+            if ( $slideTitleIsLink === "1" ) {
+                $pluginContainer .= '</a>';
             }
+        }
+        if ( !empty( $slideDescription ) ) {
+            $pluginContainer .= '<div class="slide__description">' . $slideDescription . '</div>';
+        }
         $pluginContainer .= '</div>';
         $pluginContainer .= '<div class="slide__label">' . $slideLabel . '</div>';
 
