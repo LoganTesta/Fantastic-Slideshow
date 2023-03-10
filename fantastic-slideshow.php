@@ -503,13 +503,15 @@ function fs_load_slideshows( $a ) {
     }
     
     $hideArrowsExceptOnHover = "";
-    if ( get_option( "fantastic-slideshow-show-arrows-only-on-hover-over" ) ) {
+    if ( get_option( "fantastic-slideshow-show-arrows-only-on-hover-over" ) === "yes" ) {
         $hideArrowsExceptOnHover = "hide-except-on-hover-over";
+    } else {
+        $hideArrowsExceptOnHover = "show-only-on-hover-over";
     }
 
     //Get all slides.
     $posts = get_posts( $args );
-    $pluginContainer .= '<div class="slideshow">';
+    $pluginContainer .= '<div class="slideshow ' . $hideArrowsExceptOnHover . '">';
     $pluginContainer .= '<h3 class="slideshow__heading">' . get_option( 'fantastic-slideshow-leading-text' ) . '</h3>';
     $pluginContainer .= '<div class="slideshow__inner-wrapper">';
     
