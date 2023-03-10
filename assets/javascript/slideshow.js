@@ -184,8 +184,8 @@ window.addEventListener("load", function() {
         
         
         function toggleShowArrowsOnlyOnHoverOver(eventName){
-            let leftArrow = document.getElementsByClassName("slideshow__icon")[0];
-            let rightArrow = document.getElementsByClassName("slideshow__icon")[1];
+            let leftArrow = document.getElementsByClassName("slideshow__icon left")[0];
+            let rightArrow = document.getElementsByClassName("slideshow__icon right")[0];
             if (eventName === "mouseover") {
                 leftArrow.classList.remove("hide-except-on-hover-over");
                 rightArrow.classList.remove("hide-except-on-hover-over");
