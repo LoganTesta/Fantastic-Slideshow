@@ -71,6 +71,7 @@ function fs_register_settings() {
     add_option( 'fantastic-slideshow-enable-touch-dragging', 'yes' );
     add_option( 'fantastic-slideshow-enable-mouse-dragging', 'yes' );
     add_option( 'fantastic-slideshow-show-arrows', 'yes' );
+    add_option( 'fantastic-slideshow-show-arrows-only-on-hover-over', 'no' );
     add_option( 'fantastic-slideshow-show-slide-buttons', 'yes' );
     
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-leading-text', 'fs_validatetextfield' );
@@ -89,6 +90,7 @@ function fs_register_settings() {
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-enable-touch-dragging', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-enable-mouse-dragging', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-show-arrows', 'fs_validatetextfield' );
+    register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-show-arrows-only-on-hover-over', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-show-slide-buttons', 'fs_validatetextfield' );
 }
 add_action( 'admin_init', 'fs_register_settings' );
@@ -212,6 +214,14 @@ function fs_generate_settings_page() {
                 <label class="admin-input-container__label--right" for="fantasticSlideshowShowArrows1">Yes</label>
                 <input id="fantasticSlideshowShowArrows1" class="admin-input-container__input fantastic-slideshow-show-arrows" name="fantastic-slideshow-show-arrows" type="radio" value="show" <?php if ( get_option( 'fantastic-slideshow-show-arrows' ) === "show" ) { echo "checked='checked'"; }; ?> />
                 <span class="admin-input-container__default-settings-text">Default: Yes, show arrows</span>
+            </div>
+            <div class="admin-input-container">
+                <span class="admin-input-container__label">Show Arrows Only on Hovering Over Image</span>
+                <label class="admin-input-container__label--right" for="fantasticSlideshowShowArrowsOnlyOnHoverOver0">No</label>
+                <input id="fantasticSlideshowShowArrowsOnlyOnHoverOver0" class="admin-input-container__input fantastic-slideshow-show-arrows-only-on-hover-over" name="fantastic-slideshow-show-arrows-only-on-hover-over" type="radio" value="no" <?php if ( get_option( 'fantastic-slideshow-show-arrows-only-on-hover-over' ) === "no" ) { echo "checked='checked'"; }; ?> />
+                <label class="admin-input-container__label--right" for="fantasticSlideshowShowArrowsOnlyOnHoverOver1">Yes</label>
+                <input id="fantasticSlideshowShowArrowsOnlyOnHoverOver1" class="admin-input-container__input fantastic-slideshow-show-arrows-only-on-hover-over" name="fantastic-slideshow-show-arrows-only-on-hover-over" type="radio" value="yes" <?php if ( get_option( 'fantastic-slideshow-show-arrows-only-on-hover-over' ) === "yes" ) { echo "checked='checked'"; }; ?> />
+                <span class="admin-input-container__default-settings-text">Default: No, show arrows at all times</span>
             </div>
             <div class="admin-input-container">
                 <span class="admin-input-container__label">Show Slide Buttons</span>
@@ -491,6 +501,11 @@ function fs_load_slideshows( $a ) {
     if ( isset( $a['max'] ) ) {
         $args['posts_per_page'] = (int) $a['max'];
     }
+    
+    $hideArrowsExceptOnHover = "";
+    if ( get_option( "fantastic-slideshow-show-arrows-only-on-hover-over" ) ) {
+        $hideArrowsExceptOnHover = "hide-except-on-hover-over";
+    }
 
     //Get all slides.
     $posts = get_posts( $args );
@@ -542,10 +557,10 @@ function fs_load_slideshows( $a ) {
         $pluginContainer .= '</div>';
         $count++;
     }
-    $pluginContainer .= '<div class="slideshow__icon left ' . get_option( "fantastic-slideshow-show-arrows" ) . '">';
+    $pluginContainer .= '<div class="slideshow__icon left ' . get_option( "fantastic-slideshow-show-arrows" ) . ' ' . $hideArrowsExceptOnHover . '">';
     $pluginContainer .= '<div class="slideshow__icon__link">&#10094;</div>';
     $pluginContainer .= '</div>';
-    $pluginContainer .= '<div class="slideshow__icon right ' . get_option( "fantastic-slideshow-show-arrows" ) . '">';
+    $pluginContainer .= '<div class="slideshow__icon right ' . get_option( "fantastic-slideshow-show-arrows" ) . ' ' . $hideArrowsExceptOnHover . '">';
     $pluginContainer .= '<div class="slideshow__icon__link">&#10095;</div>';
     $pluginContainer .= '</div>';
     $pluginContainer .= '</div>';
@@ -564,6 +579,7 @@ function fs_load_slideshows( $a ) {
     $pluginContainer .= '<div class="slideshow__speed">' . get_option( 'fantastic-slideshow-slide-speed' ) . '</div>';
     $pluginContainer .= '<div class="slideshow__transition-speed">' . get_option( 'fantastic-slideshow-slide-transition-speed' ) . '</div>';
     $pluginContainer .= '<div class="slideshow__autoplay">' . get_option( 'fantastic-slideshow-is-autoplay' ) . '</div>';
+    $pluginContainer .= '<div class="slideshow__show-arrows-only-on-hover-over">' . get_option( 'fantastic-slideshow-show-arrows-only-on-hover-over' ) . '</div>';
     $pluginContainer .= '<div class="slideshow__minimum-touch-drag-distance">' . get_option( 'fantastic-slideshow-minimum-touch-drag-distance' ) . '</div>';
     $pluginContainer .= '<div class="slideshow__minimum-mouse-drag-distance">' . get_option( 'fantastic-slideshow-minimum-mouse-drag-distance' ) . '</div>';
     $pluginContainer .= '<div class="slideshow__pause-on-hover">' . get_option( 'fantastic-slideshow-pause-on-hover' ) . '</div>';

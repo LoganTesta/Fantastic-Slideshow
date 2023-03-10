@@ -22,6 +22,7 @@ window.addEventListener("load", function() {
         let slideTransitionTime = 100 * document.getElementsByClassName("slideshow__transition-speed")[0].innerHTML;
         let autoPlay = document.getElementsByClassName("slideshow__autoplay")[0].innerHTML;
         let pauseOnHover = document.getElementsByClassName("slideshow__pause-on-hover")[0].innerHTML;
+        let showArrowsOnlyOnHoverOver = document.getElementsByClassName("slideshow__show-arrows-only-on-hover-over")[0].innerHTML;
         let minimumTouchDragDistance = document.getElementsByClassName("slideshow__minimum-touch-drag-distance")[0].innerHTML;
         let minimumMouseDragDistance = document.getElementsByClassName("slideshow__minimum-mouse-drag-distance")[0].innerHTML;
         let enableTouchDragging = document.getElementsByClassName("slideshow__enable-touch-dragging")[0].innerHTML;
@@ -150,6 +151,7 @@ window.addEventListener("load", function() {
             }
         }
 
+
         function togglePausePlay() {
             paused = !paused;
             
@@ -163,6 +165,7 @@ window.addEventListener("load", function() {
         }
 
         let pausePlay = document.getElementById("pausePlayButton").addEventListener("click", togglePausePlay, false);
+        
         
         function hoverPausePlay(eventName) {
             if (eventName === "mouseover") {
@@ -178,6 +181,25 @@ window.addEventListener("load", function() {
             document.getElementsByClassName("slideshow__inner-wrapper")[0].addEventListener("mouseover", function(){ hoverPausePlay("mouseover"); }, false);
             document.getElementsByClassName("slideshow__inner-wrapper")[0].addEventListener("mouseout", function(){ hoverPausePlay("mouseout"); }, false);
         }
+        
+        
+        function toggleShowArrowsOnlyOnHoverOver(eventName){
+            let leftArrow = document.getElementsByClassName("slideshow__icon")[0];
+            let rightArrow = document.getElementsByClassName("slideshow__icon")[1];
+            if (eventName === "mouseover") {
+                leftArrow.classList.remove("hide-except-on-hover-over");
+                rightArrow.classList.remove("hide-except-on-hover-over");
+            } else if ( eventName !== "mouseover" ) {
+                leftArrow.classList.add("hide-except-on-hover-over");
+                rightArrow.classList.add("hide-except-on-hover-over");
+            }
+        }
+        
+        if ( showArrowsOnlyOnHoverOver === "yes" ) {
+            document.getElementsByClassName("slideshow__inner-wrapper")[0].addEventListener("mouseover", function(){ toggleShowArrowsOnlyOnHoverOver("mouseover"); }, false);
+            document.getElementsByClassName("slideshow__inner-wrapper")[0].addEventListener("mouseout", function(){ toggleShowArrowsOnlyOnHoverOver("mouseout"); }, false);
+        }
+        
 
         function setSlide(slideNumber) {
             slideshowCounter = slideTransitionTime;
