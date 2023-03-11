@@ -29,6 +29,17 @@ if ( $slideImageHeight <= 0 ) {
     $slideImageHeight = 1200;
 }
 
+
+$zoomInOnHoverPercent = get_option( 'fantastic-slideshow-zoom-in-on-hover-percent' )/100;
+if ( $zoomInOnHoverPercent < 0 ) {
+    $zoomInOnHoverPercent = 0;
+} 
+if ( $zoomInOnHoverPercent > 0.4 ) {
+    $zoomInOnHoverPercent = 0.4;
+} 
+$zoomInOnHoverPercent++;
+
+
 ?>
 
 
@@ -37,7 +48,7 @@ html { }
 .slideshow__heading { text-align: <?php echo $leadingTextPosition; ?>; }
 .slideshow__inner-wrapper { position: relative; max-width: <?php echo $slideImageWidth; ?>px; height: <?php echo 0.6 * $slideImageHeight; ?>px; }
 
-.slide { position: absolute; top: 0; left: 0; width: 100%; max-width: <?php echo $slideImageWidth; ?>px; height: <?php echo 0.6 * $slideImageHeight; ?>px; }
+.slide { position: absolute; top: 0; left: 0; width: 100%; max-width: <?php echo $slideImageWidth; ?>px; height: <?php echo 0.6 * $slideImageHeight; ?>px; overflow: hidden; }
 .slide__content { display: block; position: absolute; bottom: 0; left: 0%; right: 0%; padding-top: 8px; padding-bottom: 8px; background-color: rgba(255, 255, 255, <?php echo $slideContentBackgroundOpacity; ?>); }
 .slide__title-link { }
 .slide__title { width: 86%; margin-left: auto; margin-right: auto; font-size: 24px; font-weight: bold; text-align: center; }
@@ -47,6 +58,8 @@ html { }
 .slide__image { width: 100%; height: <?php echo 0.6 * $slideImageHeight; ?>px; object-fit: cover; border-radius: <?php echo $imageBorderRadius; ?>px; }
 .slide__image__link { display: block; width: auto; height: 100%; }
 .slide__label { display: inline-block; position: absolute; top: 20px; right: 15px; padding: 2px 15px; font-size: 18px; color: #000000; background-color: rgba(255, 255, 255, 0.8); }
+.slideshow.zoom-in-on-hover .slide__image { transition: 0.8s ease-in; }
+.slideshow.zoom-in-on-hover .slide__image:hover { transform: scale(<?php echo $zoomInOnHoverPercent; ?>); transition: 0.8s ease-in; margin-bottom: <?php echo $zoomInOnHoverPercent; ?>px; }
 
 .slideshow__icon { width: 34px; height: 34px; }
 .slideshow__icon.hide { display: none; }
