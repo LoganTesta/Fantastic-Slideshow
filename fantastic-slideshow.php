@@ -69,6 +69,7 @@ function fs_register_settings() {
     add_option( 'fantastic-slideshow-minimum-mouse-drag-distance', "100" );
     add_option( 'fantastic-slideshow-pause-on-hover', 'no' );
     add_option( 'fantastic-slideshow-zoom-in-on-hover-percent', '0' );
+    add_option( 'fantastic-slideshow-hover-zoom-in-time', '0.8' );
     add_option( 'fantastic-slideshow-enable-touch-dragging', 'yes' );
     add_option( 'fantastic-slideshow-enable-mouse-dragging', 'yes' );
     add_option( 'fantastic-slideshow-show-arrows', 'yes' );
@@ -89,6 +90,7 @@ function fs_register_settings() {
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-minimum-mouse-drag-distance', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-pause-on-hover', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-zoom-in-on-hover-percent', 'fs_validatetextfield' );
+    register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-hover-zoom-in-time', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-enable-touch-dragging', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-enable-mouse-dragging', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-show-arrows', 'fs_validatetextfield' );
@@ -198,6 +200,12 @@ function fs_generate_settings_page() {
                 <input id="fantasticSlideshowZoomInOnHoverPercent" class="admin-input-container__input fantastic-slideshow-zoom-in-on-hover-percent" name="fantastic-slideshow-zoom-in-on-hover-percent" type="text" value="<?php echo get_option( 'fantastic-slideshow-zoom-in-on-hover-percent' ); ?>" />
                 <span class="admin-input-container__trailing-text">%</span>
                 <span class="admin-input-container__default-settings-text">Default: none/0%</span>
+            </div>
+            <div class="admin-input-container">
+                <label class="admin-input-container__label" for="fantastic-slideshow-hover-zoom-in-time">Zoom in hover time</label>
+                <input id="fantasticSlideshowZoomInHoverTime" class="admin-input-container__input fantastic-slideshow-hover-zoom-in-time" name="fantastic-slideshow-hover-zoom-in-time" type="text" value="<?php echo get_option( 'fantastic-slideshow-hover-zoom-in-time' ); ?>" />
+                <span class="admin-input-container__trailing-text">s</span>
+                <span class="admin-input-container__default-settings-text">Default: 0.8s</span>
             </div>
             <div class="admin-input-container">
                 <span class="admin-input-container__label">Enable Touch Dragging</span>
@@ -600,6 +608,7 @@ function fs_load_slideshows( $a ) {
     $pluginContainer .= '<div class="slideshow__minimum-mouse-drag-distance">' . get_option( 'fantastic-slideshow-minimum-mouse-drag-distance' ) . '</div>';
     $pluginContainer .= '<div class="slideshow__pause-on-hover">' . get_option( 'fantastic-slideshow-pause-on-hover' ) . '</div>';
     $pluginContainer .= '<div class="slideshow__zoom-in-on-hover-percent">' . get_option( 'fantastic-slideshow-zoom-in-on-hover-percent' ) . '</div>';
+    $pluginContainer .= '<div class="slideshow__hover-zoom-in-time">' . get_option( 'fantastic-slideshow-hover-zoom-in-time' ) . '</div>';
     $pluginContainer .= '<div class="slideshow__enable-touch-dragging">' . get_option( 'fantastic-slideshow-enable-touch-dragging' ) . '</div>';
     $pluginContainer .= '<div class="slideshow__enable-mouse-dragging">' . get_option( 'fantastic-slideshow-enable-mouse-dragging' ) . '</div>';
     $pluginContainer .= '</div>';
