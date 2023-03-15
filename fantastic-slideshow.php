@@ -274,6 +274,8 @@ function fs_url_custom_metabox() {
     update_post_meta( $post->ID, 'slideimageislink', $slideimageislink );
     $slidetitleislink = sanitize_text_field( get_post_meta( $post->ID, 'slidetitleislink', true ) );
     update_post_meta( $post->ID, 'slidetitleislink', $slidetitleislink );
+    $slidetitlelinktab = sanitize_text_field( get_post_meta( $post->ID, 'slidetitlelinktab', true ) );
+    update_post_meta( $post->ID, 'slidetitlelinktab', $slidetitlelinktab );
     $slideshoworder = sanitize_text_field( get_post_meta( $post->ID, 'slideshoworder', true ) );
     if ( isset( $slideshoworder ) === false || $slideshoworder === "" ) {
         $slideshoworder = "n/a";
@@ -333,6 +335,12 @@ function fs_url_custom_metabox() {
         <label for="slidetitleislink">No</label>
         <input type="radio" id="slidetitleislink1" name="slidetitleislink" value="1" <?php if ( $slidetitleislink === "1" ) { echo "checked='checked'"; } ?> />
         <label for="slidetitleislink">Yes</label>
+    </p>
+        <p>Open Slideshow Title Link in New Tab?
+        <input type="radio" id="slidetitlelinktab0" name="slidetitlelinktab" value="no" <?php if ( $slidetitlelinktab === "no" ) { echo "checked='checked'"; } ?> />
+        <label for="slidetitlelinktab">No</label>
+        <input type="radio" id="slidetitlelinktab1" name="slidetitlelinktab" value="yes" <?php if ( $slidetitlelinktab === "yes" ) { echo "checked='checked'"; } ?> />
+        <label for="slidetitlelinktab">Yes</label>
     </p>
     <p>
         <label for="slideshoworder">Slideshow Order:<br />
@@ -418,6 +426,21 @@ add_action( 'save_post', 'fs_save_custom_slidetitleislink' );
 function fs_get_slidetitleislink( $post ) {
     $slidetitleislink = get_post_meta( $post->ID, 'slidetitleislink', true );
     return $slidetitleislink;
+}
+
+
+function fs_save_custom_slidetitlelinktab( $post_id ) {
+    global $post;
+    
+    if ( isset( $_POST['slidetitlelinktab'] ) ) {
+        update_post_meta( $post->ID, 'slidetitlelinktab', $_POST['slidetitlelinktab'] );
+    }
+}
+add_action( 'save_post', 'fs_save_custom_slidetitlelinktab' );
+
+function fs_get_slidetitlelinktab( $post ) {
+    $slidetitlelinktab = get_post_meta( $post->ID, 'slidetitlelinktab', true );
+    return $slidetitlelinktab;
 }
 
 
@@ -544,13 +567,20 @@ function fs_load_slideshows( $a ) {
         $slideDescription = fs_get_slidedescription( $post );
         $slideLabel = fs_get_slidelabel( $post );
         $link = fs_get_url( $post );
-        $slideTitleIsLink = fs_get_slidetitleislink( $post );
         $slideImageIsLink = fs_get_slideimageislink( $post );
+        $slideTitleIsLink = fs_get_slidetitleislink( $post );
+        $slideTitleLinkTab = "";
         
         if ( empty( $slideDescription ) ) {
             $pluginContainer .= '<div class="slide slide' . $count . '">';
         } else {
             $pluginContainer .= '<div class="slide slide' . $count . ' has-description">';
+        }
+        
+        if ( fs_get_slidetitlelinktab( $post ) === "yes" ){
+            $slideTitleLinkTab = "target='_blank'";
+        } else {
+            $slideTitleLinkTab = "";
         }
         
         if ( !empty( $url_thumb ) ) {
@@ -564,7 +594,7 @@ function fs_load_slideshows( $a ) {
         if ( !empty( $post->post_title ) ) {
             $pluginContainer .= '<div class="slide__title">';
             if ( $slideTitleIsLink === "1" ) {
-                $pluginContainer .= '<a class="slide__title-link" href="' . $link . '">';
+                $pluginContainer .= '<a class="slide__title-link" href="' . $link . '" ' . $slideTitleLinkTab . '>';
             }
             $pluginContainer .=  $post->post_title;
             $pluginContainer .= '</div>';
