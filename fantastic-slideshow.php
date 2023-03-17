@@ -241,7 +241,7 @@ function fs_generate_settings_page() {
             </div>
             <div class="admin-input-container">
                 <span class="admin-input-container__label">Show Slide Buttons</span>
-                <label class="admin-input-container__label--right" for="fantasticSlideshowShowSlideButtons0">No</label>
+                <label class="admin-input-container__label--right" for="fantasticSlideshowSlideButtons0">No</label>
                 <input id="fantasticSlideshowSlideButtons0" class="admin-input-container__input fantastic-slideshow-show-slide-buttons" name="fantastic-slideshow-show-slide-buttons" type="radio" value="hide" <?php if ( get_option( 'fantastic-slideshow-show-slide-buttons' ) === "hide" ) { echo "checked='checked'"; }; ?> />
                 <label class="admin-input-container__label--right" for="fantasticSlideshowSlideButtons1">Yes</label>
                 <input id="fantasticSlideshowSlideButtons1" class="admin-input-container__input fantastic-slideshow-show-slide-buttons" name="fantastic-slideshow-show-slide-buttons" type="radio" value="show" <?php if ( get_option( 'fantastic-slideshow-show-slide-buttons' ) === "show" ) { echo "checked='checked'"; }; ?> />
@@ -276,6 +276,8 @@ function fs_url_custom_metabox() {
     update_post_meta( $post->ID, 'slidetitleislink', $slidetitleislink );
     $slidetitlelinktab = sanitize_text_field( get_post_meta( $post->ID, 'slidetitlelinktab', true ) );
     update_post_meta( $post->ID, 'slidetitlelinktab', $slidetitlelinktab );
+    $slideimagelinktab = sanitize_text_field( get_post_meta( $post->ID, 'slideimagelinktab', true ) );
+    update_post_meta( $post->ID, 'slideimagelinktab', $slideimagelinktab );
     $slideshoworder = sanitize_text_field( get_post_meta( $post->ID, 'slideshoworder', true ) );
     if ( isset( $slideshoworder ) === false || $slideshoworder === "" ) {
         $slideshoworder = "n/a";
@@ -326,21 +328,27 @@ function fs_url_custom_metabox() {
     </p>
     <p>Is Slideshow Image a Link?
         <input type="radio" id="slideimageislink0" name="slideimageislink" value="0" <?php if ( $slideimageislink === "0" ) { echo "checked='checked'"; } ?> />
-        <label for="slideimageislink">No</label>
+        <label for="slideimageislink0">No</label>
         <input type="radio" id="slideimageislink1" name="slideimageislink" value="1" <?php if ( $slideimageislink === "1" ) { echo "checked='checked'"; } ?> />
-        <label for="slideimageislink">Yes</label>
+        <label for="slideimageislink1">Yes</label>
     </p>
     <p>Is Slideshow Title a Link?
         <input type="radio" id="slidetitleislink0" name="slidetitleislink" value="0" <?php if ( $slidetitleislink === "0" ) { echo "checked='checked'"; } ?> />
-        <label for="slidetitleislink">No</label>
+        <label for="slidetitleislink0">No</label>
         <input type="radio" id="slidetitleislink1" name="slidetitleislink" value="1" <?php if ( $slidetitleislink === "1" ) { echo "checked='checked'"; } ?> />
-        <label for="slidetitleislink">Yes</label>
+        <label for="slidetitleislink1">Yes</label>
     </p>
-        <p>Open Slideshow Title Link in New Tab?
+    <p>Open Slideshow Title Link in New Tab?
         <input type="radio" id="slidetitlelinktab0" name="slidetitlelinktab" value="no" <?php if ( $slidetitlelinktab === "no" ) { echo "checked='checked'"; } ?> />
-        <label for="slidetitlelinktab">No</label>
+        <label for="slidetitlelinktab0">No</label>
         <input type="radio" id="slidetitlelinktab1" name="slidetitlelinktab" value="yes" <?php if ( $slidetitlelinktab === "yes" ) { echo "checked='checked'"; } ?> />
-        <label for="slidetitlelinktab">Yes</label>
+        <label for="slidetitlelinktab1">Yes</label>
+    </p>
+    <p>Open Slideshow Image Link in New Tab?
+        <input type="radio" id="slideimagelinktab0" name="slideimagelinktab" value="no" <?php if ( $slideimagelinktab === "no" ) { echo "checked='checked'"; } ?> />
+        <label for="slideimagelinktab0">No</label>
+        <input type="radio" id="slideimagelinktab1" name="slideimagelinktab" value="yes" <?php if ( $slideimagelinktab === "yes" ) { echo "checked='checked'"; } ?> />
+        <label for="slideimagelinktab1">Yes</label>
     </p>
     <p>
         <label for="slideshoworder">Slideshow Order:<br />
@@ -441,6 +449,21 @@ add_action( 'save_post', 'fs_save_custom_slidetitlelinktab' );
 function fs_get_slidetitlelinktab( $post ) {
     $slidetitlelinktab = get_post_meta( $post->ID, 'slidetitlelinktab', true );
     return $slidetitlelinktab;
+}
+
+
+function fs_save_custom_slideimagelinktab( $post_id ) {
+    global $post;
+    
+    if ( isset( $_POST['slideimagelinktab'] ) ) {
+        update_post_meta( $post->ID, 'slideimagelinktab', $_POST['slideimagelinktab'] );
+    }
+}
+add_action( 'save_post', 'fs_save_custom_slideimagelinktab' );
+
+function fs_get_slideimagelinktab( $post ) {
+    $slideimagelinktab = get_post_meta( $post->ID, 'slideimagelinktab', true );
+    return $slideimagelinktab;
 }
 
 
@@ -570,6 +593,7 @@ function fs_load_slideshows( $a ) {
         $slideImageIsLink = fs_get_slideimageislink( $post );
         $slideTitleIsLink = fs_get_slidetitleislink( $post );
         $slideTitleLinkTab = "";
+        $slideImageLinkTab = "";
         
         if ( empty( $slideDescription ) ) {
             $pluginContainer .= '<div class="slide slide' . $count . '">';
@@ -583,10 +607,17 @@ function fs_load_slideshows( $a ) {
             $slideTitleLinkTab = "";
         }
         
+        if ( fs_get_slideimagelinktab( $post ) === "yes" ){
+            $slideImageLinkTab = "target='_blank'";
+        } else {
+            $slideImageLinkTab = "";
+        }
+        
+        
         if ( !empty( $url_thumb ) ) {
             $pluginContainer .= '<div class="slide__image" style="background: url(' . $url_thumb . ') 50% 50%/cover no-repeat;">';
             if ( $url_thumb !== null && $slideImageIsLink === "1" ) { 
-                $pluginContainer .= '<a class="slide__image__link" href="' . $link . '"></a>';        
+                $pluginContainer .= '<a class="slide__image__link" href="' . $link . '" ' . $slideImageLinkTab . '></a>';        
             }
             $pluginContainer .= '</div>';
         }
