@@ -585,7 +585,7 @@ function fs_load_slideshows( $a ) {
     
     $count = 0;
     foreach ( $posts as $post ) {
-        $url_thumb = wp_get_attachment_thumb_url( get_post_thumbnail_id( $post->ID ) );
+        $url_image = wp_get_attachment_image_url( get_post_thumbnail_id( $post->ID ), 'full' );
         $url_altText = get_post_meta( get_post_thumbnail_id( $post->ID ), '_wp_attachment_image_alt', true );
         $slideDescription = fs_get_slidedescription( $post );
         $slideLabel = fs_get_slidelabel( $post );
@@ -614,9 +614,9 @@ function fs_load_slideshows( $a ) {
         }
         
         
-        if ( !empty( $url_thumb ) ) {
-            $pluginContainer .= '<div class="slide__image" style="background: url(' . $url_thumb . ') 50% 50%/cover no-repeat;">';
-            if ( $url_thumb !== null && $slideImageIsLink === "1" ) { 
+        if ( !empty( $url_image ) ) {
+            $pluginContainer .= '<div class="slide__image" style="background: url(' . $url_image . ') 50% 50%/cover no-repeat;">';
+            if ( $url_image !== null && $slideImageIsLink === "1" ) { 
                 $pluginContainer .= '<a class="slide__image__link" href="' . $link . '" ' . $slideImageLinkTab . '></a>';        
             }
             $pluginContainer .= '</div>';
