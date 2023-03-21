@@ -217,6 +217,10 @@ function fs_generate_settings_page() {
                 <input id="fantasticSlideshowHoverZoomTransitionEffect1" class="admin-input-container__input fantastic-slideshow-hover-zoom-transition-effect" name="fantastic-slideshow-hover-zoom-transition-effect" type="radio" value="linear" <?php if ( get_option( 'fantastic-slideshow-hover-zoom-transition-effect' ) === "linear" ) { echo "checked='checked'"; }; ?> />
                 <label class="admin-input-container__label--right" for="fantasticSlideshowHoverZoomTransitionEffect2">Ease-out</label>
                 <input id="fantasticSlideshowHoverZoomTransitionEffect2" class="admin-input-container__input fantastic-slideshow-hover-zoom-transition-effect" name="fantastic-slideshow-hover-zoom-transition-effect" type="radio" value="ease-out" <?php if ( get_option( 'fantastic-slideshow-hover-zoom-transition-effect' ) === "ease-out" ) { echo "checked='checked'"; }; ?> />
+                <label class="admin-input-container__label--right" for="fantasticSlideshowHoverZoomTransitionEffect3">Ease</label>
+                <input id="fantasticSlideshowHoverZoomTransitionEffect3" class="admin-input-container__input fantastic-slideshow-hover-zoom-transition-effect" name="fantastic-slideshow-hover-zoom-transition-effect" type="radio" value="ease" <?php if ( get_option( 'fantastic-slideshow-hover-zoom-transition-effect' ) === "ease" ) { echo "checked='checked'"; }; ?> />
+                <label class="admin-input-container__label--right" for="fantasticSlideshowHoverZoomTransitionEffect4">Ease-in-out</label>
+                <input id="fantasticSlideshowHoverZoomTransitionEffect4" class="admin-input-container__input fantastic-slideshow-hover-zoom-transition-effect" name="fantastic-slideshow-hover-zoom-transition-effect" type="radio" value="ease-in-out" <?php if ( get_option( 'fantastic-slideshow-hover-zoom-transition-effect' ) === "ease-in-out" ) { echo "checked='checked'"; }; ?> />
                 <span class="admin-input-container__default-settings-text">Default: Ease-in.</span>
             </div>
             <div class="admin-input-container">
