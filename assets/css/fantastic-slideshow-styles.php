@@ -40,6 +40,13 @@ if ( $zoomInOnHoverPercent > 0.4 ) {
 $zoomInOnHoverPercent++;
 
 $hoverZoomInTime = get_option( 'fantastic-slideshow-hover-zoom-in-time' );
+$hoverZoomTransitionDelay = get_option( 'fantastic-slideshow-hover-zoom-transition-delay' );
+if ( $hoverZoomTransitionDelay < 0 ) {
+    $hoverZoomTransitionDelay = 0;
+}
+if ( $hoverZoomTransitionDelay > 2 ) {
+    $hoverZoomTransitionDelay = 2;
+}
 $hoverZoomTransitionEffect = get_option( 'fantastic-slideshow-hover-zoom-transition-effect' );
 
 ?>
@@ -60,8 +67,8 @@ html { }
 .slide__image { width: 100%; height: <?php echo 0.6 * $slideImageHeight; ?>px; object-fit: cover; border-radius: <?php echo $imageBorderRadius; ?>px; }
 .slide__image__link { display: block; width: auto; height: 100%; }
 .slide__label { display: inline-block; position: absolute; top: 20px; right: 15px; padding: 2px 15px; font-size: 18px; color: #000000; background-color: rgba(255, 255, 255, 0.8); }
-.slideshow.zoom-in-on-hover .slide__image { transition: <?php echo $hoverZoomInTime; ?>s <?php echo $hoverZoomTransitionEffect; ?>; }
-.slideshow.zoom-in-on-hover .slide__image:hover { margin-bottom: <?php echo $zoomInOnHoverPercent; ?>px; transform: scale(<?php echo $zoomInOnHoverPercent; ?>); transition: <?php echo $hoverZoomInTime; ?>s <?php echo $hoverZoomTransitionEffect; ?>; }
+.slideshow.zoom-in-on-hover .slide__image { transition: <?php echo $hoverZoomInTime; ?>s <?php echo $hoverZoomTransitionEffect; ?>; transition-delay: <?php echo $hoverZoomTransitionDelay; ?>s; }
+.slideshow.zoom-in-on-hover .slide__image:hover { margin-bottom: <?php echo $zoomInOnHoverPercent; ?>px; transform: scale(<?php echo $zoomInOnHoverPercent; ?>); transition: <?php echo $hoverZoomInTime; ?>s <?php echo $hoverZoomTransitionEffect; ?>; transition-delay: <?php echo $hoverZoomTransitionDelay; ?>s; }
 
 .slideshow__icon { width: 34px; height: 34px; }
 .slideshow__icon.hide { display: none; }
