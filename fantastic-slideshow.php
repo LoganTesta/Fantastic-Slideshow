@@ -57,7 +57,7 @@ add_action( 'admin_menu', 'fs_admin_menu' );
 function fs_register_settings() {
     add_option( 'fantastic-slideshow-leading-text', 'Slides' );
     add_option( 'fantastic-slideshow-leading-text-position', 'center' );
-    add_option( 'fantastic-slideshow-image-width', "670" );
+    add_option( 'fantastic-slideshow-image-width', "1200" );
     add_option( 'fantastic-slideshow-image-height', "400" );
     add_option( 'fantastic-slideshow-border-radius', "0" );
     add_option( 'fantastic-slideshow-slide-speed', "5" );
@@ -130,10 +130,10 @@ function fs_generate_settings_page() {
                 <span class="admin-input-container__default-settings-text">Default: center</span>
             </div>
             <div class="admin-input-container">
-                <label class="admin-input-container__label" for="fantastic-slideshow-image-width">Image Width (400-1800px)</label>
-                <input id="fantasticSlideshowImageWidth" class="admin-input-container__input smaller fantastic-slideshow-image-width" name="fantastic-slideshow-image-width" type="number" value="<?php echo get_option( 'fantastic-slideshow-image-width' ); ?>" min="400" max="1800" />
+                <label class="admin-input-container__label" for="fantastic-slideshow-image-width">Image Width (400-1920px)</label>
+                <input id="fantasticSlideshowImageWidth" class="admin-input-container__input smaller fantastic-slideshow-image-width" name="fantastic-slideshow-image-width" type="number" value="<?php echo get_option( 'fantastic-slideshow-image-width' ); ?>" min="400" max="1920" />
                 <span class="admin-input-container__trailing-text">px</span>
-                <span class="admin-input-container__default-settings-text">Default: 670px</span>
+                <span class="admin-input-container__default-settings-text">Default: 1200px</span>
             </div>
             <div class="admin-input-container">
                 <label class="admin-input-container__label" for="fantastic-slideshow-image-height">Image Height (200-1200px)</label>
