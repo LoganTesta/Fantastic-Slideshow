@@ -49,6 +49,8 @@ if ( $hoverZoomTransitionDelay > 2 ) {
 }
 $hoverZoomTransitionEffect = get_option( 'fantastic-slideshow-hover-zoom-transition-effect' );
 
+$showPauseButton = get_option( 'fantastic-slideshow-show-pause-button' );
+
 ?>
 
 
@@ -89,6 +91,7 @@ html { }
 .slideshow__slide-button.currentSlideButton:hover { opacity: 0.8; transition: 0.2s ease-in; }
 #slideButton0 { margin-left: 0; }
 #pausePlayButton { display: block; float: left; width: <?php echo $slideButtonWidth; ?>px; height: <?php echo $slideButtonWidth; ?>px; margin-top: 10px; margin-left: 20px; border-radius: 4px; background: url(../images/pause-button.png) 50% 50%/cover no-repeat; }
+#pausePlayButton.hide { display: none; }
 #pausePlayButton.paused { background: url(../images/play-button.png) 50% 50%/cover no-repeat; }
 
 .slideshow__settings { display: none; }

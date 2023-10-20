@@ -72,6 +72,7 @@ function fs_register_settings() {
     add_option( 'fantastic-slideshow-hover-zoom-in-time', '0.8' );
     add_option( 'fantastic-slideshow-hover-zoom-transition-delay', '0' );
     add_option( 'fantastic-slideshow-hover-zoom-transition-effect', 'ease-in' );
+    add_option( 'fantastic-slideshow-show-pause-button', 'yes' );
     add_option( 'fantastic-slideshow-enable-touch-dragging', 'yes' );
     add_option( 'fantastic-slideshow-enable-mouse-dragging', 'yes' );
     add_option( 'fantastic-slideshow-show-arrows', 'yes' );
@@ -95,6 +96,7 @@ function fs_register_settings() {
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-hover-zoom-in-time', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-hover-zoom-transition-delay', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-hover-zoom-transition-effect', 'fs_validatetextfield' );
+    register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-show-pause-button', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-enable-touch-dragging', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-enable-mouse-dragging', 'fs_validatetextfield' );
     register_setting( 'fantastic-slideshow-settings-group', 'fantastic-slideshow-show-arrows', 'fs_validatetextfield' );
@@ -230,6 +232,14 @@ function fs_generate_settings_page() {
                 <label class="admin-input-container__label--right" for="fantasticSlideshowHoverZoomTransitionEffect4">Ease-in-out</label>
                 <input id="fantasticSlideshowHoverZoomTransitionEffect4" class="admin-input-container__input fantastic-slideshow-hover-zoom-transition-effect" name="fantastic-slideshow-hover-zoom-transition-effect" type="radio" value="ease-in-out" <?php if ( get_option( 'fantastic-slideshow-hover-zoom-transition-effect' ) === "ease-in-out" ) { echo "checked='checked'"; }; ?> />
                 <span class="admin-input-container__default-settings-text">Default: Ease-in.</span>
+            </div>
+            <div class="admin-input-container">
+                <span class="admin-input-container__label">Show pause button</span>
+                <label class="admin-input-container__label--right" for="fantasticSlideshowShowPauseButton0">No</label>
+                <input id="fantasticSlideshowShowPauseButton0" class="admin-input-container__input fantastic-slideshow-show-pause-button" name="fantastic-slideshow-show-pause-button" type="radio" value="no" <?php if ( get_option( 'fantastic-slideshow-show-pause-button' ) === "no" ) { echo "checked='checked'"; }; ?> />
+                <label class="admin-input-container__label--right" for="fantasticSlideshowShowPauseButton1">Yes</label>
+                <input id="fantasticSlideshowShowPauseButton1" class="admin-input-container__input fantastic-slideshow-show-pause-button" name="fantastic-slideshow-show-pause-button" type="radio" value="yes" <?php if ( get_option( 'fantastic-slideshow-show-pause-button' ) === "yes" ) { echo "checked='checked'"; }; ?> />
+                <span class="admin-input-container__default-settings-text">Default: Yes. Show pause-play button</span>
             </div>
             <div class="admin-input-container">
                 <span class="admin-input-container__label">Enable Touch Dragging</span>
@@ -594,6 +604,11 @@ function fs_load_slideshows( $a ) {
     } else {
         $hideArrowsExceptOnHover = "show-only-on-hover-over";
     }
+    
+    $showPauseButton = get_option("fantastic-slideshow-show-pause-button");
+    if ( $showPauseButton === "no" ) {
+        $showPauseButton = "hide";
+    }
 
     $soomInOnHover = "";
     if ( get_option( "fantastic-slideshow-zoom-in-on-hover-percent" ) > 0 ) {
@@ -682,7 +697,7 @@ function fs_load_slideshows( $a ) {
         $pluginContainer .= '</div>';
     }
     
-    $pluginContainer .= '<div id="pausePlayButton"></div>'; 
+    $pluginContainer .= '<div id="pausePlayButton" class="' . $showPauseButton . '"></div>'; 
     $pluginContainer .= '</div>';
     $pluginContainer .= '<div class="slideshow__settings">';
     $pluginContainer .= '<div class="slideshow__speed">' . get_option( 'fantastic-slideshow-slide-speed' ) . '</div>';
@@ -696,6 +711,7 @@ function fs_load_slideshows( $a ) {
     $pluginContainer .= '<div class="slideshow__hover-zoom-in-time">' . get_option( 'fantastic-slideshow-hover-zoom-in-time' ) . '</div>';
     $pluginContainer .= '<div class="slideshow__hover-zoom-transition-delay">' . get_option( 'fantastic-slideshow-hover-zoom-transition-delay' ) . '</div>';
     $pluginContainer .= '<div class="slideshow__hover-zoom-transition-effect">' . get_option( 'fantastic-slideshow-hover-zoom-transition-effect' ) . '</div>';
+    $pluginContainer .= '<div class="slideshow__show-pause-button">' . get_option( 'fantastic-slideshow-show-pause-button' ) . '</div>';
     $pluginContainer .= '<div class="slideshow__enable-touch-dragging">' . get_option( 'fantastic-slideshow-enable-touch-dragging' ) . '</div>';
     $pluginContainer .= '<div class="slideshow__enable-mouse-dragging">' . get_option( 'fantastic-slideshow-enable-mouse-dragging' ) . '</div>';
     $pluginContainer .= '</div>';
