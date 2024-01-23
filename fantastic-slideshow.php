@@ -114,7 +114,7 @@ function fs_validatetextfield( $input ) {
 //Move the featured image to the main left column.
 function fs_remove_some_default_fields (){
     remove_meta_box( "postimagediv", "fantastic-slideshow", "side" );
-    add_meta_box( "postimagediv", __("Slide Image"), "post_thumbnail_meta_box", "fantastic-slideshow", "normal", "low" );
+    add_meta_box( "postimagediv", __("Slide Image"), "post_thumbnail_meta_box", "fantastic-slideshow", "normal", "high" );
 }
 add_action( "do_meta_boxes", "fs_remove_some_default_fields" );
 

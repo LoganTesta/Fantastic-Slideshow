@@ -13,6 +13,9 @@
 .admin-input-container__input { display: inline-block; width: 100%; }
 
 
+#postimagediv { max-width: 400px; }
+
+
 /*General*/
 #normal-sortables input:not([type=radio]),
 #normal-sortables textarea { width: 100%; max-width: 400px; }
