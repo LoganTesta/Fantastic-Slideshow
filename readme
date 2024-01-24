@@ -3,6 +3,10 @@
 Contributors: Fantastic Slideshow
 Tags: slideshow, slider, carousel, slides, responsive
 Stable tag: 1.0
+Requires at least:
+Tested up to:
+Requires PHP: 
+
 
 Easy to use and versatile slideshow with layout and styling customizations. 
 
@@ -10,6 +14,14 @@ Easy to use and versatile slideshow with layout and styling customizations.
 == Description ==
 Easy to use and versatile slideshow with layout and styling customizations.  Responsive and supports image and text links.
 Change the slideshow speed, fade in speed, add a pause/play button, and more.  
+
+
+== Frequently Asked Questions ==
+= Does the plugin support links from slides =
+Yes, the plugin supports both slide title and image links.
+
+=Can you change the slideshow speed?=
+Yes, you can change both the slide duration and the slide transition speeds in Settings.
 
 
 == Installation == 
@@ -20,5 +32,9 @@ Change the slideshow speed, fade in speed, add a pause/play button, and more.
 == Screenshots ==
 
 
+== Changelog ==
 
+= 1.0 =
+
+== Upgrade Notice ==
 
