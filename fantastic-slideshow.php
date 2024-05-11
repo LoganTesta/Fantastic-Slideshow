@@ -304,6 +304,9 @@ add_action( 'admin_init', 'fs_add_custom_metabox_info' );
 function fs_url_custom_metabox() {
     global $post;
     
+    wp_nonce_field( 'settings_group_nonce_save', 'settings_group_nonce' );
+    
+    
     /*Gather the input data, sanitize it, and update the database.*/
     $slidedescription = sanitize_text_field( get_post_meta( $post->ID, 'slidedescription', true ) );
     update_post_meta( $post->ID, 'slidedescription', $slidedescription );
@@ -406,9 +409,15 @@ function fs_url_custom_metabox() {
 function fs_save_custom_slidedescription( $post_id ) {
     global $post;
     
+    $nonceToVerify = check_admin_referer( 'settings_group_nonce_save', 'settings_group_nonce' );
+    
     if ( isset( $_POST['slidedescription'] ) ) {
-        update_post_meta( $post->ID, 'slidedescription', $_POST['slidedescription'] );
-    }
+        if ( $nonceToVerify ) {
+            update_post_meta( $post->ID, 'slidedescription', $_POST['slidedescription'] );
+        } else {
+            wp_die( "Invalid wp nonce provided", array( 'response' => 403, ) );
+        }
+    } 
 }
 add_action( 'save_post', 'fs_save_custom_slidedescription' );
 
@@ -421,8 +430,14 @@ function fs_get_slidedescription( $post ) {
 function fs_save_custom_slidelabel( $post_id ) {
     global $post;
     
+    $nonceToVerify = check_admin_referer( 'settings_group_nonce_save', 'settings_group_nonce' );
+    
     if ( isset( $_POST['slidelabel'] ) ) {
-        update_post_meta( $post->ID, 'slidelabel', $_POST['slidelabel'] );
+        if ( $nonceToVerify ) {
+            update_post_meta( $post->ID, 'slidelabel', $_POST['slidelabel'] );
+        } else {
+            wp_die( "Invalid wp nonce provided", array( 'response' => 403, ) );
+        }
     }
 }
 add_action( 'save_post', 'fs_save_custom_slidelabel' );
@@ -436,8 +451,14 @@ function fs_get_slidelabel( $post ) {
 function fs_save_custom_url( $post_id ) {
     global $post;
     
+    $nonceToVerify = check_admin_referer( 'settings_group_nonce_save', 'settings_group_nonce' );
+    
     if ( isset( $_POST['slideshowurl'] ) ) {
-        update_post_meta( $post->ID, 'slideshowurl', $_POST['slideshowurl'] );
+        if ( $nonceToVerify ) {
+            update_post_meta( $post->ID, 'slideshowurl', $_POST['slideshowurl'] );
+        } else {
+            wp_die( "Invalid wp nonce provided", array( 'response' => 403, ) );
+        }
     }
 }
 add_action( 'save_post', 'fs_save_custom_url' );
