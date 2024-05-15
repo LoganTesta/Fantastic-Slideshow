@@ -472,8 +472,14 @@ function fs_get_url( $post ) {
 function fs_save_custom_slideimageislink( $post_id ) {
     global $post;
     
+    $nonceToVerify = check_admin_referer( 'settings_group_nonce_save', 'settings_group_nonce' );
+    
     if ( isset( $_POST['slideimageislink'] ) ) {
-        update_post_meta( $post->ID, 'slideimageislink', $_POST['slideimageislink'] );
+        if ( $nonceToVerify ) {
+            update_post_meta( $post->ID, 'slideimageislink', $_POST['slideimageislink'] );
+        } else {
+            wp_die( "Invalid wp nonce provided", array( 'response' => 403, ) );
+        }
     }
 }
 add_action( 'save_post', 'fs_save_custom_slideimageislink' );
@@ -487,8 +493,14 @@ function fs_get_slideimageislink( $post ) {
 function fs_save_custom_slidetitleislink( $post_id ) {
     global $post;
     
+    $nonceToVerify = check_admin_referer( 'settings_group_nonce_save', 'settings_group_nonce' );
+    
     if ( isset( $_POST['slidetitleislink'] ) ) {
-        update_post_meta( $post->ID, 'slidetitleislink', $_POST['slidetitleislink'] );
+        if ( $nonceToVerify ) {
+            update_post_meta( $post->ID, 'slidetitleislink', $_POST['slidetitleislink'] );
+        } else {
+            wp_die( "Invalid wp nonce provided", array( 'response' => 403, ) );
+        }
     }
 }
 add_action( 'save_post', 'fs_save_custom_slidetitleislink' );
@@ -502,8 +514,14 @@ function fs_get_slidetitleislink( $post ) {
 function fs_save_custom_slidetitlelinktab( $post_id ) {
     global $post;
     
+    $nonceToVerify = check_admin_referer( 'settings_group_nonce_save', 'settings_group_nonce' );
+    
     if ( isset( $_POST['slidetitlelinktab'] ) ) {
-        update_post_meta( $post->ID, 'slidetitlelinktab', $_POST['slidetitlelinktab'] );
+        if ( $nonceToVerify ) {
+            update_post_meta( $post->ID, 'slidetitlelinktab', $_POST['slidetitlelinktab'] );
+        } else {
+            wp_die( "Invalid wp nonce provided", array( 'response' => 403, ) );
+        }
     }
 }
 add_action( 'save_post', 'fs_save_custom_slidetitlelinktab' );
@@ -517,8 +535,14 @@ function fs_get_slidetitlelinktab( $post ) {
 function fs_save_custom_slideimagelinktab( $post_id ) {
     global $post;
     
+    $nonceToVerify = check_admin_referer( 'settings_group_nonce_save', 'settings_group_nonce' );
+    
     if ( isset( $_POST['slideimagelinktab'] ) ) {
-        update_post_meta( $post->ID, 'slideimagelinktab', $_POST['slideimagelinktab'] );
+        if ( $nonceToVerify ) {
+            update_post_meta( $post->ID, 'slideimagelinktab', $_POST['slideimagelinktab'] );
+        } else {
+            wp_die( "Invalid wp nonce provided", array( 'response' => 403, ) );
+        }
     }
 }
 add_action( 'save_post', 'fs_save_custom_slideimagelinktab' );
@@ -532,8 +556,14 @@ function fs_get_slideimagelinktab( $post ) {
 function fs_save_custom_order( $post_id ) {
     global $post;
     
+    $nonceToVerify = check_admin_referer( 'settings_group_nonce_save', 'settings_group_nonce' );
+    
     if ( isset( $_POST['slideshoworder'] ) ) {
-        update_post_meta( $post->ID, 'slideshoworder', $_POST['slideshoworder'] );
+        if ( $nonceToVerify ) {
+            update_post_meta( $post->ID, 'slideshoworder', $_POST['slideshoworder'] );
+        } else {
+            wp_die( "Invalid wp nonce provided", array( 'response' => 403, ) );
+        }
     }
 }
 add_action( 'save_post', 'fs_save_custom_order' );
